@@ -6,7 +6,7 @@
 name: Kassim Sheghembe
 
 # Short bio or description (displayed in the header)
-description: Radio & ICT Developer Tanzania
+description: Full Stack Developer - Tanzania
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/speed4ne/speed4ne.github.io/master/images/kassim_img.jpg
@@ -50,7 +50,7 @@ baseurl: ""
 #
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
