@@ -12,4 +12,4 @@ Email: sheghembekassim@gmail.com
 Phone: +255 754 087 896
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[sheghembekassim@gmail.com](mailto:sheghembekassim@gmail.com)
