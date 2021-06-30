@@ -1,6 +1,7 @@
 title: My Resume
 name: Kassim Sheghembe
-description: Full Stack Developer
+author_name: Kassim Sheghembe
+description: Software Engineer
 
 # Live reload
 livereload: true
