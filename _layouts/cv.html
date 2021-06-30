@@ -2,29 +2,28 @@
 layout: default
 ---
 
-<body>
-  <article class="page">
 
-    <div class="entry">
-      <div class="wrapper">
-        {% include sidebar.html %}
-    
-        <div class="main-wrapper">
-            {% include career-profile.html %}
+<article class="page">
+
+  <div class="entry">
+    <div class="wrapper">
+      {% include sidebar.html %}
+  
+      <div class="main-wrapper">
+          {% include career-profile.html %}
 
 
-            {% unless site.data.data.sidebar.education %} 
-              {% include education.html %}
-            {% endunless %}
+          {% unless site.data.data.sidebar.education %} 
+            {% include education.html %}
+          {% endunless %}
 
-            {% include experiences.html %}
+          {% include experiences.html %}
 
-            {% include projects.html %}
+          {% include projects.html %}
 
-            {% include skills.html %}
-        </div>
+          {% include skills.html %}
       </div>
     </div>
-    
-  </article>
-</body>
+  </div>
+  
+</article>
