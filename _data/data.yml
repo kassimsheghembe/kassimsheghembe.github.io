@@ -3,7 +3,7 @@
 #
 
 sidebar:
-    about: True # set to False or comment line if you want to remove the "how to use?" in the sidebar
+    about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
     education: True # set to False if you want education in main section instead of in sidebar
 
     # Profile information
@@ -14,13 +14,13 @@ sidebar:
     # Sidebar links
     email: sheghembekassim@gmail.com
     phone: +255 (0)754 087896
-    website: blog.webjeda.com #do not add http://
+    website: kassimsheghembe.github.io #do not add http://
     linkedin: sheghembekassim
     github: gosso22
     telegram: # add your nickname without '@' sign
     gitlab:
     bitbucket:
-    twitter: '@webjeda'
+    twitter: '@KWU123'
     stack-overflow: # Number/Username, e.g. 123456/alandoe
     codewars:
     goodreads: # Number-Username, e.g. 123456-alandoe
@@ -30,34 +30,35 @@ sidebar:
         level: Native
 
       - idiom: English
-        level: Professional
+        level: Fluent
 
       - idiom: French
         level: Complete Begginer
 
     interests:
+      - item: Walking & Hiking
+        link:
+
       - item: Climbing
         link:
 
-      - item: Snowboarding
-        link:
-
-      - item: Cooking
+      - item: Books
         link:
 
 career-profile:
     title: Career Profile
     summary: |
-      Summarise your career here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. You can [download this free resume/CV template here]().
-      Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque
-      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      Donec quam felis, ultricies nec, pellentesque eu.
-      Second paragraph if required.
+      A very energetic and enthusiastic Software Engineer with 3+ years of
+      experience. I hold a Masters Degree in Informatics from the
+      University of Edinburgh in Scotland UK. Before my masters I
+      worked for a Canadian Charity for 5+ years as an ICT Developer. I like
+      the challenges that comes with being a Software Engineer. More
+      importantly, learning new technologies either being a new programming
+      language, a new framework, or a new infrastructure.  
 education:
-    - degree: MSc in Computer Science
-      university: University of London
-      time: 2011 - 2012
+    - degree: MSc in Informatics
+      university: University of Edinburgh
+      time: 2017 - 2018
       details: |
         Describe your study here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -66,9 +67,9 @@ education:
         pretium quis, sem.
           - Bullet point
           - Bullet point
-    - degree: BSc in Applied Mathematics
-      university: Bristol University
-      time: 2007 - 2011
+    - degree: BE in Information Systems and Network Engineering
+      university: St. Joseph University in Tanzania
+      time: 2008 - 2012
       details: |
         Describe your study here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -78,43 +79,39 @@ education:
           - Bullet point
           - Bullet point
 experiences:
-    - role: Lead Developer
-      time: 2015 - Present
-      company: Startup Hubs, San Francisco
+    - role: Software Engineer
+      time: 2019 - Present
+      company: D-Tree International, Dar-es-salaam
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem. Nulla consequat massa quis
-        enim. Donec pede justo. Sed ut perspiciatis unde omnis iste natus
-        error sit voluptatem accusantium doloremque laudantium, totam rem
-        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-        architecto beatae vitae dicta sunt explicabo.
-          - Bullet point
-          - Bullet point
-    - role: Senior Software Engineer
-      time: 2014 - 2015
-      company: Google, London
+        Design, develop, test and maintain digital health mobile and web
+        applications. Also configure and manage hosting of open source digital
+        tools on the D-Tree cloud infrastructure (AWS).
+          - Mobile Application Development
+          - Clould Infrastructure Management (AWS)
+          - Web application Development
+          - Data and Dashboard Management
+    - role: Digital Innovation Specialist (Consultancy)
+      time: 2018 - 2019
+      company: Farm Radio International, Arusha
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem.
-          - Bullet point
-          - Bullet point
-    - role: UI Developer
-      time: 2012 - 2014
-      company: Amazon, London
+        Provide an evaluation, recommendation, and technical
+        support for a digital solutions that Farm Radio uses to provide
+        on demand farming informations to radio listeners and farmers.
+          - An in-depth evaluation and analysis of digital solutions
+          - Support and train other ICT developers
+          - Provide a strategy for designing digital solutions
+    - role: ICT Developer
+      time: 2013 - 2017
+      company: Farm Radio International, Arusha
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem.
-          - Bullet point
-          - Bullet point
+        I explored and implemented digital tools that can enable radio stations
+        to receive feedback from their listeners and close the feedback
+        loop. I also developed ICT based information services to provide on
+        demand information that complemented the information on the radio to
+        the radio station listeners and to farmers. Example services includes:
+          - Beep 4 weather information
+          - Beep 4 market price information
+          - Beep 4 ag tips information 
 projects:
     title: Projects
     intro: >
@@ -122,25 +119,17 @@ projects:
       section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
     assignments:
-      - title: Velocity
+      - title: Drug Shops Application
         link: "#hook"
-        tagline: "A responsive website template designed to help startups promote, market and sell their products."
+        tagline: "A mobile application for drug shops designed to help drug dispensers to screen for any danger signs and dispense drugs to their clients."
 
-      - title: DevStudio
+      - title: Adaptive Comparative Judgement (ACJ)
         link: "#"
-        tagline: "A responsive website template designed to help web developers/designers market their services."
+        tagline: "A web application that provides and interface to the ACJ algorithm to do pair comparison."
 
-      - title: Tempo
+      - title: Mobile Applications in Kotlin
         link: "#"
-        tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
-
-      - title: Atom
-        link: "#"
-        tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
-
-      - title: Delta
-        link: "#"
-        tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
+        tagline: "A project that consists of a collection of Mobile Applications developed in Kotlin as a part of getting a hang of the language."
 
 publications:
     title: Publications
@@ -189,9 +178,11 @@ skills:
       - name: Angular
         level: 60%
 
-footer: >
+footer:
     <a href="http://github.com/gosso22" target="_blank" rel="nofollow">Kassim Sheghembe</a>
 
 footer-links:
   - email: sheghembekassim@gmail.com
   - github: gosso22
+github-username:
+  gosso22
