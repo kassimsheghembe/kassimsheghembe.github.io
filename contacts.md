@@ -1,15 +1,12 @@
 ---
-layout: page
+layout: contactus
 title: Contacts
 permalink: /contacts/
 ---
 
-Contact Detals
-
-### More Information
-
-Email: sheghembekassim@gmail.com
-Phone: +255 754 087 896
-### Contact me
-
-[sheghembekassim@gmail.com](mailto:sheghembekassim@gmail.com)
+---
+### Address
+Kassim Sheghembe
+Mikocheni A, Kindondoni
+Dar-es-salaam
+Tanzania
