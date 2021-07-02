@@ -617,6 +617,58 @@ footer {
   text-align: center;
 }
 
+#tagline {
+  font-size: 84px;
+  word-spacing: 1px;
+  line-height: 90px;
+  font-family: neuzeitgrobold,sans-serif;
+  text-transform: none;
+  letter-spacing: -3px;
+  color: #181818;
+  text-align: center;
+  margin: .8em 0 0;
+}
+
+#contactusicons {
+  font-size: 80px;
+  word-spacing: 1px;
+  line-height: 95px;
+  text-transform: none;
+  letter-spacing: -1px;
+  color: #181818;
+  text-align: center;
+  margin: 1em 0 1em 0;
+  a {
+    color: #42A8C0;
+  }
+}
+
+#subtagline {
+  margin-top: 1.5em;
+  font-family: freightsans_regular,helvetica neue,helvetica,arial,sans-serif;
+  font-weight: 300;
+  text-transform: none;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 32px;
+  color: #6b6b6b;
+}
+
+.postWrapper {
+  margin: 40px; /* just for contrast */
+  position: relative;
+  border: 1px solid rgb(154, 163, 170);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.postWrapper .posttitle {
+  position: absolute;
+  top: -40px;
+  background: #fff;
+  padding: 0 10px;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";
