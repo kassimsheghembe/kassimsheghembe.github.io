@@ -229,6 +229,15 @@ img {
   }
 }
 
+@keyframes type-name {
+  0% {
+    width: 0ch;
+  }
+  100% {
+    width: 20ch;
+  }  
+}
+
 .mid-section-home {
   text-align: center;
   display: flex;
@@ -249,10 +258,17 @@ img {
   h1 {
     font-size: 6rem;
     font-weight: 500;
-    p {
-      font-size: 4rem;
-    }
+    animation: type-name 3s steps(20);
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: consolas;
+    border-right: 4px solid black;
+    width: 16;
   }
+}
+
+#greet {
+  font-size: 4rem;
 }
 
 .sub-heading {
