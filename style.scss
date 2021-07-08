@@ -32,7 +32,7 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
@@ -52,11 +52,16 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
   font-weight: 600;
-  
+
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
@@ -65,8 +70,8 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 }
-  
-h1 {  
+
+h1 {
   font-weight: 500;
   font-size: 32px;
   a {
@@ -74,16 +79,16 @@ h1 {
   }
 }
 
-h2 {  
+h2 {
   font-weight: 400;
   font-size: 24px;
 }
 
-h3 {  
+h3 {
   font-size: 18px;
 }
 
-h4 {  
+h4 {
   font-size: 18px;
   color: $gray;
 }
@@ -95,13 +100,15 @@ p {
 a {
   color: $blue;
   text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
+  cursor: pointer;
+  &:hover,
+  &:active {
     color: $blue;
   }
 }
 
-ul, ol {
+ul,
+ol {
   margin: 15px 0;
   padding-left: 30px;
 }
@@ -114,19 +121,25 @@ ol {
   list-style-type: decimal;
 }
 
-ol ul, ul ol, ul ul, ol ol {
+ol ul,
+ul ol,
+ul ul,
+ol ol {
   margin: 0;
 }
 
-ul ul, ol ul {
+ul ul,
+ol ul {
   list-style-type: circle;
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
-strong, b {
+strong,
+b {
   font-weight: 600;
 }
 
@@ -153,12 +166,12 @@ img {
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*********************/
@@ -176,7 +189,7 @@ img {
 .masthead {
   padding: 20px 0;
   border-bottom: 1px solid $lightGray;
-  
+
   @include mobile {
     text-align: center;
   }
@@ -213,7 +226,7 @@ img {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue; 
+  font-family: $helveticaNeue;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -223,7 +236,7 @@ img {
   margin: -5px 0 0 0;
   color: $gray;
   font-size: 16px;
-  
+
   @include mobile {
     margin: 3px 0;
   }
@@ -234,18 +247,19 @@ img {
     width: 0ch;
   }
   100% {
-    width: 20ch;
-  }  
+    width: 16ch;
+  }
 }
 
 .mid-section-home {
+  font-family: "Roboto", sans-serif;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 950px;
   height: 100vh;
   margin: auto;
   font-size: 1.5rem;
@@ -258,17 +272,24 @@ img {
   h1 {
     font-size: 6rem;
     font-weight: 500;
-    animation: type-name 3s steps(20);
+    animation: type-name 2s steps(16);
     overflow: hidden;
     white-space: nowrap;
-    font-family: consolas;
-    border-right: 4px solid black;
-    width: 16;
+    font-family: "Roboto", sans-serif;
+    border-right: 3px solid black;
+    width: 16ch;
+
+    @include mobile {
+      font-size: 3rem;
+    }
   }
 }
 
 #greet {
   font-size: 4rem;
+  @include mobile {
+    font-size: 2rem;
+  }
 }
 
 .sub-heading {
@@ -285,10 +306,11 @@ img {
 .summary-about-me {
   width: 50%;
   text-align: right;
-  padding-right: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
-.nav-link {
+.navig-link {
   ul {
     padding-inline-start: 0;
   }
@@ -306,7 +328,7 @@ img {
   }
   border-left: 2px solid var(--primary-text-color);
   width: 50%;
-  padding-left: 20px;
+  padding-left: 30px;
   // .toNav {
   // }
   @include mediaQuery(phone-width) {
@@ -393,9 +415,9 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue; 
+  font-family: $helveticaNeue;
   font-size: 18px;
-  
+
   @include mobile {
     float: none;
     margin-top: 9px;
@@ -431,9 +453,9 @@ nav {
   border-bottom: none;
 }
 
-.post { 
+.post {
   blockquote {
-    margin: 1.8em .8em;
+    margin: 1.8em 0.8em;
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
@@ -452,14 +474,14 @@ nav {
 }
 
 .wrapper {
-  background:$theme-color;
+  background: $theme-color;
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  @include box-shadow(0px 2px 4px rgba(0,0,0,0.1));
+  @include box-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-.sidebar-wrapper{
+.sidebar-wrapper {
   background: $theme-color;
   position: absolute;
   right: 0;
@@ -468,113 +490,113 @@ nav {
   min-height: 800px;
   color: #fff;
   a {
-      color: #fff;
+    color: #fff;
   }
   .profile-container {
-      padding: 30px;
-      //background: darken($theme-color, 10%);
-      background: rgba(0, 0, 0, 0.2);
-      text-align: center;
-      color: #fff;
+    padding: 30px;
+    //background: darken($theme-color, 10%);
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff;
   }
   .name {
-      font-size: 32px;
-      font-weight: 900;
-      margin-top: 0;
-      margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
   .tagline {
-      color: rgba(256, 256, 256, 0.6);
-      font-size: 16px;
-      font-weight: 400;
-      margin-top: 0;
-      margin-bottom: 0;
+    color: rgba(256, 256, 256, 0.6);
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .profile {
-      margin-bottom: 15px;
+    margin-bottom: 15px;
   }
 
   .avatar {
-      //used for profile image
-      max-width: 100px;
-      margin-bottom: 15px;
-      border: 0px solid #fff;
-      border-radius: 100%;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    //used for profile image
+    max-width: 100px;
+    margin-bottom: 15px;
+    border: 0px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   }
   .contact-list {
-      .fas, .fab {
-          margin-right: 5px;
-          font-size: 18px;
-          vertical-align: middle;
+    .fas,
+    .fab {
+      margin-right: 5px;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+    li {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
       }
-      li {
-          margin-bottom: 15px;
-          &:last-child {
-              margin-bottom: 0;
-          }
-      }
+    }
   }
   .container-block {
-      padding: 30px;
+    padding: 30px;
   }
   .container-block-title {
-      text-transform: uppercase;
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
   }
   .degree {
-      font-size: 14px;
-      margin-top: 0;
-      margin-bottom: 5px;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 5px;
   }
   .education-container {
-      .item {
-          margin-bottom: 15px;
-          &:last-child {
-              margin-bottom: 0;
-          }
+    .item {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
       }
-      .meta {
-          color: rgba(256, 256, 256, 0.6);
-          font-weight: 500;
-          margin-bottom: 0px;
-          margin-top: 0;
-      }
-      .time {
-          color: rgba(256, 256, 256, 0.6);
-          font-weight: 500;
-          margin-bottom: 0px;
-      }
+    }
+    .meta {
+      color: rgba(256, 256, 256, 0.6);
+      font-weight: 500;
+      margin-bottom: 0px;
+      margin-top: 0;
+    }
+    .time {
+      color: rgba(256, 256, 256, 0.6);
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
   }
   .languages-container {
-      .lang-desc {
-          color: rgba(256, 256, 256, 0.6);
-      }
+    .lang-desc {
+      color: rgba(256, 256, 256, 0.6);
+    }
   }
   .languages-list {
-      margin-bottom: 0;
-      li {
-          margin-bottom: 10px;
-          &:last-child {
-              margin-bottom: 0;
-          }
+    margin-bottom: 0;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
       }
+    }
   }
 
   .interests-list {
-      margin-bottom: 0;
-      li {
-          margin-bottom: 10px;
-          &:last-child {
-              margin-bottom: 0;
-          }
+    margin-bottom: 0;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
       }
+    }
   }
 }
-
 
 .wrapper-footer {
   height: 30%;
@@ -601,7 +623,6 @@ footer {
   padding: 0;
   margin: 0;
   list-style: none;
-
 }
 
 .flex-item {
@@ -618,15 +639,15 @@ footer {
 }
 
 #tagline {
+  font-family: "Roboto", sans-serif;
   font-size: 84px;
   word-spacing: 1px;
   line-height: 90px;
-  font-family: neuzeitgrobold,sans-serif;
   text-transform: none;
   letter-spacing: -3px;
   color: #181818;
   text-align: center;
-  margin: .8em 0 0;
+  margin: 0.8em 0 0;
 }
 
 #contactusicons {
@@ -639,13 +660,13 @@ footer {
   text-align: center;
   margin: 1em 0 1em 0;
   a {
-    color: #42A8C0;
+    color: #42a8c0;
   }
 }
 
 #subtagline {
   margin-top: 1.5em;
-  font-family: freightsans_regular,helvetica neue,helvetica,arial,sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   text-transform: none;
   text-align: center;
@@ -669,6 +690,28 @@ footer {
   padding: 0 10px;
 }
 
+.fa-1x {
+  font-size: 1.5rem;
+}
+.navbar-toggler.toggler-example {
+  cursor: pointer;
+}
+.dark-blue-text {
+  color: #0a38f5;
+}
+.dark-pink-text {
+  color: #ac003a;
+}
+.dark-amber-text {
+  color: #ff6f00;
+}
+.dark-teal-text {
+  color: #004d40;
+}
+
+.footer-icon-color {
+  color: #42a8c0;
+}
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";

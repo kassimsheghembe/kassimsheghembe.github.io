@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).ready(function($) {
 
     $('.progress-bar').css('width', '0');
     
@@ -14,8 +14,6 @@ jQuery(document).ready(function($) {
             
         });
 
-    });
-   
-    
+    }); 
 
 });
