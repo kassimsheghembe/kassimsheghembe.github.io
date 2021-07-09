@@ -4,16 +4,20 @@ layout: home
 ---
 
 <div class="mid-section-home">
-  <p id="greet">HELLO, I AM </p>
-  <h1>
-    <p>{{ page.title }}</p>
-  </h1>
-  <div class="sub-heading">
-      <div class="summary-about-me">
-          <p>{{ page.home_text }}</p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <p id="greet">HELLO, I AM </p>
+    </div>
+    <div class="row">
+      <h1>
+        {{ page.title }}
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p>{{ page.home_text }}</p>
       </div>
-      <div class="navig-link">
-          {% include navigation.html %}
-      </div>
+      <div class="col-md-6 navig-link">{% include navigation.html %}</div>
+    </div>
   </div>
 </div>
