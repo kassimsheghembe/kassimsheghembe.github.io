@@ -3,41 +3,47 @@ title: Contact Me
 layout: default
 ---
 
-<div class="container">
-    <div class="row">
-        <h1 id="tagline">Contact Me</h1>
+<article class="page">
+    <div class="d-flex justify-content-center">
+        <div class="container">
+            <div class="row">
+                <h1 id="tagline">Contact Me</h1>
+            </div>
+            <div class="row">
+                <h2 id="subtagline">Get in touch with me to get the ball rolling ...</h2>
+            </div>
+            <div class="row justify-content-md-center" id="contactusicons">
+                <div class="col-md-auto">
+                    <a href="mailto:sheghembekassim@gmail.com" class="li-ic">
+                        <i class="fas fa-envelope fa-lg"></i>
+                        <h4>Email</h4>
+                    </a>
+                </div>
+                <div class="col-md-auto">
+                    <a href="tel:{{ sidebar.phone }}" class="li-ic">
+                        <i class="fas fa-mobile-alt fa-circle fa-lg"></i>
+                        <h4>Phone</h4>
+                    </a>
+                </div>
+                <div class="col-md-auto">
+                    <a href="https://www.linkedin.com/in/sheghembekassim/" class="li-ic">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                        <h4>LinkedIn</h4>
+                    </a>
+                </div>
+                <div class="col-md-auto">
+                    <a href="skype:kassim.sheghembe?add">
+                        <i class="fab fa-skype fa-lg"></i>
+                        <h4>Skype</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="row justify-content-md-center" align="center" id="address-info">
+                <div class="entry">
+                    {{content}}
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="row">
-        <h2 id="subtagline">Get in touch with me to get the ball rolling ...</h2>
-    </div>
-    <div class="row" id="contactusicons">
-        <div class="col-md-auto">
-            <a href="mailto:sheghembekassim@gmail.com" class="li-ic">
-                <i class="fas fa-envelope fa-lg"></i>
-                <h4>Email</h4>
-            </a>
-        </div>
-        <div class="col-md-auto">
-            <a href="tel:{{ sidebar.phone }}" class="li-ic">
-                <i class="fas fa-mobile-alt fa-circle fa-lg"></i>
-                <h4>Phone</h4>
-            </a>
-        </div>
-        <div class="col-md-auto">
-            <a href="https://www.linkedin.com/in/sheghembekassim/" class="li-ic">
-                <i class="fab fa-linkedin fa-lg"></i>
-                <h4>LinkedIn</h4>
-            </a>
-        </div>
-        <div class="col-md-auto">
-            <a href="skype:kassim.sheghembe?add">
-                <i class="fab fa-skype fa-lg"></i>
-                <h4>Skype</h4>
-            </a>
-        </div>
-    </div>
-</div>
-<div id="main" role="main" class="container">
-    {{content}}
-</div>
-</div>
+</article>
