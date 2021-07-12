@@ -14,6 +14,18 @@ $(document).ready(function($) {
             
         });
 
-    }); 
+    });
+
+    $(window).on('load', function() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+    
+        hamburger.addEventListener("click", showMobileMenu);
+    
+        function showMobileMenu() {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        }
+    });
 
 });
