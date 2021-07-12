@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}"
     href="{{ site.baseurl }}/feed.xml" />
-  {% include scripts.html %}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,15 +30,12 @@
   <link href="/assets/plugins/font-awesome/css/solid.css" rel="stylesheet">
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-
   <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
 </head>
 
 <body class="index-body">
   {{ content }}
+  {% include scripts.html %}
   {% include analytics.html %}
 </body>
 

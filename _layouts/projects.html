@@ -1,22 +1,30 @@
 ---
+title: Contact Me
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-      
-      <div class="postWrapper">
-      
-        <h1 class="posttitle"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<div class="d-flex justify-content-center">
+  <div class="container">
+    <div class="row">
+      <h1 id="projects">{{ page.title }}</h1>
+    </div>
+    <div class="row">
+      {% for post in site.posts %}
+      <article class="page">
 
-        <div class="entry">
-          {{ post.content | truncatewords:40}}
+        <div class="postWrapper">
+
+          <h1 class="posttitle"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+          <div class="entry">
+            {{ post.content | truncatewords:40}}
+          </div>
+
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+
         </div>
-        
-        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-
-      </div>
-    </article>
-  {% endfor %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
 </div>

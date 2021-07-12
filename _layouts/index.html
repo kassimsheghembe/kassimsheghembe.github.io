@@ -17,7 +17,16 @@ layout: home
       <div class="col-md-6">
         <p>{{ page.home_text }}</p>
       </div>
-      <div class="col-md-6 navig-link">{% include navigation.html %}</div>
+      <div class="col-md-6 navig-link">
+        <nav class="navbar" role="navigation">
+          <ul class="nav-menu"> {% include navigation.html %} </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
 </div>
