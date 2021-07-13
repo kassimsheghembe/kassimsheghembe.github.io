@@ -246,6 +246,7 @@ img {
       text-align: center;
       transition: 0.3s;
       box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+      opacity: 0.9;
     }
 
     .nav-menu.active {
@@ -305,12 +306,13 @@ img {
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: center;
   a {
     color: #121212;
     font-weight: 900;
   }
   p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     font-size: 0.8rem;
   }
 }
