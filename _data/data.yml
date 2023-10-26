@@ -115,20 +115,19 @@ experiences:
 projects:
     title: Projects
     intro: >
-      You can list your side projects or open source libraries in this
-      section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
+      Below a glimps of some interesting projects that I have participated on, visit my github page for more
+      contributions and the stuff I am working on.
     assignments:
       - title: Drug Shops Application
-        link: "#hook"
+        link: "/projects"
         tagline: "A mobile application for drug shops designed to help drug dispensers to screen for any danger signs and dispense drugs to their clients."
 
       - title: Adaptive Comparative Judgement (ACJ)
-        link: "#"
+        link: "/projects"
         tagline: "A web application that provides and interface to the ACJ algorithm to do pair comparison."
 
       - title: Mobile Applications in Kotlin
-        link: "#"
+        link: "/projects"
         tagline: "A project that consists of a collection of Mobile Applications developed in Kotlin as a part of getting a hang of the language."
 
 publications:
