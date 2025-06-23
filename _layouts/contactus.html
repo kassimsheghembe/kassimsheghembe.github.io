@@ -7,35 +7,37 @@ layout: default
     <div class="d-flex justify-content-center">
         <div class="container">
             <div class="row">
-                <h1 id="tagline">Contact Me</h1>
+                <h2 id="tagline">Contact Me</h2>
             </div>
             <div class="row">
-                <h2 id="subtagline">Get in touch with me to get the ball rolling ...</h2>
+                <h3 id="subtagline">Get in touch with me to get the ball rolling ...</h3>
             </div>
-            <div class="row justify-content-md-center" id="contactusicons">
-                <div class="col-md-auto">
-                    <a href="mailto:sheghembekassim@gmail.com" class="li-ic">
-                        <i class="fas fa-envelope fa-lg"></i>
-                        <h4>Email</h4>
-                    </a>
-                </div>
-                <div class="col-md-auto">
-                    <a href="tel:{{ sidebar.phone }}" class="li-ic">
-                        <i class="fas fa-mobile-alt fa-circle fa-lg"></i>
-                        <h4>Phone</h4>
-                    </a>
-                </div>
-                <div class="col-md-auto">
-                    <a href="https://www.linkedin.com/in/sheghembekassim/" class="li-ic">
-                        <i class="fab fa-linkedin fa-lg"></i>
-                        <h4>LinkedIn</h4>
-                    </a>
-                </div>
-                <div class="col-md-auto">
-                    <a href="skype:kassim.sheghembe?add">
-                        <i class="fab fa-skype fa-lg"></i>
-                        <h4>Skype</h4>
-                    </a>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-7">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form onsubmit="sendEmail(event)" class="contact-form">
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" name="name" class="form-control"
+                                            placeholder="Your Name" required>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="_replyto" class="form-control"
+                                            placeholder="Your Email" required>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" class="form-control" rows="5"
+                                            placeholder="Your Message" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-md-center" align="center" id="address-info">

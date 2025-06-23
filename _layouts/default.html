@@ -31,6 +31,23 @@
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
 
   <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("n6bI4gsmaY_MGGkw3"); // Replace with your EmailJS user ID
+    })();
+  </script>
+  <script>
+    function sendEmail(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_ey7gxzo', 'template_tfsz4j2', e.target)
+        .then(function () {
+          alert('Message sent!');
+        }, function (error) {
+          alert('Failed to send: ' + JSON.stringify(error));
+        });
+    }
+  </script>
 </head>
 
 <body>
