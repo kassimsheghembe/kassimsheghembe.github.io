@@ -48,13 +48,13 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-      A very energetic and enthusiastic Software Engineer with 3+ years of
+      A very energetic and enthusiastic Software Engineer with EXPERIENCE_YEARS+ years of
       experience. I hold a Masters Degree in Informatics from the
       University of Edinburgh in Scotland UK. Before my masters I
       worked for a Canadian Charity for 5+ years as an ICT Developer. I like
       the challenges that comes with being a Software Engineer. More
       importantly, learning new technologies either being a new programming
-      language, a new framework, or a new infrastructure.  
+      language, a new framework, or a new infrastructure.
 education:
     - degree: MSc in Informatics
       university: University of Edinburgh
