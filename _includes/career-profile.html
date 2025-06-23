@@ -1,5 +1,6 @@
 {% assign career-profile = site.data.data.career-profile %}
 {% if career-profile %}
+{% assign experience_years = site.time | date: "%Y" | minus: 2019 %}
 <section class="section summary-section">
 
   <h2 class="section-title">
@@ -11,8 +12,8 @@
   </h2>
 
   <div class="summary">
-    {{ career-profile.summary | markdownify }}
+    {{ career-profile.summary | replace: 'EXPERIENCE_YEARS', experience_years | markdownify }}
   </div><!--//summary-->
-    
+
 </section><!--//section-->
 {% endif %}
