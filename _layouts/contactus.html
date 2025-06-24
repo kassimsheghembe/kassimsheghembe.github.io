@@ -10,7 +10,10 @@ layout: default
                 <h2 id="tagline">Contact Me</h2>
             </div>
             <div class="row">
-                <h3 id="subtagline">Get in touch with me to get the ball rolling ...</h3>
+                <h3 id="subtagline" class="d-flex align-items-center">
+                    <span id="typing-text"></span>
+                    <span id="rolling-ball" style="display:inline-block; margin-left:10px;">⚽</span>
+                </h3>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-7">
@@ -50,3 +53,50 @@ layout: default
 
     </div>
 </article>
+<script>
+    // Typing animation
+    const text = "Get in touch with me to get the ball rolling ...";
+    const typingText = document.getElementById('typing-text');
+    const ball = document.getElementById('rolling-ball');
+    let idx = 0;
+
+    function typeWriter(callback) {
+        if (idx < text.length) {
+            typingText.textContent += text.charAt(idx);
+            idx++;
+            setTimeout(() => typeWriter(callback), 50);
+        } else if (callback) {
+            callback();
+        }
+    }
+
+    // Rolling ball animation (starts after typing)
+    function startBallAnimation() {
+        ball.style.display = "inline-block";
+        let direction = 1;
+        let pos = 0;
+        function rollBall() {
+            pos += direction * 0.7; // smaller step for smoother motion
+            if (pos > 60 || pos < 0) direction *= -1;
+            ball.style.transform = `translateX(${pos}px) rotate(${pos * 6}deg)`;
+            requestAnimationFrame(rollBall);
+        }
+        rollBall();
+    }
+
+    // Start typing, then ball animation
+    typeWriter(startBallAnimation);
+</script>
+<style>
+    #subtagline {
+        min-height: 2.5em;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.25rem;
+    }
+
+    #rolling-ball {
+        font-size: 1.5em;
+        transition: transform 0.05s linear;
+        will-change: transform;
+    }
+</style>
