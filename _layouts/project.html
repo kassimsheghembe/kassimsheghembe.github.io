@@ -219,13 +219,15 @@ layout: default
             <section class="sidebar-section">
               <h3>Related Projects</h3>
               <div class="related-projects">
-                {% assign related_projects = site.data.projects.projects | where_exp: "item", "item[1].category == project.category and item[1].id != project.id" | limit: 3 %}
-                {% for related_project_pair in related_projects %}
+                {% assign related_projects = site.data.projects.projects | where_exp: "item", "item[1].category == project.category" %}
+                {% for related_project_pair in related_projects limit: 3 %}
                   {% assign related_project = related_project_pair[1] %}
-                  <div class="related-project-item">
-                    <h5><a href="/projects/{{ related_project.id }}/">{{ related_project.title }}</a></h5>
-                    <p class="text-muted">{{ related_project.tagline }}</p>
-                  </div>
+                  {% unless related_project.id == project.id %}
+                    <div class="related-project-item">
+                      <h5><a href="/projects/{{ related_project.id }}/">{{ related_project.title }}</a></h5>
+                      <p class="text-muted">{{ related_project.tagline }}</p>
+                    </div>
+                  {% endunless %}
                 {% endfor %}
               </div>
             </section>
