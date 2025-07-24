@@ -1,0 +1,140 @@
+{% comment %}
+Project Card Component
+Usage: {% include project-card.html project=project_data %}
+{% endcomment %}
+
+{% assign project = include.project %}
+{% assign project_data = project[1] %}
+{% assign project_id = project[0] %}
+
+<div class="project-card" data-category="{{ project_data.category }}"
+  data-technologies="{{ project_data.technologies | join: ',' }}">
+  <div class="card h-100">
+
+    {% comment %} Project Image or Placeholder {% endcomment %}
+    <div class="card-img-wrapper">
+      {% if project_data.featured_image %}
+      <img src="{{ project_data.featured_image }}" class="card-img-top" alt="{{ project_data.title }}" loading="lazy"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      {% endif %}
+
+      {% comment %} Fallback placeholder {% endcomment %}
+      <div class="image-placeholder" style="{% if project_data.featured_image %}display: none;{% endif %}">
+        {% assign category = site.data.projects.filter_config.categories | where: "id", project_data.category | first %}
+        <i class="{{ category.icon }} fa-3x"></i>
+        <h5>{{ project_data.title }}</h5>
+      </div>
+
+      {% comment %} Featured Badge {% endcomment %}
+      {% if project_data.featured %}
+      <div class="featured-badge">
+        <i class="fas fa-star"></i>
+        Featured
+      </div>
+      {% endif %}
+
+      {% comment %} Status Badge {% endcomment %}
+      <div class="status-badge status-{{ project_data.status }}">
+        {{ project_data.status | capitalize }}
+      </div>
+    </div>
+
+    <div class="card-body d-flex flex-column">
+
+      {% comment %} Project Header {% endcomment %}
+      <div class="project-header">
+        <h5 class="card-title">
+          <a href="/projects/{{ project_id }}/" class="project-link">
+            {{ project_data.title }}
+          </a>
+        </h5>
+
+        {% comment %} Project Meta {% endcomment %}
+        <div class="project-meta">
+          <span class="project-year">
+            <i class="fas fa-calendar-alt"></i>
+            {{ project_data.year }}
+          </span>
+          <span class="project-category">
+            {% assign category = site.data.projects.filter_config.categories | where: "id", project_data.category |
+            first %}
+            <i class="{{ category.icon }}"></i>
+            {{ category.name }}
+          </span>
+        </div>
+      </div>
+
+      {% comment %} Project Description {% endcomment %}
+      <p class="card-text project-description">
+        {{ project_data.description }}
+      </p>
+
+      {% comment %} Technology Tags {% endcomment %}
+      <div class="technology-tags">
+        {% for tech in project_data.technologies limit: 4 %}
+        {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+        <span class="tech-tag"
+          style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}"
+          data-tech="{{ tech }}">
+          {% if tech_config.icon %}
+          <i class="{{ tech_config.icon }}"></i>
+          {% endif %}
+          {{ tech }}
+        </span>
+        {% endfor %}
+
+        {% comment %} Show +N more if there are more technologies {% endcomment %}
+        {% assign remaining_count = project_data.technologies.size | minus: 4 %}
+        {% if remaining_count > 0 %}
+        <span class="tech-tag tech-more">
+          +{{ remaining_count }} more
+        </span>
+        {% endif %}
+      </div>
+
+      {% comment %} Project Metrics (if available) {% endcomment %}
+      {% if project_data.metrics %}
+      <div class="project-metrics">
+        {% if project_data.metrics.users %}
+        <div class="metric-item">
+          <i class="fas fa-users"></i>
+          <span>{{ project_data.metrics.users }}+ users</span>
+        </div>
+        {% endif %}
+        {% if project_data.metrics.performance %}
+        <div class="metric-item">
+          <i class="fas fa-chart-line"></i>
+          <span>{{ project_data.metrics.performance }}</span>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% comment %} Card Actions {% endcomment %}
+      <div class="card-actions mt-auto">
+        <div class="action-buttons">
+          <a href="/projects/{{ project_id }}/" class="btn btn-primary btn-sm">
+            <i class="fas fa-info-circle"></i>
+            View Details
+          </a>
+
+          {% if project_data.links.demo %}
+          <a href="{{ project_data.links.demo }}" class="btn btn-outline-secondary btn-sm" target="_blank"
+            rel="noopener">
+            <i class="fas fa-external-link-alt"></i>
+            Demo
+          </a>
+          {% endif %}
+
+          {% if project_data.links.github %}
+          <a href="{{ project_data.links.github }}" class="btn btn-outline-dark btn-sm" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+            Code
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

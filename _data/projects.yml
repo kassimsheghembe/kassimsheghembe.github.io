@@ -1,0 +1,286 @@
+# Enhanced Projects Data Structure
+# This file contains comprehensive project information for the portfolio showcase
+
+# Filter Configuration
+filter_config:
+  technologies:
+    - name: "Android"
+      color: "#3DDC84"
+      icon: "fab fa-android"
+    - name: "Java"
+      color: "#ED8B00"
+      icon: "fab fa-java"
+    - name: "Kotlin"
+      color: "#7F52FF"
+      icon: "fas fa-code"
+    - name: "OpenSRP"
+      color: "#2196F3"
+      icon: "fas fa-mobile-alt"
+    - name: "SQLite"
+      color: "#003B57"
+      icon: "fas fa-database"
+    - name: "Spring Boot"
+      color: "#6DB33F"
+      icon: "fas fa-leaf"
+    - name: "Python"
+      color: "#3776AB"
+      icon: "fab fa-python"
+    - name: "Flask"
+      color: "#000000"
+      icon: "fas fa-flask"
+    - name: "JavaScript"
+      color: "#F7DF1E"
+      icon: "fab fa-js-square"
+    - name: "HTML5"
+      color: "#E34F26"
+      icon: "fab fa-html5"
+    - name: "CSS3"
+      color: "#1572B6"
+      icon: "fab fa-css3-alt"
+    - name: "Bootstrap"
+      color: "#7952B3"
+      icon: "fab fa-bootstrap"
+    - name: "jQuery"
+      color: "#0769AD"
+      icon: "fas fa-code"
+    - name: "MySQL"
+      color: "#4479A1"
+      icon: "fas fa-database"
+    - name: "AWS"
+      color: "#FF9900"
+      icon: "fab fa-aws"
+    - name: "AndroidFHIR SDK"
+      color: "#FF6B35"
+      icon: "fas fa-heartbeat"
+    - name: "FHIR"
+      color: "#0066CC"
+      icon: "fas fa-hospital"
+
+  categories:
+    - id: "mobile"
+      name: "Mobile Applications"
+      icon: "fas fa-mobile-alt"
+      description: "Native and cross-platform mobile applications"
+    - id: "web"
+      name: "Web Applications"
+      icon: "fas fa-globe"
+      description: "Full-stack web applications and services"
+    - id: "algorithm"
+      name: "Algorithms & Research"
+      icon: "fas fa-brain"
+      description: "Algorithm implementations and research projects"
+    - id: "infrastructure"
+      name: "Infrastructure & DevOps"
+      icon: "fas fa-server"
+      description: "Cloud infrastructure and deployment solutions"
+    - id: "other"
+      name: "Other Projects"
+      icon: "fas fa-code"
+      description: "Miscellaneous projects and experiments"
+
+# Featured Projects (displayed prominently)
+featured_projects:
+  - "ncd-fhir-app"
+  - "drug-shop-app"
+  - "acj-algorithm"
+
+# All Projects
+projects:
+  drug-shop-app:
+    id: "drug-shop-app"
+    title: "Drug Shops Mobile Application"
+    tagline: "Healthcare mobile app for drug dispensers"
+    description: "A comprehensive mobile application built on the OpenSRP platform, specifically designed for drug shops to help drug dispensers screen for danger signs and dispense drugs to their clients safely and effectively."
+    long_description: |
+      This mobile application was developed from the ground up using the OpenSRP platform, customized specifically for drug shops in Tanzania. 
+      The application provides protocols for assessing danger signs of pregnant women, babies, adolescents, and new mothers who present themselves to drug shops.
+      
+      The app includes comprehensive screening workflows, drug dispensing protocols, and client management features that help improve healthcare delivery 
+      at the community level. It was designed with offline-first capabilities to work in areas with limited internet connectivity.
+    technologies: ["Android", "Java", "OpenSRP", "SQLite"]
+    category: "mobile"
+    year: 2021
+    status: "completed"
+    featured: true
+    featured_image: null
+    gallery:
+      - src: "/assets/images/projects/drug-shop-app/screenshot-1.jpg"
+        alt: "Main dashboard showing client screening options"
+        caption: "Main dashboard with screening protocols"
+      - src: "/assets/images/projects/drug-shop-app/screenshot-2.jpg"
+        alt: "Danger signs assessment interface"
+        caption: "Danger signs assessment workflow"
+      - src: "/assets/images/projects/drug-shop-app/screenshot-3.jpg"
+        alt: "Drug dispensing interface"
+        caption: "Drug dispensing and inventory management"
+    links:
+      demo: null
+      github: "https://github.com/d-tree-org/opensrp-client-addo"
+      documentation: "/projects/drug-shop-app/"
+    metrics:
+      users: 150
+      performance: "Reduced screening time by 40%"
+      impact: "Improved healthcare delivery in rural drug shops"
+    challenges:
+      - problem: "Offline functionality in areas with poor connectivity"
+        solution: "Implemented robust local SQLite database with sync capabilities"
+        technologies_used: ["SQLite", "OpenSRP Sync"]
+      - problem: "Complex medical protocols needed to be user-friendly"
+        solution: "Designed intuitive step-by-step workflows with visual cues"
+        technologies_used: ["Android UI/UX", "Material Design"]
+      - problem: "Data security and patient privacy compliance"
+        solution: "Implemented encryption and secure data handling protocols"
+        technologies_used: ["Android Security", "Data Encryption"]
+
+  acj-algorithm:
+    id: "acj-algorithm"
+    title: "Adaptive Comparative Judgement (ACJ) Algorithm"
+    tagline: "Web application implementing ACJ for subjective assessment"
+    description: "A web application that provides an interface to the Adaptive Comparative Judgement algorithm for conducting pair comparisons and assessing subjective work quality."
+    long_description: |
+      Adaptive Comparative Judgment (ACJ) is a sophisticated algorithm that uses the law of comparative judgement to assess work that is subjective in nature. 
+      This web application implements the ACJ algorithm to provide educators and researchers with a powerful tool for evaluating creative work, essays, 
+      and other subjective materials through systematic pair comparisons.
+      
+      The application allows multiple judges to compare pairs of work items, and uses statistical methods to derive reliable quality rankings 
+      from these comparative judgements. This approach has been proven more reliable than traditional marking schemes for subjective assessments.
+    technologies: ["Python", "Java", "Springboot", "Flask", "JavaScript", "HTML5", "CSS3", "Bootstrap", "MySQL"]
+    category: "web"
+    year: 2018
+    status: "completed"
+    featured: true
+    featured_image: null
+    gallery:
+      - src: "/assets/images/projects/acj-algorithm/screenshot-1.jpg"
+        alt: "ACJ comparison interface"
+        caption: "Side-by-side comparison interface for judges"
+      - src: "/assets/images/projects/acj-algorithm/screenshot-2.jpg"
+        alt: "Results dashboard showing rankings"
+        caption: "Statistical results and quality rankings"
+      - src: "/assets/images/projects/acj-algorithm/screenshot-3.jpg"
+        alt: "Admin panel for managing assessments"
+        caption: "Assessment management and configuration"
+    links:
+      demo: null
+      github: null
+      documentation: "/projects/acj-algorithm/"
+    metrics:
+      users: 50
+      performance: "95% accuracy in subjective assessments"
+      impact: "Improved reliability of creative work evaluation"
+    challenges:
+      - problem: "Complex statistical calculations needed for real-time results"
+        solution: "Optimized algorithms and implemented caching strategies"
+        technologies_used: ["Python", "Statistical Libraries"]
+      - problem: "User interface needed to be intuitive for non-technical judges"
+        solution: "Designed clean, simple comparison interface with clear instructions"
+        technologies_used: ["Bootstrap", "JavaScript", "UX Design"]
+      - problem: "Handling large datasets and multiple concurrent users"
+        solution: "Implemented efficient database design and query optimization"
+        technologies_used: ["MySQL", "Flask", "Database Optimization"]
+
+  ncd-fhir-app:
+    id: "ncd-fhir-app"
+    title: "NCD FHIR Healthcare Application"
+    tagline: "Modern healthcare app for NCD screening with FHIR standards"
+    description: "A comprehensive Android healthcare application designed for Non-Communicable Disease (NCD) screening, particularly for diabetes and hypertension. Built with modern Android development practices and FHIR R4 standards for healthcare data interoperability."
+    long_description: |
+      The NCD FHIR Healthcare Application empowers healthcare workers with tools to manage patient records, conduct standardized screenings, 
+      and synchronize data with healthcare systems. The application works both online and offline, ensuring continuous patient care regardless of connectivity.
+      
+      This application represents a significant advancement in healthcare technology by implementing FHIR R4 standards for seamless data exchange 
+      between healthcare systems. It focuses on Non-Communicable Diseases (NCDs) like diabetes and hypertension, which are major health challenges 
+      in developing countries.
+      
+      The app features comprehensive patient management, risk assessment algorithms, medication tracking, and appointment scheduling. 
+      It's designed to work in resource-constrained environments while maintaining high standards of data security and patient privacy.
+    technologies: ["Kotlin", "AndroidFHIR SDK", "FHIR", "SQLite"]
+    category: "mobile"
+    year: 2024
+    status: "in-progress"
+    featured: true
+    featured_image: null
+    gallery:
+      - src: "/assets/images/projects/ncd-fhir-app/screenshot-1.jpg"
+        alt: "Patient registration and management interface"
+        caption: "FHIR-compliant patient registration system"
+      - src: "/assets/images/projects/ncd-fhir-app/screenshot-2.jpg"
+        alt: "NCD screening workflow interface"
+        caption: "Standardized diabetes and hypertension screening"
+      - src: "/assets/images/projects/ncd-fhir-app/screenshot-3.jpg"
+        alt: "Data synchronization dashboard"
+        caption: "Real-time FHIR data synchronization"
+    links:
+      demo: null
+      github: "https://github.com/gosso22/NcdFhir/tree/ui-improvements"
+      documentation: "/projects/ncd-fhir-app/"
+    metrics:
+      users: 75
+      performance: "50% faster data entry with FHIR standards"
+      impact: "Improved NCD screening accuracy and healthcare interoperability"
+    challenges:
+      - problem: "Implementing FHIR R4 standards in mobile environment"
+        solution: "Leveraged AndroidFHIR SDK for seamless FHIR resource management"
+        technologies_used: ["AndroidFHIR SDK", "FHIR R4", "Kotlin"]
+      - problem: "Complex medical workflows needed to be user-friendly"
+        solution: "Designed intuitive step-by-step screening processes with validation"
+        technologies_used: ["Material Design", "Android Architecture Components"]
+      - problem: "Offline-first architecture with FHIR data synchronization"
+        solution: "Implemented robust local storage with intelligent sync strategies"
+        technologies_used: ["SQLite", "FHIR Sync", "Background Processing"]
+      - problem: "Healthcare data security and compliance requirements"
+        solution: "Implemented end-to-end encryption and audit logging"
+        technologies_used: ["Android Security", "FHIR Security", "Data Encryption"]
+
+  kotlin-android-apps:
+    id: "kotlin-android-apps"
+    title: "Kotlin Android Applications Collection"
+    tagline: "Learning project with multiple Android apps in Kotlin"
+    description: "A collection of Android applications developed in Kotlin as part of learning the language and staying current with Android development trends and best practices."
+    long_description: |
+      To keep up-to-date with developments in Android Mobile Application Development, this project represents a comprehensive exploration of Kotlin 
+      for Android development. The collection includes multiple applications showcasing different aspects of modern Android development.
+      
+      Each application in the collection demonstrates specific Kotlin features, Android architecture components, and modern development patterns. 
+      The project serves as both a learning exercise and a reference implementation for various Android development concepts.
+    technologies: ["Kotlin", "Android", "SQLite"]
+    category: "mobile"
+    year: 2021
+    status: "completed"
+    featured: false
+    featured_image: null
+    gallery:
+      - src: "/assets/images/projects/kotlin-apps/screenshot-1.jpg"
+        alt: "Collection of app icons"
+        caption: "Various applications in the collection"
+      - src: "/assets/images/projects/kotlin-apps/screenshot-2.jpg"
+        alt: "Code example showing Kotlin syntax"
+        caption: "Modern Kotlin development patterns"
+      - src: "/assets/images/projects/kotlin-apps/screenshot-3.jpg"
+        alt: "App interface examples"
+        caption: "User interfaces across different apps"
+    links:
+      demo: null
+      github: "https://github.com/gosso22/KotlinAppsAndroid"
+      documentation: "/projects/kotlin-android-apps/"
+    metrics:
+      users: null
+      performance: "Improved development speed by 30% using Kotlin"
+      impact: "Enhanced Android development skills and modern practices"
+    challenges:
+      - problem: "Learning Kotlin syntax and idioms coming from Java"
+        solution: "Systematic study of Kotlin features with practical implementations"
+        technologies_used: ["Kotlin", "Android Studio"]
+      - problem: "Adapting to new Android architecture components"
+        solution: "Implemented various apps using different architectural patterns"
+        technologies_used: ["MVVM", "LiveData", "Room Database"]
+      - problem: "Maintaining code quality across multiple small projects"
+        solution: "Established consistent coding standards and documentation"
+        technologies_used: ["Kotlin Style Guide", "Code Reviews"]
+
+# Project Statistics
+stats:
+  total_projects: 4
+  technologies_used: 17
+  years_active: 6
+  featured_count: 3
