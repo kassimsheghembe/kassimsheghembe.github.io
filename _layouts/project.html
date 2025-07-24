@@ -1,0 +1,300 @@
+---
+layout: default
+---
+
+{% comment %} Get project data from the projects.yml file {% endcomment %}
+{% assign project_id = page.project_id %}
+{% assign project = site.data.projects.projects[project_id] %}
+
+{% if project %}
+<article class="project-detail" itemscope itemtype="https://schema.org/SoftwareApplication">
+  
+  {% comment %} Hero Section {% endcomment %}
+  <section class="project-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="project-header">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/projects">Projects</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ project.title }}</li>
+              </ol>
+            </nav>
+            
+            <h1 class="project-title" itemprop="name">{{ project.title }}</h1>
+            <p class="project-tagline lead" itemprop="description">{{ project.tagline }}</p>
+            
+            {% comment %} Project Meta Information {% endcomment %}
+            <div class="project-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span itemprop="dateCreated">{{ project.year }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tag"></i>
+                <span itemprop="applicationCategory">{{ site.data.projects.filter_config.categories | where: "id", project.category | first | map: "name" }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-check-circle"></i>
+                <span class="status status-{{ project.status }}">{{ project.status | capitalize }}</span>
+              </div>
+            </div>
+            
+            {% comment %} Technology Tags {% endcomment %}
+            <div class="technology-tags">
+              {% for tech in project.technologies %}
+                {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+                <span class="tech-tag" 
+                      style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}">
+                  {% if tech_config.icon %}
+                    <i class="{{ tech_config.icon }}"></i>
+                  {% endif %}
+                  {{ tech }}
+                </span>
+              {% endfor %}
+            </div>
+            
+            {% comment %} Action Buttons {% endcomment %}
+            <div class="project-actions">
+              {% if project.links.demo %}
+                <a href="{{ project.links.demo }}" class="btn btn-primary" target="_blank" rel="noopener">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              {% endif %}
+              {% if project.links.github %}
+                <a href="{{ project.links.github }}" class="btn btn-outline-dark" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          {% if project.featured_image %}
+            <div class="project-hero-image">
+              {% include responsive-image.html src=project.featured_image alt=project.title class="hero-image" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {% comment %} Main Content {% endcomment %}
+  <section class="project-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          
+          {% comment %} Project Overview {% endcomment %}
+          <section class="project-section">
+            <h2>Project Overview</h2>
+            <div class="project-description" itemprop="description">
+              {{ project.long_description | markdownify }}
+            </div>
+          </section>
+          
+          {% comment %} Technical Specifications {% endcomment %}
+          <section class="project-section">
+            <h2>Technical Specifications</h2>
+            <div class="tech-specs">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Technologies Used</h4>
+                  <ul class="tech-list">
+                    {% for tech in project.technologies %}
+                      <li>{{ tech }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h4>Project Details</h4>
+                  <dl class="project-details">
+                    <dt>Category</dt>
+                    <dd>{{ site.data.projects.filter_config.categories | where: "id", project.category | first | map: "name" }}</dd>
+                    <dt>Year</dt>
+                    <dd>{{ project.year }}</dd>
+                    <dt>Status</dt>
+                    <dd class="status-{{ project.status }}">{{ project.status | capitalize }}</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {% comment %} Challenges and Solutions {% endcomment %}
+          {% if project.challenges and project.challenges.size > 0 %}
+          <section class="project-section">
+            <h2>Challenges & Solutions</h2>
+            <div class="challenges-list">
+              {% for challenge in project.challenges %}
+                <div class="challenge-item">
+                  <h4 class="challenge-problem">
+                    <i class="fas fa-exclamation-triangle text-warning"></i>
+                    Challenge
+                  </h4>
+                  <p>{{ challenge.problem }}</p>
+                  
+                  <h5 class="challenge-solution">
+                    <i class="fas fa-lightbulb text-success"></i>
+                    Solution
+                  </h5>
+                  <p>{{ challenge.solution }}</p>
+                  
+                  {% if challenge.technologies_used and challenge.technologies_used.size > 0 %}
+                    <div class="solution-tech">
+                      <strong>Technologies:</strong>
+                      {% for tech in challenge.technologies_used %}
+                        <span class="badge badge-secondary">{{ tech }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+          
+          {% comment %} Project Impact & Metrics {% endcomment %}
+          {% if project.metrics %}
+          <section class="project-section">
+            <h2>Project Impact</h2>
+            <div class="metrics-grid">
+              {% if project.metrics.users %}
+                <div class="metric-item">
+                  <div class="metric-value">{{ project.metrics.users }}+</div>
+                  <div class="metric-label">Users</div>
+                </div>
+              {% endif %}
+              {% if project.metrics.performance %}
+                <div class="metric-item">
+                  <div class="metric-value"><i class="fas fa-chart-line"></i></div>
+                  <div class="metric-label">{{ project.metrics.performance }}</div>
+                </div>
+              {% endif %}
+              {% if project.metrics.impact %}
+                <div class="metric-item">
+                  <div class="metric-value"><i class="fas fa-trophy"></i></div>
+                  <div class="metric-label">{{ project.metrics.impact }}</div>
+                </div>
+              {% endif %}
+            </div>
+          </section>
+          {% endif %}
+          
+          {% comment %} Custom Content from Markdown {% endcomment %}
+          <section class="project-section">
+            {{ content }}
+          </section>
+          
+        </div>
+        
+        {% comment %} Sidebar {% endcomment %}
+        <div class="col-lg-4">
+          <aside class="project-sidebar">
+            
+            {% comment %} Project Gallery {% endcomment %}
+            {% if project.gallery and project.gallery.size > 0 %}
+            <section class="sidebar-section">
+              <h3>Gallery</h3>
+              <div class="project-gallery">
+                {% for image in project.gallery %}
+                  <div class="gallery-item">
+                    <a href="{{ image.src }}" data-lightbox="project-gallery" data-title="{{ image.caption }}">
+                      {% include responsive-image.html src=image.src alt=image.alt class="gallery-thumbnail" %}
+                    </a>
+                    {% if image.caption %}
+                      <p class="gallery-caption">{{ image.caption }}</p>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            </section>
+            {% endif %}
+            
+            {% comment %} Related Projects {% endcomment %}
+            <section class="sidebar-section">
+              <h3>Related Projects</h3>
+              <div class="related-projects">
+                {% assign related_projects = site.data.projects.projects | where_exp: "item", "item[1].category == project.category and item[1].id != project.id" | limit: 3 %}
+                {% for related_project_pair in related_projects %}
+                  {% assign related_project = related_project_pair[1] %}
+                  <div class="related-project-item">
+                    <h5><a href="/projects/{{ related_project.id }}/">{{ related_project.title }}</a></h5>
+                    <p class="text-muted">{{ related_project.tagline }}</p>
+                  </div>
+                {% endfor %}
+              </div>
+            </section>
+            
+            {% comment %} Project Links {% endcomment %}
+            <section class="sidebar-section">
+              <h3>Links</h3>
+              <div class="project-links">
+                {% if project.links.demo %}
+                  <a href="{{ project.links.demo }}" class="project-link" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                {% endif %}
+                {% if project.links.github %}
+                  <a href="{{ project.links.github }}" class="project-link" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> Source Code
+                  </a>
+                {% endif %}
+                {% if project.links.documentation %}
+                  <a href="{{ project.links.documentation }}" class="project-link">
+                    <i class="fas fa-book"></i> Documentation
+                  </a>
+                {% endif %}
+              </div>
+            </section>
+            
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</article>
+
+{% comment %} Structured Data for SEO {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ project.title }}",
+  "description": "{{ project.description }}",
+  "applicationCategory": "{{ site.data.projects.filter_config.categories | where: "id", project.category | first | map: "name" }}",
+  "dateCreated": "{{ project.year }}-01-01",
+  "creator": {
+    "@type": "Person",
+    "name": "{{ site.data.data.sidebar.name }}",
+    "url": "{{ site.url }}"
+  },
+  {% if project.links.demo %}
+  "url": "{{ project.links.demo }}",
+  {% endif %}
+  {% if project.links.github %}
+  "codeRepository": "{{ project.links.github }}",
+  {% endif %}
+  "programmingLanguage": {{ project.technologies | jsonify }},
+  "operatingSystem": "Cross-platform"
+}
+</script>
+
+{% else %}
+  {% comment %} Project not found {% endcomment %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading">Project Not Found</h4>
+          <p>The requested project could not be found. Please check the URL or return to the <a href="/projects" class="alert-link">projects page</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

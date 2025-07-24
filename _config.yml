@@ -4,6 +4,12 @@ subtitle: Software Engineer & Data Enthusiast
 author_name: Kassim Sheghembe
 description: Personal website of Kassim Sheghembe, a software engineer in Dar es Salaam specializing in cloud, data engineering, and full-stack development.
 
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
 # Live reload
 livereload: true
 # Sass/SCSS

@@ -1,30 +1,113 @@
 ---
-title: Contact Me
+title: Projects
 layout: default
 ---
 
-<div class="d-flex justify-content-center">
+<div class="projects-page">
   <div class="container">
-    <div class="row">
-      <h1 id="projects">{{ page.title }}</h1>
-    </div>
-    <div class="row">
-      {% for post in site.posts %}
-      <article class="page">
-
-        <div class="postWrapper">
-
-          <h1 class="posttitle"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-          <div class="entry">
-            {{ post.content | truncatewords:40}}
-          </div>
-
-          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-
+    
+    {% comment %} Page Header {% endcomment %}
+    <div class="projects-header">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="page-title">{{ page.title }}</h1>
+          <p class="page-subtitle">{{ site.data.projects.projects | size }} projects showcasing my development journey</p>
         </div>
-      </article>
-      {% endfor %}
+      </div>
     </div>
+    
+    {% comment %} Featured Projects Section {% endcomment %}
+    {% assign featured_projects = site.data.projects.projects | where_exp: "item", "item[1].featured == true" %}
+    {% if featured_projects.size > 0 %}
+    <section class="featured-projects">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">
+            <i class="fas fa-star"></i>
+            Featured Projects
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        {% for project in featured_projects %}
+          <div class="col-lg-6 col-md-12 mb-4">
+            {% include project-card.html project=project %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    
+    {% comment %} All Projects Section {% endcomment %}
+    <section class="all-projects">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">
+            <i class="fas fa-code"></i>
+            All Projects
+          </h2>
+        </div>
+      </div>
+      
+      {% comment %} Projects Grid {% endcomment %}
+      <div class="projects-grid">
+        <div class="row" id="projects-container">
+          {% for project in site.data.projects.projects %}
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4 project-item" 
+                 data-category="{{ project[1].category }}"
+                 data-year="{{ project[1].year }}"
+                 data-technologies="{{ project[1].technologies | join: ',' | downcase }}">
+              {% include project-card.html project=project %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      {% comment %} No Results Message (hidden by default) {% endcomment %}
+      <div class="no-results" id="no-results" style="display: none;">
+        <div class="text-center py-5">
+          <i class="fas fa-search fa-3x text-muted mb-3"></i>
+          <h4>No projects found</h4>
+          <p class="text-muted">Try adjusting your filters or search terms.</p>
+        </div>
+      </div>
+    </section>
+    
+    {% comment %} Project Statistics {% endcomment %}
+    <section class="project-stats">
+      <div class="row">
+        <div class="col-12">
+          <div class="stats-container">
+            <div class="row text-center">
+              <div class="col-md-3 col-6">
+                <div class="stat-item">
+                  <div class="stat-number">{{ site.data.projects.stats.total_projects }}</div>
+                  <div class="stat-label">Projects</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="stat-item">
+                  <div class="stat-number">{{ site.data.projects.stats.technologies_used }}</div>
+                  <div class="stat-label">Technologies</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="stat-item">
+                  <div class="stat-number">{{ site.data.projects.stats.years_active }}</div>
+                  <div class="stat-label">Years Active</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="stat-item">
+                  <div class="stat-number">{{ site.data.projects.stats.featured_count }}</div>
+                  <div class="stat-label">Featured</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
   </div>
 </div>
