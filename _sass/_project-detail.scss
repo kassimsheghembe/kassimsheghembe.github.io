@@ -847,4 +847,71 @@ age Placeholder Styles */
       }
     }
   }
+}/*
+ Responsive Image Component Styles */
+.responsive-image {
+  .image-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 0.5rem;
+    color: #6c757d;
+    text-align: center;
+    
+    i {
+      margin-bottom: 0.5rem;
+      opacity: 0.6;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+  }
+  
+  /* Gallery thumbnail specific styles */
+  &.gallery-thumbnail {
+    .image-placeholder {
+      height: 150px;
+      
+      i {
+        font-size: 1.5rem !important;
+      }
+      
+      p {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  
+  /* Hero image specific styles */
+  &.hero-image {
+    .image-placeholder {
+      height: 300px;
+      
+      i {
+        font-size: 3rem !important;
+      }
+      
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .image-placeholder {
+        height: 200px;
+        
+        i {
+          font-size: 2rem !important;
+        }
+      }
+    }
+  }
 }

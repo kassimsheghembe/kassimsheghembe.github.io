@@ -103,16 +103,7 @@ projects:
     status: "completed"
     featured: true
     featured_image: null
-    gallery:
-      - src: "/assets/images/projects/drug-shop-app/screenshot-1.jpg"
-        alt: "Main dashboard showing client screening options"
-        caption: "Main dashboard with screening protocols"
-      - src: "/assets/images/projects/drug-shop-app/screenshot-2.jpg"
-        alt: "Danger signs assessment interface"
-        caption: "Danger signs assessment workflow"
-      - src: "/assets/images/projects/drug-shop-app/screenshot-3.jpg"
-        alt: "Drug dispensing interface"
-        caption: "Drug dispensing and inventory management"
+    gallery: []
     links:
       demo: null
       github: "https://github.com/d-tree-org/opensrp-client-addo"
@@ -150,16 +141,7 @@ projects:
     status: "completed"
     featured: true
     featured_image: null
-    gallery:
-      - src: "/assets/images/projects/acj-algorithm/screenshot-1.jpg"
-        alt: "ACJ comparison interface"
-        caption: "Side-by-side comparison interface for judges"
-      - src: "/assets/images/projects/acj-algorithm/screenshot-2.jpg"
-        alt: "Results dashboard showing rankings"
-        caption: "Statistical results and quality rankings"
-      - src: "/assets/images/projects/acj-algorithm/screenshot-3.jpg"
-        alt: "Admin panel for managing assessments"
-        caption: "Assessment management and configuration"
+    gallery: []
     links:
       demo: null
       github: null
@@ -200,16 +182,7 @@ projects:
     status: "in-progress"
     featured: true
     featured_image: null
-    gallery:
-      - src: "/assets/images/projects/ncd-fhir-app/screenshot-1.jpg"
-        alt: "Patient registration and management interface"
-        caption: "FHIR-compliant patient registration system"
-      - src: "/assets/images/projects/ncd-fhir-app/screenshot-2.jpg"
-        alt: "NCD screening workflow interface"
-        caption: "Standardized diabetes and hypertension screening"
-      - src: "/assets/images/projects/ncd-fhir-app/screenshot-3.jpg"
-        alt: "Data synchronization dashboard"
-        caption: "Real-time FHIR data synchronization"
+    gallery: []
     links:
       demo: null
       github: "https://github.com/gosso22/NcdFhir/tree/ui-improvements"
@@ -249,16 +222,7 @@ projects:
     status: "completed"
     featured: false
     featured_image: null
-    gallery:
-      - src: "/assets/images/projects/kotlin-apps/screenshot-1.jpg"
-        alt: "Collection of app icons"
-        caption: "Various applications in the collection"
-      - src: "/assets/images/projects/kotlin-apps/screenshot-2.jpg"
-        alt: "Code example showing Kotlin syntax"
-        caption: "Modern Kotlin development patterns"
-      - src: "/assets/images/projects/kotlin-apps/screenshot-3.jpg"
-        alt: "App interface examples"
-        caption: "User interfaces across different apps"
+    gallery: []
     links:
       demo: null
       github: "https://github.com/gosso22/KotlinAppsAndroid"
