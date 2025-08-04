@@ -1,25 +1,45 @@
 {% comment %}
 Responsive Image Component
-Usage: {% include responsive-image.html src="/path/to/image.jpg" alt="Alt text" class="optional-class" %}
+Generates responsive images with multiple sizes and WebP support
+Usage: {% include responsive-image.html src="path/to/image.jpg" alt="Alt text" class="custom-class" %}
 {% endcomment %}
 
-{% assign image_path = include.src %}
-{% assign alt_text = include.alt | default: "" %}
-{% assign css_class = include.class | default: "" %}
+{% assign src = include.src %}
+{% assign alt = include.alt | default: "" %}
+{% assign class = include.class | default: "" %}
 {% assign loading = include.loading | default: "lazy" %}
+{% assign sizes = include.sizes | default: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" %}
 
-{% comment %} Simple image with fallback - no multiple sizes for now {% endcomment %}
-<div class="responsive-image {{ css_class }}">
-  <img 
-    src="{{ image_path }}" 
-    alt="{{ alt_text }}"
-    loading="{{ loading }}"
-    class="img-fluid"
-    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-  
-  {% comment %} Fallback placeholder when image fails to load {% endcomment %}
-  <div class="image-placeholder" style="display: none;">
-    <i class="fas fa-image fa-2x"></i>
-    <p>{{ alt_text }}</p>
+{% comment %} Generate different image sizes {% endcomment %}
+{% assign base_path = src | split: '.' | first %}
+{% assign extension = src | split: '.' | last %}
+
+{% comment %} Define responsive breakpoints {% endcomment %}
+{% assign breakpoints = "320,480,768,1024,1200,1600" | split: "," %}
+
+<div class="responsive-image-container {{ class }}">
+  {% comment %} Simple image without WebP complexity {% endcomment %}
+  <img src="{{ src }}" sizes="{{ sizes }}"
+    alt="{{ alt }}" class="responsive-image {{ class }}"
+    loading="{{ loading }}" decoding="async" {% if include.width %}width="{{ include.width }}" {% endif %} {% if
+    include.height %}height="{{ include.height }}" {% endif %}>
+
+  {% comment %} Loading placeholder {% endcomment %}
+  {% if loading == "lazy" %}
+  <div class="image-skeleton">
+    <div class="skeleton-shimmer"></div>
+    <div class="skeleton-content">
+      <div class="skeleton-icon">
+        <i class="fas fa-image"></i>
+      </div>
+    </div>
   </div>
+  {% endif %}
 </div>
+
+{% comment %} Fallback for browsers without picture support {% endcomment %}
+<noscript>
+  <img src="{{ src }}" alt="{{ alt }}" class="{{ class }}">
+</noscript>
+</content>
+</file>

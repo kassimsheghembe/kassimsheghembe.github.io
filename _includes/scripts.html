@@ -8,6 +8,20 @@
 <!-- custom js -->
 <script type="text/javascript" src="{{site.baseurl}}/assets/js/main.js"></script>
 
+<!-- Performance optimizations - DISABLED -->
+<!-- <script type="text/javascript" src="{{site.baseurl}}/assets/js/performance-optimizer.js"></script> -->
+
+<!-- Responsive images - DISABLED -->
+<!-- <script type="text/javascript" src="{{site.baseurl}}/assets/js/responsive-images.js"></script> -->
+
+<!-- Mobile touch enhancements -->
+<script type="text/javascript" src="{{site.baseurl}}/assets/js/mobile-touch.js"></script>
+
+<!-- Project filter script for projects page -->
+{% if page.layout == 'projects' or page.url contains '/projects' %}
+<script type="text/javascript" src="{{site.baseurl}}/assets/js/project-filter.js"></script>
+{% endif %}
+
 {% if site.analytics %}
 {% include analytics.html %}
 {% endif %}

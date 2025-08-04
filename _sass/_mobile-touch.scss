@@ -1,0 +1,477 @@
+/* Mobile Touch Interaction Styles */
+
+/* Touch device detection */
+.touch-device {
+  /* Remove hover effects on touch devices */
+  .project-card:hover {
+    transform: none;
+  }
+  
+  .gallery-thumbnail:hover {
+    transform: none;
+  }
+  
+  /* Enhance touch feedback */
+  .touch-enhanced {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+/* Touch feedback states */
+.touch-active {
+  transform: scale(0.98) !important;
+  opacity: 0.8;
+  transition: all 0.1s ease;
+}
+
+.touch-pressed {
+  transform: scale(0.95);
+  opacity: 0.7;
+  transition: all 0.1s ease;
+}
+
+/* Enhanced project cards for touch */
+.project-card {
+  .card {
+    /* Ensure smooth touch interactions */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    
+    /* Better touch targets */
+    .card-body {
+      .action-buttons {
+        gap: 0.75rem;
+        
+        .btn {
+          min-width: 44px;
+          min-height: 44px;
+          padding: 0.75rem 1rem;
+          
+          @media (max-width: 768px) {
+            font-size: 0.875rem;
+            padding: 0.625rem 0.875rem;
+          }
+        }
+      }
+      
+      .technology-tags {
+        gap: 0.75rem;
+        
+        .tech-tag {
+          min-height: 32px;
+          padding: 0.375rem 0.75rem;
+          cursor: pointer;
+          
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Enhanced gallery touch interactions */
+.project-gallery {
+  .gallery-grid {
+    /* Enable smooth scrolling on touch */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    
+    @media (max-width: 768px) {
+      /* Horizontal scrolling on mobile */
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      
+      .gallery-item {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+      }
+    }
+  }
+  
+  .gallery-item {
+    .gallery-thumbnail-container {
+      /* Better touch feedback */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      
+      &.touch-pressed {
+        transform: scale(0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+/* Enhanced lightbox for touch */
+.gallery-lightbox {
+  /* Prevent body scroll when lightbox is open */
+  &.active {
+    body {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+    }
+  }
+  
+  .lightbox-container {
+    /* Better touch handling */
+    touch-action: manipulation;
+    
+    @media (max-width: 768px) {
+      max-width: 95vw;
+      max-height: 95vh;
+      margin: 1rem;
+    }
+  }
+  
+  .lightbox-content {
+    /* Touch zones for navigation */
+    .lightbox-swipe-zone {
+      opacity: 0;
+      background: rgba(255, 255, 255, 0.1);
+      transition: opacity 0.2s ease;
+      
+      &:active {
+        opacity: 0.3;
+      }
+      
+      @media (max-width: 768px) {
+        width: 30%;
+      }
+    }
+  }
+  
+  .lightbox-image-container {
+    /* Enable pinch-to-zoom */
+    touch-action: pan-x pan-y pinch-zoom;
+    
+    .lightbox-image {
+      transition: transform 0.3s ease;
+      transform-origin: center center;
+    }
+  }
+  
+  .lightbox-nav {
+    /* Better touch targets */
+    min-width: 60px;
+    min-height: 60px;
+    
+    @media (max-width: 768px) {
+      min-width: 50px;
+      min-height: 50px;
+      
+      &.lightbox-prev {
+        left: 0.25rem;
+      }
+      
+      &.lightbox-next {
+        right: 0.25rem;
+      }
+    }
+    
+    &.touch-pressed {
+      background: rgba(0, 0, 0, 0.8) !important;
+      transform: translateY(-50%) scale(0.9);
+    }
+  }
+  
+  .lightbox-close {
+    min-width: 44px;
+    min-height: 44px;
+    
+    &.touch-pressed {
+      background-color: #dc3545 !important;
+      color: white !important;
+    }
+  }
+}
+
+/* Filter controls touch enhancements */
+.filter-controls {
+  gap: 0.75rem;
+  
+  .tech-filter-btn,
+  .category-filter-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    
+    /* Touch feedback */
+    &.touch-active {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 0.875rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+
+/* Search input touch optimization */
+#project-search {
+  /* Prevent zoom on iOS */
+  font-size: 16px !important;
+  
+  /* Better touch target */
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 16px !important; /* Critical for iOS */
+  }
+}
+
+/* Project quick menu for long press */
+.project-quick-menu {
+  position: fixed;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  min-width: 200px;
+  animation: quickMenuSlideIn 0.2s ease-out;
+  
+  .quick-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    
+    h6 {
+      margin: 0;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.9rem;
+    }
+    
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #6c757d;
+      cursor: pointer;
+      padding: 0;
+      min-width: 30px;
+      min-height: 30px;
+      
+      &:hover {
+        color: #495057;
+      }
+    }
+  }
+  
+  .quick-menu-actions {
+    padding: 0.5rem;
+    
+    .quick-action {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #2c3e50;
+      text-decoration: none;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      
+      &:hover {
+        background-color: #f8f9fa;
+        color: #2c3e50;
+      }
+      
+      &:active {
+        background-color: #e9ecef;
+      }
+    }
+  }
+}
+
+@keyframes quickMenuSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Improved touch targets for small elements */
+.btn-sm {
+  min-width: 44px;
+  min-height: 44px;
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Technology tags touch improvements */
+.technology-tags {
+  .tech-tag {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:active {
+      transform: scale(0.95);
+    }
+    
+    /* Ensure minimum touch target */
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Status badges touch improvements */
+.status-badge,
+.featured-badge {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Breadcrumb touch improvements */
+.breadcrumb {
+  .breadcrumb-item {
+    a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      margin: -0.25rem -0.5rem;
+    }
+  }
+}
+
+/* Pagination touch improvements */
+.pagination {
+  .page-link {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Form controls touch improvements */
+.form-control,
+.form-select {
+  min-height: 44px;
+  font-size: 16px; /* Prevent zoom on iOS */
+  
+  @media (max-width: 768px) {
+    font-size: 16px !important;
+  }
+}
+
+/* Dropdown improvements */
+.dropdown-menu {
+  .dropdown-item {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    
+    &:active {
+      background-color: #e9ecef;
+    }
+  }
+}
+
+/* Modal improvements for touch */
+.modal {
+  .modal-header {
+    .btn-close {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+  
+  .modal-footer {
+    .btn {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+}
+
+/* Accessibility improvements for touch */
+@media (max-width: 768px) {
+  /* Increase line height for better readability */
+  body {
+    line-height: 1.6;
+  }
+  
+  /* Better spacing for touch interfaces */
+  .container,
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improved button spacing */
+  .btn-group {
+    gap: 0.5rem;
+    
+    .btn {
+      margin: 0;
+    }
+  }
+  
+  /* Better card spacing */
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Improved list spacing */
+  .list-group-item {
+    padding: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Performance optimizations for touch devices */
+.touch-device {
+  /* Hardware acceleration for smooth animations */
+  .project-card,
+  .gallery-item,
+  .lightbox-container {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Optimize scrolling */
+  .gallery-grid,
+  .projects-grid {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
