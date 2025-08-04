@@ -5,6 +5,11 @@ project_id: "ncd-fhir-app"
 permalink: /projects/ncd-fhir-app/
 ---
 
+## Project Gallery
+
+{% assign project_data = site.data.projects.projects[page.project_id] %}
+{% include project-gallery.html gallery=project_data.gallery project_id=page.project_id %}
+
 ## Detailed Project Documentation
 
 ### Background & Context
