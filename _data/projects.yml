@@ -102,8 +102,20 @@ projects:
     year: 2021
     status: "completed"
     featured: true
-    featured_image: null
-    gallery: []
+    featured_image: "/images/projects/drug-shop-app/thumbnails/addo-card-thumbnail.jpg"
+    gallery:
+      - src: "/images/projects/drug-shop-app/addo-home-screen.webp"
+        alt: "Drug Shop app main screening showing the list of villages based on the location."
+        caption: "Main screen showing list of villages"
+      - src: "/images/projects/drug-shop-app/fingerprint-integration.webp"
+        alt: "Biometric Integration for identification"
+        caption: "Using biometric to search for registred patient"
+      - src: "/images/projects/drug-shop-app/client-search.webp"
+        alt: "Search registered clients using names"
+        caption: "Intuitively search for clients using the registered names"
+      - src: "/images/projects/drug-shop-app/patient-profile.webp"
+        alt: "Patient profile to provide services"
+        caption: "A patient profile screen with button for different services"
     links:
       demo: null
       github: "https://github.com/d-tree-org/opensrp-client-addo"
@@ -112,16 +124,6 @@ projects:
       users: 150
       performance: "Reduced screening time by 40%"
       impact: "Improved healthcare delivery in rural drug shops"
-    challenges:
-      - problem: "Offline functionality in areas with poor connectivity"
-        solution: "Implemented robust local SQLite database with sync capabilities"
-        technologies_used: ["SQLite", "OpenSRP Sync"]
-      - problem: "Complex medical protocols needed to be user-friendly"
-        solution: "Designed intuitive step-by-step workflows with visual cues"
-        technologies_used: ["Android UI/UX", "Material Design"]
-      - problem: "Data security and patient privacy compliance"
-        solution: "Implemented encryption and secure data handling protocols"
-        technologies_used: ["Android Security", "Data Encryption"]
 
   acj-algorithm:
     id: "acj-algorithm"
@@ -135,12 +137,12 @@ projects:
       
       The application allows multiple judges to compare pairs of work items, and uses statistical methods to derive reliable quality rankings 
       from these comparative judgements. This approach has been proven more reliable than traditional marking schemes for subjective assessments.
-    technologies: ["Python", "Java", "Springboot", "Flask", "JavaScript", "HTML5", "CSS3", "Bootstrap", "MySQL"]
+    technologies: ["Python", "Java", "Spring Boot", "Flask", "JavaScript", "HTML5", "CSS3", "Bootstrap", "MySQL"]
     category: "web"
     year: 2018
     status: "completed"
     featured: true
-    featured_image: null
+    featured_image: "/images/projects/acj-algorithm/thumbnails/acj-algorithm-card-thumbnail.webp"
     gallery: []
     links:
       demo: null
@@ -159,7 +161,7 @@ projects:
         technologies_used: ["Bootstrap", "JavaScript", "UX Design"]
       - problem: "Handling large datasets and multiple concurrent users"
         solution: "Implemented efficient database design and query optimization"
-        technologies_used: ["MySQL", "Flask", "Database Optimization"]
+        technologies_used: ["Redis", "Flask", "Session management"]
 
   ncd-fhir-app:
     id: "ncd-fhir-app"
@@ -178,32 +180,45 @@ projects:
       It's designed to work in resource-constrained environments while maintaining high standards of data security and patient privacy.
     technologies: ["Kotlin", "AndroidFHIR SDK", "FHIR", "SQLite"]
     category: "mobile"
-    year: 2024
+    year: 2025
     status: "in-progress"
     featured: true
-    featured_image: null
-    gallery: []
+    featured_image: "/images/projects/ncd-fhir-app/thumbnails/ncd-card-thumbnail.webp"
+    gallery:
+      - src: "/images/projects/ncd-fhir-app/ncd-main-screen.png"
+        alt: "NCD FHIR App Main Screen"
+        caption: "Main screen showing patient list overview and quick actions"
+      - src: "/images/projects/ncd-fhir-app/patient-search-screen.png"
+        alt: "Search Patient Screen"
+        caption: "Search for registred patient using names"
+      - src: "/images/projects/ncd-fhir-app/patient-profile-screen.jpg"
+        alt: "Patient Profile Screen"
+        caption: "Shows demographic details of a patient"
+      - src: "/images/projects/ncd-fhir-app/screening-workflow.jpg"
+        alt: "NCD Screening Workflow"
+        caption: "Step-by-step diabetes and hypertension screening process"
+      - src: "/images/projects/ncd-fhir-app/offline-sync.jpg"
+        alt: "Offline Synchronization"
+        caption: "Offline-first architecture with intelligent data synchronization"
     links:
       demo: null
       github: "https://github.com/gosso22/NcdFhir/tree/ui-improvements"
       documentation: "/projects/ncd-fhir-app/"
     metrics:
-      users: 75
+      users: Internal
       performance: "50% faster data entry with FHIR standards"
       impact: "Improved NCD screening accuracy and healthcare interoperability"
     challenges:
-      - problem: "Implementing FHIR R4 standards in mobile environment"
-        solution: "Leveraged AndroidFHIR SDK for seamless FHIR resource management"
-        technologies_used: ["AndroidFHIR SDK", "FHIR R4", "Kotlin"]
-      - problem: "Complex medical workflows needed to be user-friendly"
-        solution: "Designed intuitive step-by-step screening processes with validation"
-        technologies_used: ["Material Design", "Android Architecture Components"]
-      - problem: "Offline-first architecture with FHIR data synchronization"
-        solution: "Implemented robust local storage with intelligent sync strategies"
-        technologies_used: ["SQLite", "FHIR Sync", "Background Processing"]
-      - problem: "Healthcare data security and compliance requirements"
-        solution: "Implemented end-to-end encryption and audit logging"
-        technologies_used: ["Android Security", "FHIR Security", "Data Encryption"]
+      - problem: "Interoperability between different healthcare systems and data formats"
+        solution: "Implemented FHIR R4 standards to ensure seamless data exchange and compatibility across healthcare platforms"
+        technologies_used: ["FHIR", "AndroidFHIR SDK", "Healthcare Standards"]
+      - problem: "Internet connectivity issues in remote healthcare settings"
+        solution: "Developed offline-first architecture with local database storage and intelligent syncing mechanism for when connectivity is restored"
+        technologies_used: ["SQLite", "Offline Sync", "Local Storage", "Data Synchronization"]
+      - problem: "Standardization of healthcare questionnaires and data collection forms"
+        solution: "Utilized FHIR SDC (Structured Data Capture) library to design standardized, interoperable questionnaires"
+        technologies_used: ["FHIR SDC", "Questionnaire Design", "Healthcare Standards"]
+
 
   kotlin-android-apps:
     id: "kotlin-android-apps"
@@ -221,7 +236,7 @@ projects:
     year: 2021
     status: "completed"
     featured: false
-    featured_image: null
+    featured_image: "/images/projects/kotlin/thumbnails/kotlin.webp"
     gallery: []
     links:
       demo: null
