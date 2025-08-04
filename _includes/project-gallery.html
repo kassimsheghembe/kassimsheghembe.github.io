@@ -1,0 +1,95 @@
+{% comment %}
+Project Gallery Component
+Displays a responsive image gallery with lightbox functionality for project images
+{% endcomment %}
+
+{% assign gallery = include.gallery %}
+{% assign project_id = include.project_id %}
+
+{% if gallery and gallery.size > 0 %}
+<div class="project-gallery" data-project="{{ project_id }}">
+  <div class="gallery-grid">
+    {% for image in gallery %}
+      <div class="gallery-item" data-index="{{ forloop.index0 }}">
+        <div class="gallery-thumbnail-container">
+          <picture>
+            {% assign base_path = image.src | split: '.' | first %}
+            {% assign webp_src = base_path | append: ".webp" %}
+            <source srcset="{{ webp_src }}" type="image/webp">
+            <img src="{{ image.src }}" 
+                 alt="{{ image.alt }}" 
+                 class="gallery-thumbnail" 
+                 loading="lazy"
+                 onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+          </picture>
+          <div style="display: none;" 
+               data-full-src="{{ image.src }}"
+               data-caption="{{ image.caption }}"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <i class="fas fa-expand-alt"></i>
+              <span class="gallery-overlay-text">View Image</span>
+            </div>
+          </div>
+        </div>
+        {% if image.caption %}
+          <p class="gallery-caption">{{ image.caption }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% comment %} Lightbox Modal {% endcomment %}
+<div id="gallery-lightbox-{{ project_id }}" class="gallery-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+  <div class="lightbox-overlay" aria-label="Close lightbox"></div>
+  <div class="lightbox-container">
+    <div class="lightbox-header">
+      <h3 id="lightbox-title" class="lightbox-title"></h3>
+      <button class="lightbox-close" aria-label="Close lightbox">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="lightbox-content">
+      <button class="lightbox-nav lightbox-prev" aria-label="Previous image">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <div class="lightbox-image-container">
+        <img class="lightbox-image" src="" alt="" />
+        <div class="lightbox-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span>Loading...</span>
+        </div>
+      </div>
+      
+      <button class="lightbox-nav lightbox-next" aria-label="Next image">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <div class="lightbox-footer">
+      <p class="lightbox-caption"></p>
+      <div class="lightbox-counter">
+        <span class="current-image">1</span> / <span class="total-images">{{ gallery.size }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  initializeProjectGallery('{{ project_id }}');
+});
+</script>
+
+{% else %}
+  {% comment %} No gallery images available {% endcomment %}
+  <div class="gallery-placeholder">
+    <div class="placeholder-content">
+      <i class="fas fa-images"></i>
+      <p>No images available for this project</p>
+    </div>
+  </div>
+{% endif %}
