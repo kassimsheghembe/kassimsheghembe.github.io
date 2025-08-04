@@ -75,7 +75,16 @@ layout: default
         <div class="col-lg-4">
           {% if project.featured_image %}
             <div class="project-hero-image">
-              {% include responsive-image.html src=project.featured_image alt=project.title class="hero-image" %}
+              <picture>
+                {% assign base_path = project.featured_image | split: '.' | first %}
+                {% assign webp_src = base_path | append: ".webp" %}
+                <source srcset="{{ webp_src }}" type="image/webp">
+                <img src="{{ project.featured_image }}" 
+                     alt="{{ project.title }}" 
+                     class="hero-image" 
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+              </picture>
             </div>
           {% endif %}
         </div>
@@ -98,65 +107,9 @@ layout: default
           </section>
           
           {% comment %} Technical Specifications {% endcomment %}
-          <section class="project-section">
-            <h2>Technical Specifications</h2>
-            <div class="tech-specs">
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>Technologies Used</h4>
-                  <ul class="tech-list">
-                    {% for tech in project.technologies %}
-                      <li>{{ tech }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <h4>Project Details</h4>
-                  <dl class="project-details">
-                    <dt>Category</dt>
-                    <dd>{{ site.data.projects.filter_config.categories | where: "id", project.category | first | map: "name" }}</dd>
-                    <dt>Year</dt>
-                    <dd>{{ project.year }}</dd>
-                    <dt>Status</dt>
-                    <dd class="status-{{ project.status }}">{{ project.status | capitalize }}</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </section>
+          {% include technical-specs.html project=project project_id=project_id %}
           
-          {% comment %} Challenges and Solutions {% endcomment %}
-          {% if project.challenges and project.challenges.size > 0 %}
-          <section class="project-section">
-            <h2>Challenges & Solutions</h2>
-            <div class="challenges-list">
-              {% for challenge in project.challenges %}
-                <div class="challenge-item">
-                  <h4 class="challenge-problem">
-                    <i class="fas fa-exclamation-triangle text-warning"></i>
-                    Challenge
-                  </h4>
-                  <p>{{ challenge.problem }}</p>
-                  
-                  <h5 class="challenge-solution">
-                    <i class="fas fa-lightbulb text-success"></i>
-                    Solution
-                  </h5>
-                  <p>{{ challenge.solution }}</p>
-                  
-                  {% if challenge.technologies_used and challenge.technologies_used.size > 0 %}
-                    <div class="solution-tech">
-                      <strong>Technologies:</strong>
-                      {% for tech in challenge.technologies_used %}
-                        <span class="badge badge-secondary">{{ tech }}</span>
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </div>
-          </section>
-          {% endif %}
+
           
           {% comment %} Project Impact & Metrics {% endcomment %}
           {% if project.metrics %}
@@ -204,7 +157,16 @@ layout: default
                 {% for image in project.gallery %}
                   <div class="gallery-item">
                     <a href="{{ image.src }}" data-lightbox="project-gallery" data-title="{{ image.caption }}">
-                      {% include responsive-image.html src=image.src alt=image.alt class="gallery-thumbnail" %}
+                      <picture>
+                        {% assign base_path = image.src | split: '.' | first %}
+                        {% assign webp_src = base_path | append: ".webp" %}
+                        <source srcset="{{ webp_src }}" type="image/webp">
+                        <img src="{{ image.src }}" 
+                             alt="{{ image.alt }}" 
+                             class="gallery-thumbnail" 
+                             loading="lazy"
+                             onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+                      </picture>
                     </a>
                     {% if image.caption %}
                       <p class="gallery-caption">{{ image.caption }}</p>
@@ -219,16 +181,24 @@ layout: default
             <section class="sidebar-section">
               <h3>Related Projects</h3>
               <div class="related-projects">
-                {% assign related_projects = site.data.projects.projects | where_exp: "item", "item[1].category == project.category" %}
-                {% for related_project_pair in related_projects limit: 3 %}
-                  {% assign related_project = related_project_pair[1] %}
-                  {% unless related_project.id == project.id %}
+                {% assign related_count = 0 %}
+                {% for project_pair in site.data.projects.projects %}
+                  {% assign other_project = project_pair[1] %}
+                  {% if other_project.category == project.category and other_project.id != project.id and related_count < 3 %}
                     <div class="related-project-item">
-                      <h5><a href="/projects/{{ related_project.id }}/">{{ related_project.title }}</a></h5>
-                      <p class="text-muted">{{ related_project.tagline }}</p>
+                      <h5><a href="/projects/{{ other_project.id }}/">{{ other_project.title }}</a></h5>
+                      <p class="text-muted">{{ other_project.tagline }}</p>
                     </div>
-                  {% endunless %}
+                    {% assign related_count = related_count | plus: 1 %}
+                  {% endif %}
                 {% endfor %}
+                
+                {% comment %} Show message if no related projects found {% endcomment %}
+                {% if related_count == 0 %}
+                  <div class="no-related-projects">
+                    <p class="text-muted">No related projects found.</p>
+                  </div>
+                {% endif %}
               </div>
             </section>
             
