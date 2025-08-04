@@ -7,23 +7,37 @@ Usage: {% include project-card.html project=project_data %}
 {% assign project_data = project[1] %}
 {% assign project_id = project[0] %}
 
-<div class="project-card" data-category="{{ project_data.category }}"
-  data-technologies="{{ project_data.technologies | join: ',' }}">
+<div class="project-card" 
+     data-project-id="{{ project_id }}"
+     data-title="{{ project_data.title }}"
+     data-description="{{ project_data.description }}"
+     data-category="{{ project_data.category }}"
+     data-technologies="{{ project_data.technologies | join: ',' }}"
+     data-year="{{ project_data.year }}"
+     data-status="{{ project_data.status }}">
   <div class="card h-100">
 
     {% comment %} Project Image or Placeholder {% endcomment %}
     <div class="card-img-wrapper">
       {% if project_data.featured_image %}
-      <img src="{{ project_data.featured_image }}" class="card-img-top" alt="{{ project_data.title }}" loading="lazy"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <picture>
+          {% assign base_path = project_data.featured_image | split: '.' | first %}
+          {% assign webp_src = base_path | append: ".webp" %}
+          <source srcset="{{ webp_src }}" type="image/webp">
+          <img src="{{ project_data.featured_image }}" 
+               alt="{{ project_data.title }}" 
+               class="card-img-top" 
+               loading="eager"
+               onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+        </picture>
+      {% else %}
+        {% comment %} Fallback placeholder {% endcomment %}
+        <div class="image-placeholder">
+          {% assign category = site.data.projects.filter_config.categories | where: "id", project_data.category | first %}
+          <i class="{{ category.icon }} fa-3x"></i>
+          <h5>{{ project_data.title }}</h5>
+        </div>
       {% endif %}
-
-      {% comment %} Fallback placeholder {% endcomment %}
-      <div class="image-placeholder" style="{% if project_data.featured_image %}display: none;{% endif %}">
-        {% assign category = site.data.projects.filter_config.categories | where: "id", project_data.category | first %}
-        <i class="{{ category.icon }} fa-3x"></i>
-        <h5>{{ project_data.title }}</h5>
-      </div>
 
       {% comment %} Featured Badge {% endcomment %}
       {% if project_data.featured %}
