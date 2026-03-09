@@ -1,0 +1,403 @@
+{% comment %}
+Technical Specifications Component
+Displays technical details, architecture diagrams, and code snippets for projects
+{% endcomment %}
+
+{% assign project = include.project %}
+{% assign project_id = include.project_id %}
+
+<section class="technical-specs-section">
+  <h2>Technical Specifications</h2>
+
+  {% comment %} Technology Stack Overview {% endcomment %}
+  <div class="tech-stack-overview">
+    <div class="row">
+      <div class="col-md-6">
+        <h4><i class="fas fa-code"></i> Technologies Used</h4>
+        <div class="tech-stack-grid">
+          {% for tech in project.technologies %}
+          {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+          <div class="tech-stack-item">
+            {% if tech_config.icon %}
+            <i class="{{ tech_config.icon }}" style="color: {{ tech_config.color }}"></i>
+            {% else %}
+            <i class="fas fa-code" style="color: #6c757d"></i>
+            {% endif %}
+            <span class="tech-name">{{ tech }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h4><i class="fas fa-info-circle"></i> Project Details</h4>
+        <dl class="project-details-list">
+          <dt>Category</dt>
+          <dd>
+            {% assign category = site.data.projects.filter_config.categories | where: "id", project.category | first %}
+            <i class="{{ category.icon }}"></i>
+            {{ category.name }}
+          </dd>
+
+          <dt>Development Year</dt>
+          <dd>{{ project.year }}</dd>
+
+          <dt>Status</dt>
+          <dd>
+            <span class="status-badge status-{{ project.status }}">
+              {% case project.status %}
+              {% when 'completed' %}
+              <i class="fas fa-check-circle"></i> Completed
+              {% when 'in-progress' %}
+              <i class="fas fa-clock"></i> In Progress
+              {% when 'archived' %}
+              <i class="fas fa-archive"></i> Archived
+              {% else %}
+              <i class="fas fa-question-circle"></i> {{ project.status | capitalize }}
+              {% endcase %}
+            </span>
+          </dd>
+
+          {% if project.metrics.users %}
+          <dt>Active Users</dt>
+          <dd>{{ project.metrics.users }}+</dd>
+          {% endif %}
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Architecture Diagram Section {% endcomment %}
+  {% if project.architecture_diagram or project.category == 'web' or project.category == 'mobile' %}
+  <div class="architecture-section">
+    <h4><i class="fas fa-sitemap"></i> System Architecture</h4>
+
+    {% comment %} Architecture diagram placeholder or actual diagram {% endcomment %}
+    <div class="architecture-diagram">
+      {% if project.architecture_diagram %}
+      <img src="{{ project.architecture_diagram }}" alt="Architecture diagram for {{ project.title }}"
+        class="img-fluid">
+      {% else %}
+      {% comment %} Generate a basic architecture diagram based on project type {% endcomment %}
+      <div class="architecture-placeholder">
+        <div class="architecture-layers">
+          {% case project.category %}
+          {% when 'web' %}
+          <div class="arch-layer frontend">
+            <i class="fas fa-desktop"></i>
+            <span>Frontend Layer</span>
+            <small>User Interface & Experience</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="arch-layer backend">
+            <i class="fas fa-server"></i>
+            <span>Backend Layer</span>
+            <small>Business Logic & APIs</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="arch-layer database">
+            <i class="fas fa-database"></i>
+            <span>Data Layer</span>
+            <small>Data Storage & Management</small>
+          </div>
+          {% when 'mobile' %}
+          <div class="arch-layer mobile-app">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Mobile Application</span>
+            <small>Native Android/iOS Interface</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="arch-layer local-storage">
+            <i class="fas fa-hdd"></i>
+            <span>Local Storage</span>
+            <small>Offline Data Management</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div class="arch-layer sync-service">
+            <i class="fas fa-sync-alt"></i>
+            <span>Sync Service</span>
+            <small>Cloud Synchronization</small>
+          </div>
+          {% when 'algorithm' %}
+          <div class="arch-layer input">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Input Layer</span>
+            <small>Data Input & Validation</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="arch-layer processing">
+            <i class="fas fa-cogs"></i>
+            <span>Processing Engine</span>
+            <small>Algorithm Implementation</small>
+          </div>
+          <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="arch-layer output">
+            <i class="fas fa-chart-line"></i>
+            <span>Output Layer</span>
+            <small>Results & Visualization</small>
+          </div>
+          {% else %}
+          <div class="arch-layer generic">
+            <i class="fas fa-cube"></i>
+            <span>Application Core</span>
+            <small>Main Application Logic</small>
+          </div>
+          {% endcase %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} Code Snippets Section {% endcomment %}
+  <div class="code-snippets-section">
+    <h4><i class="fas fa-code"></i> Code Examples</h4>
+
+    {% comment %} Generate relevant code snippets based on technologies {% endcomment %}
+    <div class="code-examples">
+      {% if project.technologies contains 'Android' or project.technologies contains 'Kotlin' %}
+      <div class="code-example">
+        <div class="code-header">
+          <span class="code-language">Kotlin</span>
+          <span class="code-title">Core Implementation</span>
+        </div>
+        <div class="code-content">
+          <pre><code class="language-kotlin">{% case project.id %}{% when 'ncd-fhir-app' %}// FHIR Patient Resource Management
+class PatientRepository(private val fhirEngine: FhirEngine) {
+    suspend fun createPatient(patient: Patient): String {
+        return fhirEngine.create(patient)
+    }
+    
+    suspend fun searchPatients(name: String): List&lt;Patient&gt; {
+        return fhirEngine.search&lt;Patient&gt; {
+            filter(Patient.NAME, { value = name })
+        }
+    }
+}{% when 'drug-shop-app' %}// Client Assessment Workflow
+class AssessmentManager {
+    fun conductScreening(client: Client): AssessmentResult {
+        val dangerSigns = checkDangerSigns(client)
+        val recommendations = generateRecommendations(dangerSigns)
+        
+        return AssessmentResult(
+            clientId = client.id,
+            dangerSigns = dangerSigns,
+            recommendations = recommendations,
+            timestamp = System.currentTimeMillis()
+        )
+    }
+}{% when 'kotlin-android-apps' %}// Modern Android Architecture Example
+class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
+    private val _tasks = MutableLiveData&lt;List&lt;Task&gt;&gt;()
+    val tasks: LiveData&lt;List&lt;Task&gt;&gt; = _tasks
+    
+    fun loadTasks() {
+        viewModelScope.launch {
+            _tasks.value = repository.getAllTasks()
+        }
+    }
+}{% else %}// Kotlin Implementation Example
+data class ProjectData(
+    val id: String,
+    val title: String,
+    val technologies: List&lt;String&gt;
+) {
+    fun isCompleted(): Boolean = status == "completed"
+}{% endcase %}</code></pre>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.technologies contains 'Python' or project.technologies contains 'Flask' %}
+      <div class="code-example">
+        <div class="code-header">
+          <span class="code-language">Python</span>
+          <span class="code-title">Algorithm Implementation</span>
+        </div>
+        <div class="code-content">
+          <pre><code class="language-python">{% case project.id %}{% when 'acj-algorithm' %}class AdaptiveComparativeJudgement:
+    def __init__(self, items):
+        self.items = items
+        self.comparisons = []
+        self.abilities = {item: 0.0 for item in items}
+    
+    def select_next_pair(self):
+        """Select the most informative pair for comparison"""
+        max_info_gain = 0
+        best_pair = None
+        
+        for i, item_a in enumerate(self.items):
+            for item_b in self.items[i+1:]:
+                info_gain = self.calculate_information_gain(item_a, item_b)
+                if info_gain > max_info_gain:
+                    max_info_gain = info_gain
+                    best_pair = (item_a, item_b)
+        
+        return best_pair{% else %}def process_data(input_data):
+    """Process input data using advanced algorithms"""
+    processed = []
+    for item in input_data:
+        result = complex_algorithm(item)
+        processed.append(result)
+    return processed{% endcase %}</code></pre>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.technologies contains 'JavaScript' or project.technologies contains 'HTML5' %}
+      <div class="code-example">
+        <div class="code-header">
+          <span class="code-language">JavaScript</span>
+          <span class="code-title">Frontend Implementation</span>
+        </div>
+        <div class="code-content">
+          <pre><code class="language-javascript">{% case project.id %}{% when 'acj-algorithm' %}class ComparisonInterface {
+    constructor(items) {
+        this.items = items;
+        this.currentPair = null;
+        this.results = [];
+    }
+    
+    displayComparison(itemA, itemB) {
+        const container = document.getElementById('comparison-container');
+        container.innerHTML = `
+            &lt;div class="comparison-pair"&gt;
+                &lt;div class="item" data-item="${itemA.id}"&gt;${itemA.content}&lt;/div&gt;
+                &lt;div class="item" data-item="${itemB.id}"&gt;${itemB.content}&lt;/div&gt;
+            &lt;/div&gt;
+        `;
+        
+        this.bindComparisonEvents();
+    }
+}{% else %}// Modern JavaScript Implementation
+class ProjectManager {
+    constructor() {
+        this.projects = [];
+        this.filters = new Set();
+    }
+    
+    async loadProjects() {
+        try {
+            const response = await fetch('/api/projects');
+            this.projects = await response.json();
+            this.renderProjects();
+        } catch (error) {
+            console.error('Failed to load projects:', error);
+        }
+    }
+}{% endcase %}</code></pre>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% comment %} Performance Metrics {% endcomment %}
+  {% if project.metrics %}
+  <div class="performance-metrics">
+    <h4><i class="fas fa-chart-bar"></i> Performance Metrics</h4>
+    <div class="metrics-grid">
+      {% if project.metrics.performance %}
+      <div class="metric-card">
+        <div class="metric-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <div class="metric-content">
+          <h5>Performance</h5>
+          <p>{{ project.metrics.performance }}</p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.metrics.users %}
+      <div class="metric-card">
+        <div class="metric-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="metric-content">
+          <h5>Active Users</h5>
+          <p>{{ project.metrics.users }}+ users</p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.metrics.impact %}
+      <div class="metric-card">
+        <div class="metric-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="metric-content">
+          <h5>Impact</h5>
+          <p>{{ project.metrics.impact }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} Technical Challenges and Solutions {% endcomment %}
+
+  {% if project.challenges and project.challenges.size > 0 %}
+  <div class="challenges-solutions">
+    <h4><i class="fas fa-puzzle-piece"></i> Technical Challenges & Solutions</h4>
+
+    <div class="challenges-accordion">
+      {% for challenge in project.challenges %}
+      <div class="challenge-item">
+        <div class="challenge-header"
+          style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px;"
+          onclick="
+          var content = document.getElementById('challenge-{{ forloop.index }}');
+          var icon = document.getElementById('icon-{{ forloop.index }}');
+          console.log('Direct click handler called for challenge {{ forloop.index }}');
+          if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            icon.className = 'fas fa-chevron-up collapse-icon';
+            console.log('Showing challenge {{ forloop.index }}');
+          } else {
+            content.style.display = 'none';
+            icon.className = 'fas fa-chevron-down collapse-icon';
+            console.log('Hiding challenge {{ forloop.index }}');
+          }
+        ">
+          <div class="challenge-title">
+            <i class="fas fa-exclamation-triangle text-warning"></i>
+            <span>Challenge {{ forloop.index }}</span>
+          </div>
+          <i class="fas fa-chevron-down collapse-icon" id="icon-{{ forloop.index }}"></i>
+        </div>
+
+        <div id="challenge-{{ forloop.index }}" class="challenge-content"
+          style="display: none; padding: 15px; background-color: #f8f9fa; border-radius: 5px; margin-top: 10px;">
+          <div class="challenge-body">
+            <div class="problem-section">
+              <h6><i class="fas fa-bug text-danger"></i> Problem</h6>
+              <p>{{ challenge.problem }}</p>
+            </div>
+
+            <div class="solution-section">
+              <h6><i class="fas fa-lightbulb text-success"></i> Solution</h6>
+              <p>{{ challenge.solution }}</p>
+
+              {% if challenge.technologies_used and challenge.technologies_used.size > 0 %}
+              <div class="solution-technologies">
+                <strong>Technologies Used:</strong>
+                <div class="tech-badges">
+                  {% for tech in challenge.technologies_used %}
+                  <span class="badge badge-secondary">{{ tech }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</section>
