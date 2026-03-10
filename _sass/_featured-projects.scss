@@ -1,0 +1,445 @@
+/* Featured Projects Showcase */
+
+.featured-showcase {
+  margin-bottom: 2.5rem;
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+
+    i {
+      color: #f39c12;
+      margin-right: 0.4rem;
+    }
+  }
+}
+
+/* Hero — primary featured project */
+.featured-hero {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.featured-hero-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 40%;
+  min-height: 320px;
+  background: #f0f2f5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-status-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+    &.status-in-progress {
+      color: #fd7e14;
+    }
+  }
+}
+
+.featured-hero-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #adb5bd;
+}
+
+.featured-hero-content {
+  flex: 1;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+
+  a {
+    color: #2c3e50;
+    text-decoration: none;
+
+    &:hover {
+      color: #667eea;
+    }
+  }
+}
+
+.hero-tagline {
+  font-size: 0.9rem;
+  color: #667eea;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.hero-description {
+  font-size: 0.85rem;
+  color: #6c757d;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+/* Complexity & Impact Indicators */
+.hero-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.indicator {
+  min-width: 0;
+
+  .indicator-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6c757d;
+    margin-bottom: 0.3rem;
+  }
+
+  .indicator-bar {
+    width: 120px;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+
+    .indicator-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.6s ease;
+
+      &[data-level="moderate"] {
+        background: #28a745;
+      }
+
+      &[data-level="high"] {
+        background: #fd7e14;
+      }
+
+      &[data-level="very-high"] {
+        background: #dc3545;
+      }
+    }
+  }
+
+  .indicator-value {
+    font-size: 0.7rem;
+    color: #495057;
+  }
+
+  .indicator-text {
+    font-size: 0.8rem;
+    color: #495057;
+
+    i {
+      color: #667eea;
+      margin-right: 0.2rem;
+    }
+  }
+}
+
+/* Hero tech tags */
+.hero-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.hero-tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+/* Hero actions */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+
+  .btn {
+    font-size: 0.82rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* Secondary featured cards */
+.featured-secondary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.featured-secondary-card {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.secondary-card-image {
+  flex-shrink: 0;
+  width: 120px;
+  min-height: 100%;
+  background: #f0f2f5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.secondary-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #adb5bd;
+}
+
+.secondary-card-body {
+  flex: 1;
+  padding: 0.85rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+
+  .secondary-year {
+    font-size: 0.7rem;
+    color: #6c757d;
+
+    i {
+      margin-right: 0.15rem;
+    }
+  }
+
+  .secondary-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    &.status-completed {
+      color: #28a745;
+    }
+
+    &.status-in-progress {
+      color: #fd7e14;
+    }
+  }
+}
+
+.secondary-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+
+  a {
+    color: #2c3e50;
+    text-decoration: none;
+
+    &:hover {
+      color: #667eea;
+    }
+  }
+}
+
+.secondary-card-description {
+  font-size: 0.78rem;
+  color: #6c757d;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+/* Complexity dots */
+.secondary-complexity {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+
+  .complexity-label {
+    font-size: 0.65rem;
+    color: #6c757d;
+    font-weight: 500;
+  }
+
+  .complexity-dots {
+    display: flex;
+    gap: 3px;
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e9ecef;
+
+      &.filled {
+        background: #667eea;
+      }
+    }
+  }
+}
+
+/* Secondary tech tags */
+.secondary-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  .secondary-tech-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+
+    &.more {
+      color: #6c757d;
+    }
+  }
+
+  .secondary-tech-tag + .secondary-tech-tag::before {
+    content: "\00b7 ";
+    color: #ced4da;
+  }
+
+  .secondary-tech-tag.more::before {
+    content: "";
+  }
+}
+
+/* Secondary impact */
+.secondary-impact {
+  font-size: 0.72rem;
+  color: #495057;
+  padding: 0.3rem 0.5rem;
+  background: #f0f7ff;
+  border-radius: 4px;
+  border-left: 2px solid #667eea;
+  margin-bottom: 0.5rem;
+
+  i {
+    color: #667eea;
+    margin-right: 0.2rem;
+    font-size: 0.65rem;
+  }
+}
+
+.secondary-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #667eea;
+  text-decoration: none;
+  margin-top: auto;
+
+  i {
+    margin-left: 0.2rem;
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: #5a6fd6;
+
+    i {
+      transform: translateX(3px);
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featured-hero {
+    flex-direction: column;
+  }
+
+  .featured-hero-image {
+    width: 100%;
+    min-height: 200px;
+    max-height: 220px;
+  }
+
+  .featured-hero-content {
+    padding: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+  }
+
+  .hero-indicators {
+    gap: 0.75rem;
+  }
+
+  .featured-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-secondary-card {
+    flex-direction: column;
+  }
+
+  .secondary-card-image {
+    width: 100%;
+    height: 150px;
+    min-height: auto;
+  }
+}

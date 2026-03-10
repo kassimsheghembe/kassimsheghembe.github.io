@@ -1,0 +1,214 @@
+{% comment %}
+Featured Projects Section
+Displays the most significant projects prominently with a hero for the primary
+featured project and secondary cards for others. Includes complexity/impact indicators.
+Usage: {% include featured-projects.html %}
+Requirements: 6.2, 6.4
+{% endcomment %}
+
+{% comment %} Get featured projects in order {% endcomment %}
+{% assign featured_ids = site.data.projects.featured_projects %}
+{% assign all_projects = site.data.projects.projects %}
+
+<section class="featured-showcase">
+  <h2 class="section-title">
+    <i class="fas fa-star"></i>
+    Featured Projects
+  </h2>
+
+  {% comment %} Hero — primary featured project (first in the list) {% endcomment %}
+  {% assign hero_id = featured_ids[0] %}
+  {% assign hero = all_projects[hero_id] %}
+
+  {% if hero %}
+  <div class="featured-hero">
+    <div class="featured-hero-image">
+      {% if hero.featured_image %}
+      <img src="{{ hero.featured_image }}"
+           alt="{{ hero.title }}"
+           onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+      {% else %}
+      <div class="featured-hero-placeholder">
+        <i class="fas fa-rocket fa-3x"></i>
+      </div>
+      {% endif %}
+
+      {% if hero.status == 'in-progress' %}
+      <span class="hero-status-badge status-in-progress">
+        <i class="fas fa-spinner"></i> In Progress
+      </span>
+      {% endif %}
+    </div>
+
+    <div class="featured-hero-content">
+      <div class="hero-label">Most Recent Project</div>
+
+      <h3 class="hero-title">
+        <a href="/projects/{{ hero_id }}/">{{ hero.title }}</a>
+      </h3>
+
+      <p class="hero-tagline">{{ hero.tagline }}</p>
+
+      <p class="hero-description">{{ hero.description | truncatewords: 40 }}</p>
+
+      {% comment %} Complexity & Impact Indicators {% endcomment %}
+      <div class="hero-indicators">
+        {% comment %} Complexity based on tech count {% endcomment %}
+        {% assign tech_count = hero.technologies.size %}
+        <div class="indicator">
+          <span class="indicator-label">Complexity</span>
+          <div class="indicator-bar">
+            {% if tech_count <= 3 %}
+              <div class="indicator-fill" style="width: 40%;" data-level="moderate"></div>
+            {% elsif tech_count <= 6 %}
+              <div class="indicator-fill" style="width: 65%;" data-level="high"></div>
+            {% else %}
+              <div class="indicator-fill" style="width: 90%;" data-level="very-high"></div>
+            {% endif %}
+          </div>
+          <span class="indicator-value">{{ tech_count }} technologies</span>
+        </div>
+
+        {% if hero.metrics.impact %}
+        <div class="indicator">
+          <span class="indicator-label">Impact</span>
+          <div class="indicator-text">
+            <i class="fas fa-chart-line"></i>
+            {{ hero.metrics.impact }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if hero.metrics.users %}
+        <div class="indicator">
+          <span class="indicator-label">Users</span>
+          <div class="indicator-text">
+            <i class="fas fa-users"></i>
+            {{ hero.metrics.users }}{% if hero.metrics.users != 'Internal' %}+{% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      {% comment %} Tech tags {% endcomment %}
+      <div class="hero-techs">
+        {% for tech in hero.technologies %}
+          {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+          <span class="hero-tech-tag"
+                style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}">
+            {% if tech_config.icon %}<i class="{{ tech_config.icon }}"></i>{% endif %}
+            {{ tech }}
+          </span>
+        {% endfor %}
+      </div>
+
+      {% comment %} Action buttons {% endcomment %}
+      <div class="hero-actions">
+        <a href="/projects/{{ hero_id }}/" class="btn btn-primary">
+          <i class="fas fa-info-circle"></i> View Project
+        </a>
+        {% if hero.links.github %}
+        <a href="{{ hero.links.github }}" class="btn btn-outline-dark" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> Source Code
+        </a>
+        {% endif %}
+        {% if hero.links.demo %}
+        <a href="{{ hero.links.demo }}" class="btn btn-outline-success" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% comment %} Secondary featured projects {% endcomment %}
+  {% if featured_ids.size > 1 %}
+  <div class="featured-secondary">
+    {% for i in (1..10) %}
+      {% if i < featured_ids.size %}
+        {% assign proj_id = featured_ids[i] %}
+        {% assign proj = all_projects[proj_id] %}
+
+        {% if proj %}
+        <div class="featured-secondary-card">
+          <div class="secondary-card-image">
+            {% if proj.featured_image %}
+            <img src="{{ proj.featured_image }}"
+                 alt="{{ proj.title }}"
+                 loading="lazy"
+                 onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+            {% else %}
+            <div class="secondary-card-placeholder">
+              {% assign category = site.data.projects.filter_config.categories | where: "id", proj.category | first %}
+              <i class="{{ category.icon }} fa-2x"></i>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="secondary-card-body">
+            <div class="secondary-card-meta">
+              <span class="secondary-year"><i class="fas fa-calendar-alt"></i> {{ proj.year }}</span>
+              <span class="secondary-status status-{{ proj.status }}">
+                {% if proj.status == 'completed' %}
+                  <i class="fas fa-check-circle"></i> Completed
+                {% elsif proj.status == 'in-progress' %}
+                  <i class="fas fa-spinner"></i> In Progress
+                {% endif %}
+              </span>
+            </div>
+
+            <h4 class="secondary-card-title">
+              <a href="/projects/{{ proj_id }}/">{{ proj.title }}</a>
+            </h4>
+
+            <p class="secondary-card-description">{{ proj.tagline }}</p>
+
+            {% comment %} Complexity indicator {% endcomment %}
+            {% assign tech_count = proj.technologies.size %}
+            <div class="secondary-complexity">
+              <span class="complexity-label">Complexity:</span>
+              <div class="complexity-dots">
+                {% if tech_count <= 3 %}
+                  <span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                {% elsif tech_count <= 6 %}
+                  <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+                {% else %}
+                  <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                {% endif %}
+              </div>
+            </div>
+
+            {% comment %} Tech tags (compact) {% endcomment %}
+            <div class="secondary-techs">
+              {% for tech in proj.technologies limit: 3 %}
+                {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+                <span class="secondary-tech-tag"
+                      style="color: {{ tech_config.color }}">
+                  {{ tech }}
+                </span>
+              {% endfor %}
+              {% assign remaining = proj.technologies.size | minus: 3 %}
+              {% if remaining > 0 %}
+                <span class="secondary-tech-tag more">+{{ remaining }}</span>
+              {% endif %}
+            </div>
+
+            {% if proj.metrics.impact %}
+            <div class="secondary-impact">
+              <i class="fas fa-chart-line"></i>
+              {{ proj.metrics.impact }}
+            </div>
+            {% endif %}
+
+            <a href="/projects/{{ proj_id }}/" class="secondary-link">
+              View Details <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
