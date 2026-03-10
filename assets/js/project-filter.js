@@ -265,21 +265,17 @@ class ProjectFilter {
     // Update technology filter buttons
     document.querySelectorAll('.tech-filter-btn').forEach(btn => {
       const tech = btn.dataset.technology;
-      if (this.activeFilters.technologies.has(tech)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+      const isActive = this.activeFilters.technologies.has(tech);
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
     // Update category filter buttons
     document.querySelectorAll('.category-filter-btn').forEach(btn => {
       const category = btn.dataset.category;
-      if (this.activeFilters.categories.has(category)) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+      const isActive = this.activeFilters.categories.has(category);
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
   }
 
@@ -452,6 +448,7 @@ function initializeProjectGallery(projectId) {
   
   let currentIndex = 0;
   let images = [];
+  let previouslyFocused = null;
   
   // Initialize gallery data
   galleryItems.forEach((item, index) => {
@@ -465,9 +462,15 @@ function initializeProjectGallery(projectId) {
         caption: caption ? caption.textContent : ''
       });
       
-      // Add click event to thumbnail
+      // Add click and keyboard events to thumbnail
       item.addEventListener('click', () => {
         openLightbox(index);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(index);
+        }
       });
     }
   });
@@ -478,22 +481,27 @@ function initializeProjectGallery(projectId) {
   }
   
   function openLightbox(index) {
+    previouslyFocused = document.activeElement;
     currentIndex = index;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
     loadImage(currentIndex);
     updateNavigation();
     updateCounter();
-    
+
     // Focus management for accessibility
     lightbox.setAttribute('aria-hidden', 'false');
     closeButton.focus();
   }
-  
+
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
     lightbox.setAttribute('aria-hidden', 'true');
+    // Restore focus to the element that opened the lightbox
+    if (previouslyFocused) {
+      previouslyFocused.focus();
+    }
   }
   
   function loadImage(index) {
@@ -576,10 +584,10 @@ function initializeProjectGallery(projectId) {
     nextButton.addEventListener('click', goToNext);
   }
   
-  // Keyboard navigation
+  // Keyboard navigation and focus trap
   document.addEventListener('keydown', function(e) {
     if (!lightbox.classList.contains('active')) return;
-    
+
     switch(e.key) {
       case 'Escape':
         closeLightbox();
@@ -589,6 +597,23 @@ function initializeProjectGallery(projectId) {
         break;
       case 'ArrowRight':
         goToNext();
+        break;
+      case 'Tab':
+        // Focus trap: keep focus inside the lightbox
+        var focusable = lightbox.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
         break;
     }
   });

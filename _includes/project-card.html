@@ -88,7 +88,7 @@ Usage: {% include project-card.html project=project_data %}
         {% for tech in project_data.technologies limit: 4 %}
         {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
         <span class="tech-tag"
-          style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}"
+          style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {% if tech_config.text_color %}{{ tech_config.text_color }}{% else %}{{ tech_config.color }}{% endif %}"
           data-tech="{{ tech }}">
           {% if tech_config.icon %}
           <i class="{{ tech_config.icon }}"></i>

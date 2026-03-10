@@ -860,6 +860,55 @@ footer {
 .footer-icon-color {
   color: #42a8c0;
 }
+/**************/
+/* ACCESSIBILITY */
+/**************/
+
+// Skip to content link — visible only on focus
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  z-index: 1000;
+  border-radius: 0 0 4px 4px;
+  font-size: 14px;
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+    color: #fff;
+  }
+}
+
+// Visible focus indicator for interactive elements
+*:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}
+
+// Remove default outline for mouse clicks (keep for keyboard)
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Tech tags use WCAG-compliant text_color from data for contrast
+.tech-tag,
+.hero-tech-tag,
+.timeline-tech-tag {
+  font-weight: 600;
+}
+
+// Hamburger button reset (now a <button> element)
+.hamburger {
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";

@@ -346,28 +346,25 @@ class ProjectManager {
     <div class="challenges-accordion">
       {% for challenge in project.challenges %}
       <div class="challenge-item">
-        <div class="challenge-header"
-          style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px;"
+        <button class="challenge-header"
+          type="button"
+          aria-expanded="false"
+          aria-controls="challenge-{{ forloop.index }}"
+          style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px; width: 100%; background: none; display: flex; justify-content: space-between; align-items: center;"
           onclick="
           var content = document.getElementById('challenge-{{ forloop.index }}');
           var icon = document.getElementById('icon-{{ forloop.index }}');
-          console.log('Direct click handler called for challenge {{ forloop.index }}');
-          if (content.style.display === 'none' || content.style.display === '') {
-            content.style.display = 'block';
-            icon.className = 'fas fa-chevron-up collapse-icon';
-            console.log('Showing challenge {{ forloop.index }}');
-          } else {
-            content.style.display = 'none';
-            icon.className = 'fas fa-chevron-down collapse-icon';
-            console.log('Hiding challenge {{ forloop.index }}');
-          }
+          var isHidden = content.style.display === 'none' || content.style.display === '';
+          content.style.display = isHidden ? 'block' : 'none';
+          icon.className = isHidden ? 'fas fa-chevron-up collapse-icon' : 'fas fa-chevron-down collapse-icon';
+          this.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         ">
           <div class="challenge-title">
-            <i class="fas fa-exclamation-triangle text-warning"></i>
+            <i class="fas fa-exclamation-triangle text-warning" aria-hidden="true"></i>
             <span>Challenge {{ forloop.index }}</span>
           </div>
-          <i class="fas fa-chevron-down collapse-icon" id="icon-{{ forloop.index }}"></i>
-        </div>
+          <i class="fas fa-chevron-down collapse-icon" id="icon-{{ forloop.index }}" aria-hidden="true"></i>
+        </button>
 
         <div id="challenge-{{ forloop.index }}" class="challenge-content"
           style="display: none; padding: 15px; background-color: #f8f9fa; border-radius: 5px; margin-top: 10px;">

@@ -30,13 +30,13 @@ layout: default
             </h2>
 
             {% comment %} View Toggle: Grid vs Timeline {% endcomment %}
-            <div class="view-toggle" id="main-view-toggle">
-              <button class="view-toggle-btn active" data-view="grid" title="Grid view">
-                <i class="fas fa-th"></i>
+            <div class="view-toggle" id="main-view-toggle" role="group" aria-label="View mode">
+              <button class="view-toggle-btn active" data-view="grid" aria-pressed="true" aria-label="Grid view">
+                <i class="fas fa-th" aria-hidden="true"></i>
                 <span>Grid</span>
               </button>
-              <button class="view-toggle-btn" data-view="timeline" title="Timeline view">
-                <i class="fas fa-stream"></i>
+              <button class="view-toggle-btn" data-view="timeline" aria-pressed="false" aria-label="Timeline view">
+                <i class="fas fa-stream" aria-hidden="true"></i>
                 <span>Timeline</span>
               </button>
             </div>
@@ -58,12 +58,14 @@ layout: default
                 <input type="text"
                        class="form-control"
                        id="project-search"
+                       aria-label="Search projects"
                        placeholder="Search projects by name, description, or technology...">
                 <button class="btn btn-outline-secondary"
                         type="button"
                         id="clear-search"
+                        aria-label="Clear search"
                         onclick="document.getElementById('project-search').value=''; projectFilter.setSearchTerm('');">
-                  <i class="fas fa-times"></i>
+                  <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -81,8 +83,9 @@ layout: default
                   {% for tech in site.data.projects.filter_config.technologies %}
                     <button class="btn btn-outline-primary btn-sm tech-filter-btn me-2 mb-2"
                             data-technology="{{ tech.name }}"
-                            title="Filter by {{ tech.name }}">
-                      <i class="{{ tech.icon }}"></i>
+                            aria-pressed="false"
+                            aria-label="Filter by {{ tech.name }}">
+                      <i class="{{ tech.icon }}" aria-hidden="true"></i>
                       {{ tech.name }}
                     </button>
                   {% endfor %}
@@ -99,8 +102,9 @@ layout: default
                   {% for category in site.data.projects.filter_config.categories %}
                     <button class="btn btn-outline-success btn-sm category-filter-btn me-2 mb-2"
                             data-category="{{ category.id }}"
-                            title="{{ category.description }}">
-                      <i class="{{ category.icon }}"></i>
+                            aria-pressed="false"
+                            aria-label="Filter by {{ category.name }}">
+                      <i class="{{ category.icon }}" aria-hidden="true"></i>
                       {{ category.name }}
                     </button>
                   {% endfor %}
@@ -140,10 +144,10 @@ layout: default
             {% comment %} Filter Status and Results Count {% endcomment %}
             <div class="filter-status-container mb-3">
               <div class="d-flex justify-content-between align-items-center">
-                <div id="results-count" class="text-muted">
+                <div id="results-count" class="text-muted" aria-live="polite" aria-atomic="true">
                   Showing {{ site.data.projects.projects | size }} of {{ site.data.projects.projects | size }} projects
                 </div>
-                <div id="filter-status" class="filter-status" style="display: none;">
+                <div id="filter-status" class="filter-status" aria-live="polite" style="display: none;">
                   <!-- Filter status will be populated by JavaScript -->
                 </div>
               </div>

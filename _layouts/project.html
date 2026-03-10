@@ -46,8 +46,8 @@ layout: default
             <div class="technology-tags">
               {% for tech in project.technologies %}
                 {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
-                <span class="tech-tag" 
-                      style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}">
+                <span class="tech-tag"
+                      style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {% if tech_config.text_color %}{{ tech_config.text_color }}{% else %}{{ tech_config.color }}{% endif %}">
                   {% if tech_config.icon %}
                     <i class="{{ tech_config.icon }}"></i>
                   {% endif %}

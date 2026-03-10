@@ -10,7 +10,7 @@ Displays a responsive image gallery with lightbox functionality for project imag
 <div class="project-gallery" data-project="{{ project_id }}">
   <div class="gallery-grid">
     {% for image in gallery %}
-      <div class="gallery-item" data-index="{{ forloop.index0 }}">
+      <div class="gallery-item" data-index="{{ forloop.index0 }}" role="button" tabindex="0" aria-label="View image: {{ image.alt }}">
         <div class="gallery-thumbnail-container">
           <picture>
             {% assign base_path = image.src | split: '.' | first %}
@@ -41,7 +41,7 @@ Displays a responsive image gallery with lightbox functionality for project imag
 </div>
 
 {% comment %} Lightbox Modal {% endcomment %}
-<div id="gallery-lightbox-{{ project_id }}" class="gallery-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+<div id="gallery-lightbox-{{ project_id }}" class="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
   <div class="lightbox-overlay" aria-label="Close lightbox"></div>
   <div class="lightbox-container">
     <div class="lightbox-header">

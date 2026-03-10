@@ -32,7 +32,7 @@ Requirements: 6.1, 6.2, 6.3
     <div class="skill-panel tech-evolution-panel">
       <h3 class="panel-title"><i class="fas fa-layer-group"></i> Technology Evolution</h3>
 
-      <div class="tech-evolution-chart">
+      <div class="tech-evolution-chart" role="table" aria-label="Technology usage across years">
         {% comment %} Year headers {% endcomment %}
         <div class="evolution-header">
           <div class="evolution-label-col"></div>
@@ -60,7 +60,7 @@ Requirements: 6.1, 6.2, 6.3
           {% assign tech_year_list = tech_years | split: "," | uniq | sort %}
           <div class="evolution-row">
             <div class="evolution-label-col">
-              <span class="evolution-tech" style="color: {{ tech.color }}">
+              <span class="evolution-tech" style="color: {% if tech.text_color %}{{ tech.text_color }}{% else %}{{ tech.color }}{% endif %}">
                 <i class="{{ tech.icon }}"></i>
                 {{ tech.name }}
               </span>
@@ -68,7 +68,7 @@ Requirements: 6.1, 6.2, 6.3
             {% for year in years %}
               {% if tech_year_list contains year %}
               <div class="evolution-year-col">
-                <span class="evolution-dot active" style="background-color: {{ tech.color }};" title="{{ tech.name }} used in {{ year }}"></span>
+                <span class="evolution-dot active" style="background-color: {{ tech.color }};" title="{{ tech.name }} used in {{ year }}" role="img" aria-label="{{ tech.name }} used in {{ year }}"></span>
               </div>
               {% else %}
               <div class="evolution-year-col">
@@ -105,7 +105,7 @@ Requirements: 6.1, 6.2, 6.3
               <span class="category-name">{{ cat.name }}</span>
               <span class="category-count">{{ cat_count }}</span>
             </div>
-            <div class="category-bar">
+            <div class="category-bar" role="progressbar" aria-valuenow="{{ pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="{{ cat.name }}: {{ pct }}%">
               <div class="category-fill" style="width: {{ pct }}%;"></div>
             </div>
           </div>
@@ -168,7 +168,7 @@ Requirements: 6.1, 6.2, 6.3
               <div class="growth-techs">
                 {% for tech in y_tech_list %}
                   {% assign tc = site.data.projects.filter_config.technologies | where: "name", tech | first %}
-                  <span class="growth-tech-dot" style="background-color: {{ tc.color }};" title="{{ tech }}"></span>
+                  <span class="growth-tech-dot" style="background-color: {{ tc.color }};" title="{{ tech }}" role="img" aria-label="{{ tech }}"></span>
                 {% endfor %}
               </div>
             </div>

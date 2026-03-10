@@ -25,17 +25,17 @@ Requirements: 6.1, 6.5
   {% comment %} Timeline Controls: year pills and sort {% endcomment %}
   <div class="timeline-controls">
     {% comment %} Year Navigation Pills {% endcomment %}
-    <div class="year-navigation">
-      <button class="year-pill active" data-year="all">All Years</button>
+    <div class="year-navigation" role="group" aria-label="Filter by year">
+      <button class="year-pill active" data-year="all" aria-pressed="true">All Years</button>
       {% for year in years %}
-        <button class="year-pill" data-year="{{ year }}">{{ year }}</button>
+        <button class="year-pill" data-year="{{ year }}" aria-pressed="false" aria-label="Show projects from {{ year }}">{{ year }}</button>
       {% endfor %}
     </div>
 
     {% comment %} Sort Direction {% endcomment %}
     <div class="sort-toggle">
-      <button class="sort-btn" data-sort="desc" title="Newest first">
-        <i class="fas fa-sort-amount-down"></i>
+      <button class="sort-btn" data-sort="desc" aria-label="Sort order: newest first">
+        <i class="fas fa-sort-amount-down" aria-hidden="true"></i>
         <span>Newest First</span>
       </button>
     </div>
@@ -121,7 +121,7 @@ Requirements: 6.1, 6.5
                     {% for tech in p.technologies limit: 4 %}
                       {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
                       <span class="timeline-tech-tag"
-                            style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}">
+                            style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {% if tech_config.text_color %}{{ tech_config.text_color }}{% else %}{{ tech_config.color }}{% endif %}">
                         {{ tech }}
                       </span>
                     {% endfor %}

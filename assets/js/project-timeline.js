@@ -61,7 +61,9 @@ class ProjectTimeline {
 
     // Update toggle button states
     this.mainToggleBtns.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
+      const isActive = btn.dataset.view === view;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
     if (view === 'timeline') {
@@ -88,7 +90,9 @@ class ProjectTimeline {
 
     // Update pill states
     this.yearPills.forEach(pill => {
-      pill.classList.toggle('active', pill.dataset.year === year);
+      const isActive = pill.dataset.year === year;
+      pill.classList.toggle('active', isActive);
+      pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
     // Show/hide year groups
@@ -123,9 +127,11 @@ class ProjectTimeline {
     if (this.sortDirection === 'desc') {
       icon.className = 'fas fa-sort-amount-down';
       text.textContent = 'Newest First';
+      this.sortBtn.setAttribute('aria-label', 'Sort order: newest first');
     } else {
       icon.className = 'fas fa-sort-amount-up';
       text.textContent = 'Oldest First';
+      this.sortBtn.setAttribute('aria-label', 'Sort order: oldest first');
     }
 
     // Reverse the order of year groups in the DOM
