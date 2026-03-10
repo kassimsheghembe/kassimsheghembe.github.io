@@ -2,6 +2,7 @@
 layout: page
 title: About Me
 permalink: /about/
+description: "Learn about Kassim Sheghembe — a software engineer from Tanzania specializing in cloud, data engineering, and full-stack development."
 ---
 ---
 Hey there, I'm *Kassim Sheghembe*, and welcome to my digital abode! I'm thrilled you stopped by. Here, you'll get to know me a bit better, both professionally and personally, in a light, fun, and hopefully interesting way.

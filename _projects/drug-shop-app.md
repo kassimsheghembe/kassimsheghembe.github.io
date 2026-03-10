@@ -3,6 +3,8 @@ layout: project
 title: "Drug Shops Mobile Application"
 project_id: "drug-shop-app"
 permalink: /projects/drug-shop-app/
+description: "A mobile application built on the OpenSRP platform for drug shops, helping drug dispensers screen for danger signs and dispense drugs safely and effectively."
+image: /images/projects/drug-shop-app/thumbnails/addo-card-thumbnail.jpg
 ---
 
 ## Project Gallery

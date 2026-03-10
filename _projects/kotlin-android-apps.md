@@ -3,6 +3,8 @@ layout: project
 title: "Kotlin Android Applications Collection"
 project_id: "kotlin-android-apps"
 permalink: /projects/kotlin-android-apps/
+description: "A collection of Android applications built with Kotlin showcasing modern Android development practices including MVVM architecture, Coroutines, and Jetpack libraries."
+image: /images/projects/kotlin-android-apps/thumbnails/kotlin-apps-card-thumbnail.webp
 ---
 
 ## Detailed Project Documentation

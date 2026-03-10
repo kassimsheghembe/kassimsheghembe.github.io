@@ -3,6 +3,8 @@ layout: project
 title: "Adaptive Comparative Judgement (ACJ) Algorithm"
 project_id: "acj-algorithm"
 permalink: /projects/acj-algorithm/
+description: "A web application implementing the Adaptive Comparative Judgement algorithm for conducting pair comparisons and assessing subjective work quality."
+image: /images/projects/acj-algorithm/thumbnails/acj-algorithm-card-thumbnail.webp
 ---
 
 ## Detailed Project Documentation

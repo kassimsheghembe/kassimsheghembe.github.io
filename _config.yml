@@ -4,6 +4,35 @@ subtitle: Software Engineer & Data Enthusiast
 author_name: Kassim Sheghembe
 description: Personal website of Kassim Sheghembe, a software engineer in Dar es Salaam specializing in cloud, data engineering, and full-stack development.
 
+# Site URL (used for canonical URLs, sitemap, and Open Graph)
+url: "https://kassimsheghembe.dev"
+baseurl: ""
+
+# Author / Social (used by jekyll-seo-tag)
+author:
+  name: Kassim Sheghembe
+  email: kassim@kassimsheghembe.dev
+  url: "https://kassimsheghembe.dev"
+
+social:
+  name: Kassim Sheghembe
+  links:
+    - https://github.com/gosso22
+    - https://www.linkedin.com/in/sheghembekassim
+
+# Default image for Open Graph when pages don't specify one
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.jpg
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 # Collections
 collections:
   projects:

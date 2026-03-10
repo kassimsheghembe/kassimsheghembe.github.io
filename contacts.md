@@ -2,6 +2,7 @@
 layout: contactus
 title: Contacts
 permalink: /contacts/
+description: "Get in touch with Kassim Sheghembe — software engineer based in Dar es Salaam, Tanzania."
 ---
 # Address:  
 **Kassim Sheghembe**  

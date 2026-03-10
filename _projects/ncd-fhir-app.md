@@ -3,6 +3,8 @@ layout: project
 title: "NCD FHIR Healthcare Application"
 project_id: "ncd-fhir-app"
 permalink: /projects/ncd-fhir-app/
+description: "A comprehensive Android healthcare app for Non-Communicable Disease screening (diabetes & hypertension) built with FHIR R4 standards and modern Android development practices."
+image: /images/projects/ncd-fhir-app/thumbnails/ncd-fhir-card-thumbnail.webp
 ---
 
 ## Project Gallery
