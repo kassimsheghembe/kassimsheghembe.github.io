@@ -5,7 +5,7 @@ layout: default
 
 <div class="projects-page">
   <div class="container">
-    
+
     {% comment %} Page Header {% endcomment %}
     <div class="projects-header">
       <div class="row">
@@ -15,67 +15,62 @@ layout: default
         </div>
       </div>
     </div>
-    
-    {% comment %} Featured Projects Section {% endcomment %}
-    {% assign featured_projects = site.data.projects.projects | where_exp: "item", "item[1].featured == true" %}
-    {% if featured_projects.size > 0 %}
-    <section class="featured-projects">
-      <div class="row">
-        <div class="col-12">
-          <h2 class="section-title">
-            <i class="fas fa-star"></i>
-            Featured Projects
-          </h2>
-        </div>
-      </div>
-      <div class="row">
-        {% for project in featured_projects %}
-          <div class="col-lg-6 col-md-12 mb-4">
-            {% include project-card.html project=project %}
-          </div>
-        {% endfor %}
-      </div>
-    </section>
-    {% endif %}
-    
-    {% comment %} All Projects Section {% endcomment %}
+
+    {% comment %} Featured Projects Showcase {% endcomment %}
+    {% include featured-projects.html %}
+
+    {% comment %} All Projects Section with View Toggle {% endcomment %}
     <section class="all-projects">
       <div class="row">
         <div class="col-12">
-          <h2 class="section-title">
-            <i class="fas fa-code"></i>
-            All Projects
-          </h2>
+          <div class="section-header-row">
+            <h2 class="section-title">
+              <i class="fas fa-code"></i>
+              All Projects
+            </h2>
+
+            {% comment %} View Toggle: Grid vs Timeline {% endcomment %}
+            <div class="view-toggle" id="main-view-toggle">
+              <button class="view-toggle-btn active" data-view="grid" title="Grid view">
+                <i class="fas fa-th"></i>
+                <span>Grid</span>
+              </button>
+              <button class="view-toggle-btn" data-view="timeline" title="Timeline view">
+                <i class="fas fa-stream"></i>
+                <span>Timeline</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      
-      {% comment %} Filter Controls {% endcomment %}
-      <div class="filter-controls">
+
+      {% comment %} Filter Controls (visible in grid view) {% endcomment %}
+      <div class="filter-controls" id="grid-filter-controls">
         <div class="row">
           <div class="col-12">
-            
+
             {% comment %} Search Bar {% endcomment %}
             <div class="search-container mb-4">
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="fas fa-search"></i>
                 </span>
-                <input type="text" 
-                       class="form-control" 
-                       id="project-search" 
+                <input type="text"
+                       class="form-control"
+                       id="project-search"
                        placeholder="Search projects by name, description, or technology...">
-                <button class="btn btn-outline-secondary" 
-                        type="button" 
+                <button class="btn btn-outline-secondary"
+                        type="button"
                         id="clear-search"
                         onclick="document.getElementById('project-search').value=''; projectFilter.setSearchTerm('');">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
             </div>
-            
+
             {% comment %} Filter Buttons Row {% endcomment %}
             <div class="filter-buttons-container">
-              
+
               {% comment %} Technology Filters {% endcomment %}
               <div class="filter-group mb-3">
                 <h6 class="filter-group-title">
@@ -84,7 +79,7 @@ layout: default
                 </h6>
                 <div class="filter-buttons">
                   {% for tech in site.data.projects.filter_config.technologies %}
-                    <button class="btn btn-outline-primary btn-sm tech-filter-btn me-2 mb-2" 
+                    <button class="btn btn-outline-primary btn-sm tech-filter-btn me-2 mb-2"
                             data-technology="{{ tech.name }}"
                             title="Filter by {{ tech.name }}">
                       <i class="{{ tech.icon }}"></i>
@@ -93,7 +88,7 @@ layout: default
                   {% endfor %}
                 </div>
               </div>
-              
+
               {% comment %} Category Filters {% endcomment %}
               <div class="filter-group mb-3">
                 <h6 class="filter-group-title">
@@ -102,7 +97,7 @@ layout: default
                 </h6>
                 <div class="filter-buttons">
                   {% for category in site.data.projects.filter_config.categories %}
-                    <button class="btn btn-outline-success btn-sm category-filter-btn me-2 mb-2" 
+                    <button class="btn btn-outline-success btn-sm category-filter-btn me-2 mb-2"
                             data-category="{{ category.id }}"
                             title="{{ category.description }}">
                       <i class="{{ category.icon }}"></i>
@@ -111,7 +106,7 @@ layout: default
                   {% endfor %}
                 </div>
               </div>
-              
+
               {% comment %} Additional Filters {% endcomment %}
               <div class="filter-group mb-3">
                 <h6 class="filter-group-title">
@@ -139,9 +134,9 @@ layout: default
                   </div>
                 </div>
               </div>
-              
+
             </div>
-            
+
             {% comment %} Filter Status and Results Count {% endcomment %}
             <div class="filter-status-container mb-3">
               <div class="d-flex justify-content-between align-items-center">
@@ -153,16 +148,16 @@ layout: default
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
-      
-      {% comment %} Projects Grid {% endcomment %}
-      <div class="projects-grid">
+
+      {% comment %} Grid View {% endcomment %}
+      <div class="projects-grid" id="grid-view">
         <div class="row" id="projects-container">
           {% for project in site.data.projects.projects %}
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4 project-item" 
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4 project-item"
                  data-category="{{ project[1].category }}"
                  data-year="{{ project[1].year }}"
                  data-technologies="{{ project[1].technologies | join: ',' | downcase }}">
@@ -171,7 +166,10 @@ layout: default
           {% endfor %}
         </div>
       </div>
-      
+
+      {% comment %} Timeline View (hidden by default) {% endcomment %}
+      {% include project-timeline.html %}
+
       {% comment %} No Results Message (hidden by default) {% endcomment %}
       <div class="no-results" id="no-results" style="display: none;">
         <div class="text-center py-5">
@@ -181,7 +179,10 @@ layout: default
         </div>
       </div>
     </section>
-    
+
+    {% comment %} Skill Progression {% endcomment %}
+    {% include skill-progression.html %}
+
     {% comment %} Project Statistics {% endcomment %}
     <section class="project-stats">
       <div class="row">
@@ -217,6 +218,6 @@ layout: default
         </div>
       </div>
     </section>
-    
+
   </div>
 </div>
