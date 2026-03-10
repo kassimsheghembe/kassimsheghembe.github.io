@@ -1,0 +1,186 @@
+{% comment %}
+Skill Progression Visualization
+Shows technology evolution, category breakdown, and skill growth over time.
+Usage: {% include skill-progression.html %}
+Requirements: 6.1, 6.2, 6.3
+{% endcomment %}
+
+{% comment %} Build year list {% endcomment %}
+{% assign year_list = "" %}
+{% for project in site.data.projects.projects %}
+  {% assign p = project[1] %}
+  {% if p.year %}
+    {% if year_list == "" %}
+      {% assign year_list = p.year | append: "" %}
+    {% else %}
+      {% assign year_list = year_list | append: "," | append: p.year %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign years = year_list | split: "," | uniq | sort %}
+
+<section class="skill-progression">
+  <h2 class="section-title">
+    <i class="fas fa-chart-line"></i>
+    Skills &amp; Growth
+  </h2>
+  <p class="section-subtitle">Technology adoption and expertise development across projects</p>
+
+  <div class="skill-panels">
+
+    {% comment %} Panel 1: Technology Evolution {% endcomment %}
+    <div class="skill-panel tech-evolution-panel">
+      <h3 class="panel-title"><i class="fas fa-layer-group"></i> Technology Evolution</h3>
+
+      <div class="tech-evolution-chart">
+        {% comment %} Year headers {% endcomment %}
+        <div class="evolution-header">
+          <div class="evolution-label-col"></div>
+          {% for year in years %}
+          <div class="evolution-year-col">{{ year }}</div>
+          {% endfor %}
+        </div>
+
+        {% comment %} Build tech-to-years mapping {% endcomment %}
+        {% comment %} We iterate each configured technology and check which years it appears in {% endcomment %}
+        {% for tech in site.data.projects.filter_config.technologies %}
+          {% assign tech_years = "" %}
+          {% for project in site.data.projects.projects %}
+            {% assign p = project[1] %}
+            {% if p.technologies contains tech.name %}
+              {% if tech_years == "" %}
+                {% assign tech_years = p.year | append: "" %}
+              {% else %}
+                {% assign tech_years = tech_years | append: "," | append: p.year %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% if tech_years != "" %}
+          {% assign tech_year_list = tech_years | split: "," | uniq | sort %}
+          <div class="evolution-row">
+            <div class="evolution-label-col">
+              <span class="evolution-tech" style="color: {{ tech.color }}">
+                <i class="{{ tech.icon }}"></i>
+                {{ tech.name }}
+              </span>
+            </div>
+            {% for year in years %}
+              {% if tech_year_list contains year %}
+              <div class="evolution-year-col">
+                <span class="evolution-dot active" style="background-color: {{ tech.color }};" title="{{ tech.name }} used in {{ year }}"></span>
+              </div>
+              {% else %}
+              <div class="evolution-year-col">
+                <span class="evolution-dot"></span>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %} Panel 2: Category Breakdown {% endcomment %}
+    <div class="skill-panel category-panel">
+      <h3 class="panel-title"><i class="fas fa-th-large"></i> Project Categories</h3>
+
+      <div class="category-breakdown">
+        {% for cat in site.data.projects.filter_config.categories %}
+          {% assign cat_count = 0 %}
+          {% for project in site.data.projects.projects %}
+            {% assign p = project[1] %}
+            {% if p.category == cat.id %}
+              {% assign cat_count = cat_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if cat_count > 0 %}
+          {% assign total = site.data.projects.projects | size %}
+          {% assign pct = cat_count | times: 100 | divided_by: total %}
+          <div class="category-row">
+            <div class="category-info">
+              <i class="{{ cat.icon }}"></i>
+              <span class="category-name">{{ cat.name }}</span>
+              <span class="category-count">{{ cat_count }}</span>
+            </div>
+            <div class="category-bar">
+              <div class="category-fill" style="width: {{ pct }}%;"></div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %} Panel 3: Growth Over Time {% endcomment %}
+    <div class="skill-panel growth-panel">
+      <h3 class="panel-title"><i class="fas fa-seedling"></i> Growth Over Time</h3>
+
+      <div class="growth-timeline">
+        {% for year in years %}
+          {% comment %} Collect data for this year {% endcomment %}
+          {% assign y_projects = 0 %}
+          {% assign y_techs = "" %}
+          {% for project in site.data.projects.projects %}
+            {% assign p = project[1] %}
+            {% assign p_year = p.year | append: "" %}
+            {% if p_year == year %}
+              {% assign y_projects = y_projects | plus: 1 %}
+              {% for tech in p.technologies %}
+                {% if y_techs == "" %}
+                  {% assign y_techs = tech %}
+                {% else %}
+                  {% assign y_techs = y_techs | append: "," | append: tech %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+          {% assign y_tech_list = y_techs | split: "," | uniq %}
+          {% assign y_tech_count = y_tech_list | size %}
+
+          <div class="growth-year">
+            <div class="growth-year-label">{{ year }}</div>
+            <div class="growth-year-content">
+              <div class="growth-stats">
+                <span class="growth-stat">
+                  <i class="fas fa-project-diagram"></i>
+                  {{ y_projects }} project{% if y_projects != 1 %}s{% endif %}
+                </span>
+                <span class="growth-stat">
+                  <i class="fas fa-code"></i>
+                  {{ y_tech_count }} technologies
+                </span>
+              </div>
+              <div class="growth-bar-group">
+                <div class="growth-bar projects-bar" title="{{ y_projects }} projects">
+                  {% comment %} Max 4 projects, scale to percentage {% endcomment %}
+                  <div class="growth-bar-fill" style="width: {% if y_projects >= 3 %}100{% elsif y_projects == 2 %}66{% else %}33{% endif %}%;"></div>
+                </div>
+                <div class="growth-bar techs-bar" title="{{ y_tech_count }} technologies">
+                  {% comment %} Max ~10 techs, scale to percentage {% endcomment %}
+                  {% assign tech_pct = y_tech_count | times: 10 %}
+                  {% if tech_pct > 100 %}{% assign tech_pct = 100 %}{% endif %}
+                  <div class="growth-bar-fill" style="width: {{ tech_pct }}%;"></div>
+                </div>
+              </div>
+              <div class="growth-techs">
+                {% for tech in y_tech_list %}
+                  {% assign tc = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+                  <span class="growth-tech-dot" style="background-color: {{ tc.color }};" title="{{ tech }}"></span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="growth-legend">
+        <span class="legend-item"><span class="legend-swatch projects-swatch"></span> Projects</span>
+        <span class="legend-item"><span class="legend-swatch techs-swatch"></span> Technologies</span>
+      </div>
+    </div>
+
+  </div>
+</section>
