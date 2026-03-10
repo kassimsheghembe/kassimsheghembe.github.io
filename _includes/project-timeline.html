@@ -1,0 +1,153 @@
+{% comment %}
+Project Timeline Component
+Displays projects chronologically with visual timeline and year-based navigation.
+Integrated as a view within the All Projects section — toggled via the main view toggle.
+Usage: {% include project-timeline.html %}
+Requirements: 6.1, 6.5
+{% endcomment %}
+
+{% comment %} Build a sorted list of unique years from the projects hash {% endcomment %}
+{% assign year_list = "" %}
+{% for project in site.data.projects.projects %}
+  {% assign p = project[1] %}
+  {% if p.year %}
+    {% if year_list == "" %}
+      {% assign year_list = p.year | append: "" %}
+    {% else %}
+      {% assign year_list = year_list | append: "," | append: p.year %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign years = year_list | split: "," | uniq | sort | reverse %}
+
+<div class="project-timeline-section" id="timeline-view" style="display: none;">
+
+  {% comment %} Timeline Controls: year pills and sort {% endcomment %}
+  <div class="timeline-controls">
+    {% comment %} Year Navigation Pills {% endcomment %}
+    <div class="year-navigation">
+      <button class="year-pill active" data-year="all">All Years</button>
+      {% for year in years %}
+        <button class="year-pill" data-year="{{ year }}">{{ year }}</button>
+      {% endfor %}
+    </div>
+
+    {% comment %} Sort Direction {% endcomment %}
+    <div class="sort-toggle">
+      <button class="sort-btn" data-sort="desc" title="Newest first">
+        <i class="fas fa-sort-amount-down"></i>
+        <span>Newest First</span>
+      </button>
+    </div>
+  </div>
+
+  {% comment %} Timeline {% endcomment %}
+  <div class="timeline-track" id="timeline-track">
+    <div class="timeline-line"></div>
+
+    {% for year in years %}
+      {% comment %} Count projects for this year {% endcomment %}
+      {% assign year_count = 0 %}
+      {% for project in site.data.projects.projects %}
+        {% assign p = project[1] %}
+        {% assign p_year = p.year | append: "" %}
+        {% if p_year == year %}
+          {% assign year_count = year_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="timeline-year-group" data-year="{{ year }}">
+        {% comment %} Year Marker {% endcomment %}
+        <div class="timeline-year-marker">
+          <div class="year-badge">{{ year }}</div>
+          <div class="year-project-count">
+            {{ year_count }} project{% if year_count != 1 %}s{% endif %}
+          </div>
+        </div>
+
+        {% comment %} Projects for this year {% endcomment %}
+        {% for project in site.data.projects.projects %}
+          {% assign p = project[1] %}
+          {% assign p_id = project[0] %}
+          {% assign p_year = p.year | append: "" %}
+          {% if p_year == year %}
+          <div class="timeline-item" data-project-id="{{ p_id }}">
+            <div class="timeline-dot">
+              {% if p.featured %}
+              <i class="fas fa-star"></i>
+              {% else %}
+              <i class="fas fa-circle"></i>
+              {% endif %}
+            </div>
+
+            <div class="timeline-card">
+              {% if p.featured_image %}
+              <div class="timeline-card-image">
+                <img src="{{ p.featured_image }}"
+                     alt="{{ p.title }}"
+                     loading="lazy"
+                     onerror="this.onerror=null; this.src='/assets/images/placeholder-project.jpg';">
+              </div>
+              {% endif %}
+
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-status status-{{ p.status }}">
+                    {% case p.status %}
+                      {% when 'completed' %}
+                        <i class="fas fa-check-circle"></i> Completed
+                      {% when 'in-progress' %}
+                        <i class="fas fa-spinner"></i> In Progress
+                      {% when 'archived' %}
+                        <i class="fas fa-archive"></i> Archived
+                    {% endcase %}
+                  </span>
+
+                  {% if p.featured %}
+                  <span class="timeline-featured-badge">
+                    <i class="fas fa-star"></i> Featured
+                  </span>
+                  {% endif %}
+                </div>
+
+                <div class="timeline-card-body">
+                  <h4 class="timeline-card-title">
+                    <a href="/projects/{{ p_id }}/">{{ p.title }}</a>
+                  </h4>
+
+                  <p class="timeline-card-description">{{ p.tagline }}</p>
+
+                  <div class="timeline-card-techs">
+                    {% for tech in p.technologies limit: 4 %}
+                      {% assign tech_config = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+                      <span class="timeline-tech-tag"
+                            style="background-color: {{ tech_config.color }}15; border-color: {{ tech_config.color }}; color: {{ tech_config.color }}">
+                        {{ tech }}
+                      </span>
+                    {% endfor %}
+                    {% assign remaining = p.technologies.size | minus: 4 %}
+                    {% if remaining > 0 %}
+                      <span class="timeline-tech-tag tech-more">+{{ remaining }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="timeline-card-footer">
+                  <a href="/projects/{{ p_id }}/" class="btn btn-sm btn-primary">
+                    View Details <i class="fas fa-arrow-right"></i>
+                  </a>
+                  {% if p.links.github %}
+                  <a href="{{ p.links.github }}" class="btn btn-sm btn-outline-dark" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,430 @@
+/* Project Timeline Styles */
+
+/* Section header row with title + view toggle */
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  .section-title {
+    margin-bottom: 0;
+  }
+}
+
+.project-timeline-section {
+  padding: 1rem 0;
+}
+
+/* Timeline Controls */
+.timeline-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.view-toggle {
+  display: flex;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #495057;
+    background: #f8f9fa;
+  }
+
+  &.active {
+    background: #667eea;
+    color: white;
+  }
+}
+
+.year-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.year-pill {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  background: white;
+  color: #495057;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #667eea;
+    color: #667eea;
+  }
+
+  &.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+  }
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: white;
+  color: #495057;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+
+  &:hover {
+    border-color: #667eea;
+    color: #667eea;
+  }
+}
+
+/* Timeline Track — single column, line on the left */
+.timeline-track {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2.5rem;
+  margin-left: 12px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  border-radius: 3px;
+}
+
+/* Year Group */
+.timeline-year-group {
+  margin-bottom: 0.5rem;
+  transition: opacity 0.4s ease, max-height 0.5s ease;
+
+  &.hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.timeline-year-marker {
+  position: relative;
+  margin-bottom: 1.25rem;
+  margin-left: -2.5rem;
+  padding-left: 2.5rem;
+
+  .year-badge {
+    display: inline-block;
+    padding: 0.35rem 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.35);
+  }
+
+  .year-project-count {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-size: 0.78rem;
+    color: #6c757d;
+  }
+}
+
+/* Timeline Items — single column */
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Timeline Dot */
+.timeline-dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 1rem;
+  width: 20px;
+  height: 20px;
+  margin-left: -8.5px;
+  background: white;
+  border: 3px solid #667eea;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 0;
+    color: #667eea;
+
+    &.fa-star {
+      font-size: 0.45rem;
+      color: #f39c12;
+    }
+
+    &.fa-circle {
+      font-size: 0.3rem;
+    }
+  }
+}
+
+/* Timeline Card — horizontal layout */
+.timeline-card {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Card image as left-side thumbnail */
+.timeline-card-image {
+  flex-shrink: 0;
+  width: 140px;
+  min-height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Card content — right side */
+.timeline-card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.timeline-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &.status-completed {
+    color: #28a745;
+  }
+
+  &.status-in-progress {
+    color: #fd7e14;
+  }
+
+  &.status-archived {
+    color: #6c757d;
+  }
+}
+
+.timeline-featured-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #f39c12;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.timeline-card-body {
+  padding: 0.75rem 0.85rem;
+  flex: 1;
+}
+
+.timeline-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+
+  a {
+    color: #2c3e50;
+    text-decoration: none;
+
+    &:hover {
+      color: #667eea;
+    }
+  }
+}
+
+.timeline-card-description {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.timeline-card-category {
+  font-size: 0.75rem;
+  color: #495057;
+  margin-bottom: 0.5rem;
+
+  i {
+    margin-right: 0.25rem;
+    color: #667eea;
+  }
+}
+
+.timeline-card-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-tech-tag {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: 3px;
+  border: 1px solid;
+
+  &.tech-more {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+  }
+}
+
+.timeline-card-impact {
+  font-size: 0.75rem;
+  color: #495057;
+  padding: 0.35rem 0.6rem;
+  background: #f0f7ff;
+  border-radius: 4px;
+  border-left: 2px solid #667eea;
+  margin-bottom: 0;
+
+  i {
+    margin-right: 0.2rem;
+    color: #667eea;
+  }
+}
+
+.timeline-card-footer {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-top: 1px solid #e9ecef;
+  background: #fafbfc;
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .year-navigation {
+    order: -1;
+  }
+
+  .sort-btn {
+    margin-left: 0;
+  }
+
+  .timeline-track {
+    padding-left: 2rem;
+    margin-left: 10px;
+  }
+
+  .timeline-year-marker {
+    margin-left: -2rem;
+    padding-left: 2rem;
+  }
+
+  .timeline-dot {
+    left: -2rem;
+  }
+
+  /* Stack card vertically on small screens */
+  .timeline-card {
+    flex-direction: column;
+  }
+
+  .timeline-card-image {
+    width: 100%;
+    height: 140px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-card-image {
+    height: 120px;
+  }
+
+  .timeline-card-title {
+    font-size: 0.9rem;
+  }
+}
