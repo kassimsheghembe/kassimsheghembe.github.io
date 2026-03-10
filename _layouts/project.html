@@ -223,7 +223,12 @@ layout: default
                 {% endif %}
               </div>
             </section>
-            
+
+            {% comment %} Social Sharing {% endcomment %}
+            <section class="sidebar-section">
+              {% include social-share.html title=project.title description=project.description %}
+            </section>
+
           </aside>
         </div>
       </div>

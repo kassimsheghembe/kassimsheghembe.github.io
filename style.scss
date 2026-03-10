@@ -895,6 +895,72 @@ footer {
   outline: none;
 }
 
+/**************/
+/* SOCIAL SHARE */
+/**************/
+
+.social-share {
+  .share-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #495057;
+    background: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+    &:hover, &:focus-visible {
+      border-color: #adb5bd;
+      color: #212529;
+    }
+
+    span {
+      pointer-events: none;
+    }
+  }
+
+  .share-linkedin:hover, .share-linkedin:focus-visible {
+    background-color: #0077b515;
+    border-color: #0077b5;
+    color: #0077b5;
+  }
+
+  .share-twitter:hover, .share-twitter:focus-visible {
+    background-color: #1da1f215;
+    border-color: #1da1f2;
+    color: #1da1f2;
+  }
+
+  .share-email:hover, .share-email:focus-visible {
+    background-color: #6c757d15;
+    border-color: #6c757d;
+    color: #495057;
+  }
+
+  .share-copy:hover, .share-copy:focus-visible {
+    background-color: #28a74515;
+    border-color: #28a745;
+    color: #28a745;
+  }
+}
+
 // Tech tags use WCAG-compliant text_color from data for contrast
 .tech-tag,
 .hero-tech-tag,
