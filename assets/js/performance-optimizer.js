@@ -483,7 +483,7 @@ class PerformanceOptimizer {
    */
   preloadCriticalImages() {
     // Preload featured project images
-    const featuredImages = document.querySelectorAll('.featured-badge').map(badge => {
+    const featuredImages = Array.from(document.querySelectorAll('.featured-badge')).map(badge => {
       const card = badge.closest('.project-card');
       const img = card?.querySelector('img[data-src], img[src]');
       return img?.dataset.src || img?.src;
