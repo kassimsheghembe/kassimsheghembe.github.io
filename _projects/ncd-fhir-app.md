@@ -116,21 +116,7 @@ The project follows healthcare-specific agile practices:
 ### Technical Innovations
 
 #### FHIR SDK Integration
-```kotlin
-// Example: Creating a FHIR Patient resource
-val patient = Patient().apply {
-    id = generatePatientId()
-    name = listOf(HumanName().apply {
-        given = listOf(StringType(firstName))
-        family = lastName
-    })
-    birthDate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant())
-    gender = Enumerations.AdministrativeGender.fromCode(genderCode)
-}
-
-// Save to local FHIR store
-fhirEngine.create(patient)
-```
+The application uses the Android FHIR SDK to create, store, and sync FHIR R4 resources locally on the device. Patient registration, observations, encounters, and conditions are all modelled as standard FHIR resources, enabling seamless interoperability with external healthcare systems.
 
 #### Offline-First Architecture
 - **Local FHIR Store**: SQLite-based storage optimized for FHIR resources
