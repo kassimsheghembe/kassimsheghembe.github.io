@@ -241,24 +241,53 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ project.title }}",
+  "@type": "Article",
+  "headline": "{{ project.title }}",
   "description": "{{ project.description }}",
-  "applicationCategory": "{{ site.data.projects.filter_config.categories | where: "id", project.category | first | map: "name" }}",
-  "dateCreated": "{{ project.year }}-01-01",
-  "creator": {
+  "datePublished": "{{ project.year }}-01-01",
+  "dateModified": "{{ project.year }}-01-01",
+  "author": {
     "@type": "Person",
-    "name": "{{ site.data.data.sidebar.name }}",
+    "name": "{{ site.name }}",
     "url": "{{ site.url }}"
   },
-  {% if project.links.demo %}
-  "url": "{{ project.links.demo }}",
-  {% endif %}
-  {% if project.links.github %}
-  "codeRepository": "{{ project.links.github }}",
-  {% endif %}
-  "programmingLanguage": {{ project.technologies | jsonify }},
-  "operatingSystem": "Cross-platform"
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ site.name }}"
+  },
+  {% if project.image %}"image": "{{ site.url }}/assets/images/projects/{{ project.image }}",{% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "keywords": {{ project.technologies | jsonify }}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": "{{ site.url }}/projects"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ project.title }}",
+      "item": "{{ site.url }}{{ page.url }}"
+    }
+  ]
 }
 </script>
 

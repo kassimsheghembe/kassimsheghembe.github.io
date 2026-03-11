@@ -30,6 +30,37 @@
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
 
   <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+  <!-- Structured Data: ProfilePage + Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}",
+      "jobTitle": "Software Engineer",
+      "description": "{{ site.description }}",
+      "email": "{{ site.author.email }}",
+      "sameAs": [
+        {% for link in site.social.links %}"{{ link }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: WebSite (enables sitelinks search) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}"
+  }
+  </script>
 </head>
 
 <body class="index-body">
