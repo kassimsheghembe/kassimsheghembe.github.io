@@ -200,3 +200,8 @@ class ProjectTimeline {
 document.addEventListener('DOMContentLoaded', function () {
   window.projectTimeline = new ProjectTimeline();
 });
+
+// Export for module systems
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = ProjectTimeline;
+}
