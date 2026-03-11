@@ -63,6 +63,43 @@ filter_config:
     - name: "FHIR"
       color: "#0066CC"
       icon: "fas fa-hospital"
+    - name: "FastAPI"
+      color: "#009688"
+      icon: "fas fa-bolt"
+    - name: "React"
+      color: "#61DAFB"
+      text_color: "#2C7A8F"
+      icon: "fab fa-react"
+    - name: "TypeScript"
+      color: "#3178C6"
+      icon: "fas fa-code"
+    - name: "PostgreSQL"
+      color: "#336791"
+      icon: "fas fa-database"
+    - name: "Redis"
+      color: "#DC382D"
+      icon: "fas fa-memory"
+    - name: "Docker"
+      color: "#2496ED"
+      icon: "fab fa-docker"
+    - name: "HAPI FHIR"
+      color: "#E44D26"
+      icon: "fas fa-heartbeat"
+    - name: "OpenHIM"
+      color: "#4CAF50"
+      text_color: "#357A38"
+      icon: "fas fa-exchange-alt"
+    - name: "Maven"
+      color: "#C71A36"
+      icon: "fas fa-cogs"
+    - name: "MongoDB"
+      color: "#47A248"
+      text_color: "#2E6B2F"
+      icon: "fas fa-database"
+    - name: "Linux"
+      color: "#FCC624"
+      text_color: "#8A6B13"
+      icon: "fab fa-linux"
 
   categories:
     - id: "mobile"
@@ -81,6 +118,10 @@ filter_config:
       name: "Infrastructure & DevOps"
       icon: "fas fa-server"
       description: "Cloud infrastructure and deployment solutions"
+    - id: "ai"
+      name: "AI & Machine Learning"
+      icon: "fas fa-robot"
+      description: "AI-powered applications and machine learning projects"
     - id: "other"
       name: "Other Projects"
       icon: "fas fa-code"
@@ -265,9 +306,131 @@ projects:
         solution: "Established consistent coding standards and documentation"
         technologies_used: ["Kotlin Style Guide", "Code Reviews"]
 
+  fast-chat-ai:
+    id: "fast-chat-ai"
+    title: "Fast Chat AI - RAG Chatbot"
+    tagline: "Intelligent document-grounded chatbot with multi-LLM support"
+    description: "A Retrieval-Augmented Generation (RAG) chatbot application that lets users upload documents and engage in intelligent conversations grounded in their specific knowledge base. Features multi-LLM provider support, vector search, and hybrid conversation memory."
+    long_description: |
+      Fast Chat AI is a full-stack RAG chatbot that enables users to upload documents (PDF, TXT, DOCX, Markdown) and have intelligent conversations
+      grounded in their specific knowledge base. The application uses vector embeddings stored in PostgreSQL with pgvector for semantic search,
+      ensuring responses are accurate and contextually relevant.
+
+      The system supports multiple LLM providers (OpenAI, Anthropic, Google AI) with automatic failover and cost-optimized provider selection.
+      Conversation memory uses a hybrid Redis + PostgreSQL architecture with auto-summarization to maintain context across long conversations.
+
+      The application features multi-tenant environment management with isolated knowledge bases, role-based access control,
+      and a modern React frontend with TypeScript and Tailwind CSS.
+    technologies: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "Redis", "Docker"]
+    category: "ai"
+    year: 2025
+    status: "in-progress"
+    featured: false
+    featured_image: null
+    gallery: []
+    links:
+      demo: null
+      github: "https://github.com/gosso22/fast-chat-ai"
+      documentation: "/projects/fast-chat-ai/"
+    metrics:
+      users: null
+      performance: "Sub-second semantic search across document collections"
+      impact: "Enables intelligent document Q&A with multi-provider LLM flexibility"
+    challenges:
+      - problem: "Ensuring accurate responses grounded in uploaded documents rather than LLM hallucinations"
+        solution: "Implemented RAG pipeline with pgvector semantic search and intelligent document chunking to retrieve relevant context before generating responses"
+        technologies_used: ["pgvector", "PostgreSQL", "Embedding Models"]
+      - problem: "Managing costs and reliability across multiple LLM providers"
+        solution: "Built a provider abstraction layer with automatic failover and cost-optimized routing between OpenAI, Anthropic, and Google AI"
+        technologies_used: ["OpenAI API", "Anthropic API", "Google AI API"]
+      - problem: "Maintaining conversation context across long interactions without exceeding token limits"
+        solution: "Developed hybrid memory architecture using Redis for short-term context and PostgreSQL for long-term storage with auto-summarization"
+        technologies_used: ["Redis", "PostgreSQL", "Summarization"]
+
+  smart-bridge:
+    id: "smart-bridge"
+    title: "Smart Bridge Interoperability Solution"
+    tagline: "Hub-and-spoke bridge connecting legacy health systems with FHIR"
+    description: "A hub-and-spoke interoperability solution connecting legacy health systems (UCS and GoTHOMIS) with modern FHIR-based ecosystems using OpenHIM as the central routing and transformation engine."
+    long_description: |
+      Smart Bridge is an enterprise healthcare interoperability platform that bridges legacy health information systems with modern FHIR-based
+      ecosystems. Built as a Maven multi-module Spring Boot application, it uses OpenHIM as the central mediator for routing, orchestrating,
+      and transforming health data between disparate systems.
+
+      The system connects UCS (Unified Community System) and GoTHOMIS (Government of Tanzania Health Operations Management Information System)
+      with FHIR R4 compliant services. It features comprehensive data transformation between UCS data models and FHIR resources,
+      audit logging for compliance, and Prometheus-based monitoring with custom healthcare metrics.
+
+      The modular architecture separates core data models, transformation logic, OpenHIM mediators, and the main application
+      into independent Maven modules for maintainability and testability.
+    technologies: ["Java", "Spring Boot", "HAPI FHIR", "OpenHIM", "FHIR", "Maven"]
+    category: "infrastructure"
+    year: 2026
+    status: "in-progress"
+    featured: false
+    featured_image: null
+    gallery: []
+    links:
+      demo: null
+      github: "https://github.com/gosso22/smart-bridge"
+      documentation: "/projects/smart-bridge/"
+    metrics:
+      users: null
+      performance: "Real-time data transformation between legacy and FHIR systems"
+      impact: "Enables interoperability between Tanzania's legacy health systems and modern FHIR ecosystems"
+    challenges:
+      - problem: "Legacy health systems use proprietary data formats incompatible with modern standards"
+        solution: "Built a transformation layer that maps UCS data models (identifiers, demographics, clinical data) to FHIR R4 resources using HAPI FHIR"
+        technologies_used: ["HAPI FHIR", "Java", "Data Mapping"]
+      - problem: "Routing health data between multiple systems with different protocols and endpoints"
+        solution: "Used OpenHIM as the central interoperability layer with custom mediators for each system, handling routing, orchestration, and error recovery"
+        technologies_used: ["OpenHIM", "Spring Boot", "Mediator Pattern"]
+      - problem: "Ensuring compliance and traceability for all health data exchanges"
+        solution: "Implemented multi-tier audit logging with 365-day retention for compliance and security events, plus Prometheus metrics for real-time monitoring"
+        technologies_used: ["Logback", "Micrometer", "Prometheus"]
+
+  mongodb-orangepi-binaries:
+    id: "mongodb-orangepi-binaries"
+    title: "MongoDB 5.0 for Orange Pi (ARM64)"
+    tagline: "Precompiled MongoDB server binary for ARM64 single-board computers"
+    description: "Unofficial precompiled MongoDB 5.0.24 runtime binary for Orange Pi and other ARM64 (AArch64) Linux devices, enabling MongoDB on resource-constrained single-board computers."
+    long_description: |
+      This project provides a precompiled MongoDB 5.0.24 server binary for Orange Pi devices running ARM64 Linux.
+      MongoDB does not officially distribute ARM64 builds for single-board computers, so this community build fills that gap
+      by cross-compiling mongod for AArch64 architecture.
+
+      The binary is a dynamically linked ELF 64-bit executable built against OpenSSL 1.1 and glibc, compatible with
+      Ubuntu 20.04/22.04 and Debian 11 (bullseye) on ARM64. It has been tested and verified on Orange Pi hardware
+      with kernel version 3.7 and above.
+
+      The distribution includes only the mongod server binary, keeping the package lightweight and focused
+      for embedded and IoT deployment scenarios.
+    technologies: ["MongoDB", "Linux"]
+    category: "infrastructure"
+    year: 2025
+    status: "completed"
+    featured: false
+    featured_image: null
+    gallery: []
+    links:
+      demo: null
+      github: "https://github.com/gosso22/mongodb-orangepi-binaries"
+      documentation: "/projects/mongodb-orangepi-binaries/"
+    metrics:
+      users: null
+      performance: "Full MongoDB 5.0.24 server on ARM64 single-board computers"
+      impact: "Enables MongoDB deployments on Orange Pi and similar ARM64 devices"
+    challenges:
+      - problem: "MongoDB does not provide official ARM64 builds for single-board computers"
+        solution: "Cross-compiled MongoDB 5.0.24 from source targeting AArch64 architecture with dynamic glibc linking"
+        technologies_used: ["MongoDB Source", "ARM64 Toolchain", "Linux"]
+      - problem: "OpenSSL 1.1 dependency not available on newer Ubuntu versions"
+        solution: "Documented compatibility requirements and provided installation instructions for OpenSSL 1.1 compatibility packages"
+        technologies_used: ["OpenSSL", "Package Management"]
+
 # Project Statistics
 stats:
-  total_projects: 4
-  technologies_used: 17
-  years_active: 6
+  total_projects: 7
+  technologies_used: 29
+  years_active: 8
   featured_count: 3
