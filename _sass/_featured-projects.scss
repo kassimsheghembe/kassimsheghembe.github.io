@@ -405,7 +405,22 @@
   }
 }
 
-/* Responsive */
+/* Responsive - Tablet */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .featured-secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured-hero-content {
+    padding: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Responsive - Mobile */
 @media (max-width: 768px) {
   .featured-hero {
     flex-direction: column;

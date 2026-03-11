@@ -29,9 +29,34 @@ $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
 
-// Mobile breakpoints
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+// Mobile-first mixins (min-width)
+@mixin tablet {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media screen and (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Max-width mixin (kept for backwards compatibility)
 @mixin mobile {
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: $breakpoint-sm) {
     @content;
   }
 }

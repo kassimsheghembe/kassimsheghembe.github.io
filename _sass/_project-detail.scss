@@ -1816,7 +1816,7 @@ Projects Page Styles */
 }
 
 /* Responsive Grid Adjustments */
-@media (max-width: 1200px) {
+@media (max-width: 1023px) {
   .projects-page {
     .projects-grid {
       .col-xl-4 {
@@ -1872,9 +1872,10 @@ Projects Page Styles */
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
   .projects-page {
     .projects-grid {
+      .col-xl-4,
       .project-item {
         flex: 0 0 100%;
         max-width: 100%;

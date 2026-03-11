@@ -29,11 +29,28 @@
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 
+    .sidebar-wrapper {
+        width: 220px;
+    }
+
+    .main-wrapper {
+        padding: 40px;
+        padding-right: 260px;
+    }
 
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+    .sidebar-wrapper {
+        width: 280px;
+    }
+
+    .main-wrapper {
+        padding: 60px;
+        padding-right: 340px;
+    }
 
     .skillset .level-title {
         display: inline-block;
@@ -50,16 +67,22 @@
         top: 1px;
     }
 
-
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 
+    .wrapper {
+        max-width: 1100px;
+    }
+
 }
 
-
-/* Ex-Large devices (large desktops, 1200px and up) */
+/* Ex-Large devices (large desktops, 1400px and up) */
 @media (min-width: 1400px) {
+
+    .wrapper {
+        max-width: 1200px;
+    }
 
 }
