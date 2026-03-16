@@ -8,6 +8,7 @@
 */
 
 @import "mixins";
+@import "dark-mode";
 @import "base";
 @import "responsive";
 @import "print";
@@ -17,3 +18,9 @@
 @import "project-timeline";
 @import "featured-projects";
 @import "skill-progression";
+@import "hero";
+@import "skills-home";
+@import "testimonials";
+@import "blog";
+@import "contact";
+@import "about";

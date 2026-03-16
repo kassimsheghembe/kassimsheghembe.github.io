@@ -1,12 +1,13 @@
 /* ======= Base ======= */
 body {
     font-family: 'Roboto', sans-serif;
-    color: $text-color-secondary;
-    background: $smoky-white;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
     font-size: 14px;
     padding: 30px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, h4, h5, h6  {
@@ -14,10 +15,10 @@ h1, h2, h3, h4, h5, h6  {
 }
 
 a {
-    color: darken($theme-color, 15%);
+    color: var(--theme-color);
     &:hover {
         text-decoration: underline;
-        color: darken($theme-color, 30%);
+        color: var(--theme-color-dark);
     }
     &:focus {
         text-decoration: none;
@@ -33,7 +34,7 @@ p {
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    @include box-shadow(0px 2px 4px rgba(0,0,0,0.1));
+    @include box-shadow(0px 2px 4px var(--shadow-color));
 }
 
 .sidebar-wrapper {
@@ -154,14 +155,14 @@ p {
 }
 
 .main-wrapper {
-    background: #fff;
+    background: var(--bg-surface);
     padding: 60px;
     padding-right: 340px;
     .section-title {
         text-transform: uppercase;
         font-size: 20px;
         font-weight: 500;
-        color: darken($theme-color, 15%);
+        color: var(--theme-color);
         position: relative;
         margin-top: 0;
         margin-bottom: 20px;
@@ -181,7 +182,7 @@ p {
         margin-bottom: 2px;
     }
     .job-title, .degree {
-        color: $text-color;
+        color: var(--text-primary);
         font-size: 16px;
         margin-top: 0;
         margin-bottom: 0;
@@ -191,11 +192,11 @@ p {
         position: absolute;
         right: 0;
         top: 0;
-        color: $text-grey;
+        color: var(--text-muted);
     }
     .company, .university {
         margin-bottom: 10px;
-        color: $text-grey;
+        color: var(--text-muted);
     }
 
     .project-title {
@@ -203,7 +204,7 @@ p {
         font-weight: 400;
         margin-top: 0;
         margin-bottom: 5px;
-	color: darken($theme-color, 15%);
+	color: var(--theme-color);
     }
     .projects-section {
         .intro {
@@ -217,12 +218,12 @@ p {
     .publication-title {
         font-size: 16px;
         font-weight: 400;
-        color: $text-color;
+        color: var(--text-primary);
         margin-bottom: 1px;
     }
     .publication-authors {
         font-style: italic;
-        color: $text-grey;
+        color: var(--text-muted);
         margin-bottom: 1px;
     }
     .publications-section {
@@ -248,7 +249,7 @@ p {
     }
     .level-bar {
         height: 12px;
-        background: $smoky-white;
+        background: var(--bg-primary);
     }
     .level-bar-inner {
         height: 12px;
@@ -263,7 +264,7 @@ p {
     padding-top: 30px;
     .copyright {
         line-height: 1.6;
-        color: $text-color-secondary;
+        color: var(--text-secondary);
         font-size: 13px;
     }
 

@@ -31,25 +31,35 @@ html {
   font-size: 100%;
 }
 
+html[data-theme="dark"] {
+  --primary-background-color: #121212;
+  --primary-text-color: #e0e0e0;
+  --primary-highlight-color: #2c2c2c;
+}
+
 body {
-  background: $white;
+  background: var(--primary-background-color);
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  color: var(--primary-text-color);
 }
 
 .index-body {
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   transition: background 0.1s ease-in, color 0.1s ease-in;
-  overflow: hidden;
-  display: flex;
-  // font-size: 120%;
 }
 
 .container {
   margin: 0 auto;
   max-width: 960px;
   padding: 0 10px;
+  width: 100%;
+}
+
+.container-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   width: 100%;
 }
 
@@ -60,7 +70,7 @@ h4,
 h5,
 h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  color: var(--primary-text-color);
   font-weight: 600;
 
   line-height: 1.7;
@@ -91,7 +101,6 @@ h3 {
 
 h4 {
   font-size: 18px;
-  color: $gray;
 }
 
 p {
@@ -150,7 +159,8 @@ img {
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: var(--primary-text-color);
+  opacity: 0.6;
 }
 
 // Specify the color of the selection
@@ -188,10 +198,11 @@ img {
 }
 
 .masthead {
-  padding: 20px 0;
+  padding: 20px 0 0;
 
   .row {
-    border-bottom: 1px solid $lightGray;
+    border-bottom: 1px solid var(--primary-highlight-color);
+    padding-bottom: 1rem;
   }
 
   @include mobile {
@@ -240,7 +251,7 @@ img {
       left: -100%;
       top: 5rem;
       flex-direction: column;
-      background-color: #fff;
+      background-color: var(--primary-background-color, #fff);
       width: 100%;
       border-radius: 10px;
       text-align: center;
@@ -275,7 +286,7 @@ img {
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: #101010;
+  background-color: var(--primary-text-color);
 }
 
 .nav-menu {
@@ -299,27 +310,31 @@ img {
 
 .site-logo {
   position: absolute;
-  font-size: 6rem;
-  line-height: 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
   margin: 0;
   padding: 0;
   z-index: 3;
   display: flex;
   flex-direction: column;
   a {
-    color: #121212;
+    color: var(--primary-text-color);
     font-weight: 900;
+    text-decoration: none;
+    margin: 0;
   }
   p {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    margin: 0.15rem 0 0;
+    padding-bottom: 1rem;
     font-size: 0.8rem;
+    color: var(--primary-text-color);
+    opacity: 0.7;
   }
 }
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: var(--primary-text-color);
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -329,7 +344,8 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $gray;
+  color: var(--primary-text-color);
+  opacity: 0.6;
   font-size: 16px;
 
   @include mobile {
@@ -370,7 +386,7 @@ img {
         left: -100%;
         top: 25rem;
         flex-direction: column;
-        background-color: #fff;
+        background-color: var(--primary-background-color, #fff);
         width: 100%;
         border-radius: 10px;
         text-align: center;
@@ -562,14 +578,13 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: var(--primary-text-color);
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
     }
   }
 }
@@ -580,7 +595,7 @@ nav {
 
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid var(--primary-highlight-color);
 }
 
 .posts > .post:last-child {
@@ -740,7 +755,7 @@ nav {
 
 footer {
   padding: 50px 0 0;
-  border-top: 1px solid $lightGray;
+  border-top: 1px solid var(--primary-highlight-color);
   height: 30%;
   text-align: center;
 }
@@ -829,7 +844,7 @@ footer {
 .postWrapper .posttitle {
   position: absolute;
   top: -40px;
-  background: #fff;
+  background: var(--primary-background-color);
   padding: 0 10px;
 }
 
@@ -917,12 +932,12 @@ footer {
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--primary-highlight-color);
     border-radius: 4px;
     font-size: 13px;
     text-decoration: none;
-    color: #495057;
-    background: #fff;
+    color: var(--primary-text-color);
+    background: var(--primary-background-color);
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 

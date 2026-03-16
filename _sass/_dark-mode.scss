@@ -1,0 +1,54 @@
+/* Dark Mode — CSS Custom Properties */
+
+:root {
+  --bg-primary: #{$smoky-white};
+  --bg-surface: #fff;
+  --bg-surface-elevated: #fff;
+  --text-primary: #{$text-color};
+  --text-secondary: #{$text-color-secondary};
+  --text-muted: #{$text-grey};
+  --border-color: #{$divider};
+  --theme-color: #{$theme-color};
+  --theme-color-dark: #{$theme-color-dark};
+  --theme-color-light: #{$theme-color-light};
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --code-bg: #{$smoky-white};
+}
+
+[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-surface: #1e1e1e;
+  --bg-surface-elevated: #2c2c2c;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --border-color: #333;
+  --theme-color: #5ec6d9;
+  --theme-color-dark: #4ab0c3;
+  --theme-color-light: #1a3a42;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --code-bg: #2c2c2c;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary, #{$text-color});
+  font-size: 1.1rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 2px solid var(--theme-color, #{$theme-color});
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
