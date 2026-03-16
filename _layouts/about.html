@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<div class="about-page">
+
+  {% comment %} Hero header with photo and name {% endcomment %}
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <img class="about-photo" src="{{ site.baseurl }}/assets/images/profile.jpg" alt="Kassim Sheghembe" />
+      <div class="about-hero-text">
+        <h1>{{ page.title }}</h1>
+        <p class="about-subtitle">Software Engineer | Dar es Salaam, Tanzania</p>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} Achievement cards {% endcomment %}
+  <section class="about-achievements">
+    <div class="achievement-grid">
+      <div class="achievement-card">
+        <i class="fas fa-award"></i>
+        <h3>Julius Nyerere Scholar</h3>
+        <p>Full scholarship to University of Edinburgh</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>MSc Informatics</h3>
+        <p>University of Edinburgh, 2018</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>10+ Years Experience</h3>
+        <p>Software engineering across healthcare and agriculture</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-heartbeat"></i>
+        <h3>Healthcare Impact</h3>
+        <p>Digital health solutions across Tanzania</p>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} Main content from markdown {% endcomment %}
+  <section class="about-content">
+    {{ content }}
+  </section>
+
+</div>

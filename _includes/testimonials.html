@@ -1,0 +1,26 @@
+{% if site.data.testimonials.size > 0 %}
+<section class="testimonials" aria-label="Testimonials">
+  <div class="testimonials-inner">
+    <h2 class="testimonials-heading">What People Say</h2>
+
+    <div class="testimonials-grid">
+      {% for testimonial in site.data.testimonials %}
+      <div class="testimonial-card">
+        <blockquote class="testimonial-quote">
+          {{ testimonial.quote }}
+        </blockquote>
+        <div class="testimonial-author">
+          {% if testimonial.photo %}
+          <img class="testimonial-photo" src="{{ testimonial.photo }}" alt="{{ testimonial.author }}" />
+          {% endif %}
+          <div>
+            <strong class="testimonial-name">{{ testimonial.author }}</strong>
+            <span class="testimonial-role">{{ testimonial.role }}, {{ testimonial.organization }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
