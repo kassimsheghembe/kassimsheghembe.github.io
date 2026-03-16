@@ -4,7 +4,7 @@ layout: default
 ---
 
 <div class="projects-page">
-  <div class="container">
+  <div class="container-wide">
 
     {% comment %} Page Header {% endcomment %}
     <div class="projects-header">
@@ -161,7 +161,7 @@ layout: default
       <div class="projects-grid" id="grid-view">
         <div class="row" id="projects-container">
           {% for project in site.data.projects.projects %}
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4 project-item"
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-4 project-item"
                  data-category="{{ project[1].category }}"
                  data-year="{{ project[1].year }}"
                  data-technologies="{{ project[1].technologies | join: ',' | downcase }}">

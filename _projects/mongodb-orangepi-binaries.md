@@ -6,6 +6,11 @@ permalink: /projects/mongodb-orangepi-binaries/
 description: "Unofficial precompiled MongoDB 5.0.24 runtime binary for Orange Pi and other ARM64 (AArch64) Linux devices, enabling MongoDB on resource-constrained single-board computers."
 ---
 
+## Project Gallery
+
+{% assign project_data = site.data.projects.projects[page.project_id] %}
+{% include project-gallery.html gallery=project_data.gallery project_id=page.project_id %}
+
 ## Detailed Project Documentation
 
 ### Background & Context

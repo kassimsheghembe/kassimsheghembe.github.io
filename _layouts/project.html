@@ -11,7 +11,7 @@ layout: default
   
   {% comment %} Hero Section {% endcomment %}
   <section class="project-hero">
-    <div class="container">
+    <div class="container-wide">
       <div class="row">
         <div class="col-lg-8">
           <div class="project-header">
@@ -94,10 +94,17 @@ layout: default
   
   {% comment %} Main Content {% endcomment %}
   <section class="project-content">
-    <div class="container">
+    <div class="container-wide">
       <div class="row">
         <div class="col-lg-8">
           
+          {% comment %} Plain-English Summary {% endcomment %}
+          {% if project.summary %}
+          <div class="project-summary-box">
+            <strong>In a nutshell:</strong> {{ project.summary }}
+          </div>
+          {% endif %}
+
           {% comment %} Project Overview {% endcomment %}
           <section class="project-section">
             <h2>Project Overview</h2>
@@ -112,28 +119,17 @@ layout: default
 
           
           {% comment %} Project Impact & Metrics {% endcomment %}
-          {% if project.metrics %}
+          {% if project.metrics and project.metrics.size > 0 %}
           <section class="project-section">
             <h2>Project Impact</h2>
             <div class="metrics-grid">
-              {% if project.metrics.users %}
+              {% for metric in project.metrics %}
                 <div class="metric-item">
-                  <div class="metric-value">{{ project.metrics.users }}+</div>
-                  <div class="metric-label">Users</div>
+                  <div class="metric-icon"><i class="{{ metric.icon }}"></i></div>
+                  <div class="metric-value">{{ metric.value }}</div>
+                  <div class="metric-label">{{ metric.label }}</div>
                 </div>
-              {% endif %}
-              {% if project.metrics.performance %}
-                <div class="metric-item">
-                  <div class="metric-value"><i class="fas fa-chart-line"></i></div>
-                  <div class="metric-label">{{ project.metrics.performance }}</div>
-                </div>
-              {% endif %}
-              {% if project.metrics.impact %}
-                <div class="metric-item">
-                  <div class="metric-value"><i class="fas fa-trophy"></i></div>
-                  <div class="metric-label">{{ project.metrics.impact }}</div>
-                </div>
-              {% endif %}
+              {% endfor %}
             </div>
           </section>
           {% endif %}
@@ -293,7 +289,7 @@ layout: default
 
 {% else %}
   {% comment %} Project not found {% endcomment %}
-  <div class="container">
+  <div class="container-wide">
     <div class="row">
       <div class="col-12">
         <div class="alert alert-warning" role="alert">

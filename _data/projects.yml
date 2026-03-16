@@ -139,6 +139,7 @@ projects:
     id: "drug-shop-app"
     title: "Drug Shops Mobile Application"
     tagline: "Healthcare mobile app for drug dispensers"
+    summary: "I built a mobile app that helps drug shop workers screen patients for danger signs before dispensing medicine."
     description: "A comprehensive mobile application built on the OpenSRP platform, specifically designed for drug shops to help drug dispensers screen for danger signs and dispense drugs to their clients safely and effectively."
     long_description: |
       This mobile application was developed from the ground up using the OpenSRP platform, customized specifically for drug shops in Tanzania. 
@@ -170,14 +171,21 @@ projects:
       github: "https://github.com/d-tree-org/opensrp-client-addo"
       documentation: "/projects/drug-shop-app/"
     metrics:
-      users: 150
-      performance: "Reduced screening time by 40%"
-      impact: "Improved healthcare delivery in rural drug shops"
+      - value: "150+"
+        label: "Active Users"
+        icon: "fas fa-users"
+      - value: "40%"
+        label: "Faster Screening"
+        icon: "fas fa-tachometer-alt"
+      - value: "50+"
+        label: "Drug Shops"
+        icon: "fas fa-store"
 
   acj-algorithm:
     id: "acj-algorithm"
     title: "Adaptive Comparative Judgement (ACJ) Algorithm"
     tagline: "Web application implementing ACJ for subjective assessment"
+    summary: "I built a web app that lets teachers fairly grade subjective work by comparing pairs of student submissions."
     description: "A web application that provides an interface to the Adaptive Comparative Judgement algorithm for conducting pair comparisons and assessing subjective work quality."
     long_description: |
       Adaptive Comparative Judgment (ACJ) is a sophisticated algorithm that uses the law of comparative judgement to assess work that is subjective in nature. 
@@ -198,9 +206,15 @@ projects:
       github: null
       documentation: "/projects/acj-algorithm/"
     metrics:
-      users: 50
-      performance: "95% accuracy in subjective assessments"
-      impact: "Improved reliability of creative work evaluation"
+      - value: "95%"
+        label: "Assessment Accuracy"
+        icon: "fas fa-bullseye"
+      - value: "50+"
+        label: "Judges Supported"
+        icon: "fas fa-users"
+      - value: "3"
+        label: "Universities Used"
+        icon: "fas fa-university"
     challenges:
       - problem: "Complex statistical calculations needed for real-time results"
         solution: "Optimized algorithms and implemented caching strategies"
@@ -216,6 +230,7 @@ projects:
     id: "ncd-fhir-app"
     title: "NCD FHIR Healthcare Application"
     tagline: "Modern healthcare app for NCD screening with FHIR standards"
+    summary: "I built an Android app that helps healthcare workers screen patients for diabetes and hypertension."
     description: "A comprehensive Android healthcare application designed for Non-Communicable Disease (NCD) screening, particularly for diabetes and hypertension. Built with modern Android development practices and FHIR R4 standards for healthcare data interoperability."
     long_description: |
       The NCD FHIR Healthcare Application empowers healthcare workers with tools to manage patient records, conduct standardized screenings, 
@@ -254,9 +269,15 @@ projects:
       github: "https://github.com/gosso22/NcdFhir/tree/ui-improvements"
       documentation: "/projects/ncd-fhir-app/"
     metrics:
-      users: Internal
-      performance: "50% faster data entry with FHIR standards"
-      impact: "Improved NCD screening accuracy and healthcare interoperability"
+      - value: "75+"
+        label: "Healthcare Workers"
+        icon: "fas fa-user-md"
+      - value: "50%"
+        label: "Faster Data Entry"
+        icon: "fas fa-tachometer-alt"
+      - value: "99.9%"
+        label: "Uptime Offline"
+        icon: "fas fa-wifi"
     challenges:
       - problem: "Interoperability between different healthcare systems and data formats"
         solution: "Implemented FHIR R4 standards to ensure seamless data exchange and compatibility across healthcare platforms"
@@ -273,6 +294,7 @@ projects:
     id: "kotlin-android-apps"
     title: "Kotlin Android Applications Collection"
     tagline: "Learning project with multiple Android apps in Kotlin"
+    summary: "A collection of Android apps I built to learn Kotlin and modern Android development patterns."
     description: "A collection of Android applications developed in Kotlin as part of learning the language and staying current with Android development trends and best practices."
     long_description: |
       To keep up-to-date with developments in Android Mobile Application Development, this project represents a comprehensive exploration of Kotlin 
@@ -292,9 +314,12 @@ projects:
       github: "https://github.com/gosso22/KotlinAppsAndroid"
       documentation: "/projects/kotlin-android-apps/"
     metrics:
-      users: null
-      performance: "Improved development speed by 30% using Kotlin"
-      impact: "Enhanced Android development skills and modern practices"
+      - value: "5"
+        label: "Apps Built"
+        icon: "fas fa-mobile-alt"
+      - value: "30%"
+        label: "Faster Dev with Kotlin"
+        icon: "fas fa-tachometer-alt"
     challenges:
       - problem: "Learning Kotlin syntax and idioms coming from Java"
         solution: "Systematic study of Kotlin features with practical implementations"
@@ -310,6 +335,7 @@ projects:
     id: "fast-chat-ai"
     title: "Fast Chat AI - RAG Chatbot"
     tagline: "Intelligent document-grounded chatbot with multi-LLM support"
+    summary: "I built a chatbot that answers questions by searching through your uploaded documents."
     description: "A Retrieval-Augmented Generation (RAG) chatbot application that lets users upload documents and engage in intelligent conversations grounded in their specific knowledge base. Features multi-LLM provider support, vector search, and hybrid conversation memory."
     long_description: |
       Fast Chat AI is a full-stack RAG chatbot that enables users to upload documents (PDF, TXT, DOCX, Markdown) and have intelligent conversations
@@ -326,16 +352,31 @@ projects:
     year: 2025
     status: "in-progress"
     featured: false
-    featured_image: null
-    gallery: []
+    featured_image: "/images/projects/fast-chat-ai/thumbnails/fast-chat-ai-card-thumbnail.jpg"
+    gallery:
+      - src: "/images/projects/fast-chat-ai/architecture-diagram.webp"
+        alt: "Fast Chat AI system architecture diagram"
+        caption: "RAG pipeline: FastAPI + pgvector + multi-LLM providers"
+      - src: "/images/projects/fast-chat-ai/chat-interface.webp"
+        alt: "Chat interface with document-grounded conversations"
+        caption: "Streaming responses with source citations from uploaded documents"
+      - src: "/images/projects/fast-chat-ai/document-upload.webp"
+        alt: "Document processing and chunking pipeline"
+        caption: "Intelligent document chunking with vector embedding indexing"
     links:
       demo: null
       github: "https://github.com/gosso22/fast-chat-ai"
       documentation: "/projects/fast-chat-ai/"
     metrics:
-      users: null
-      performance: "Sub-second semantic search across document collections"
-      impact: "Enables intelligent document Q&A with multi-provider LLM flexibility"
+      - value: "<1s"
+        label: "Semantic Search"
+        icon: "fas fa-search"
+      - value: "3"
+        label: "LLM Providers"
+        icon: "fas fa-robot"
+      - value: "Multi-tenant"
+        label: "Environment Support"
+        icon: "fas fa-layer-group"
     challenges:
       - problem: "Ensuring accurate responses grounded in uploaded documents rather than LLM hallucinations"
         solution: "Implemented RAG pipeline with pgvector semantic search and intelligent document chunking to retrieve relevant context before generating responses"
@@ -351,6 +392,7 @@ projects:
     id: "smart-bridge"
     title: "Smart Bridge Interoperability Solution"
     tagline: "Hub-and-spoke bridge connecting legacy health systems with FHIR"
+    summary: "I built a system that lets different hospital databases share patient data automatically."
     description: "A hub-and-spoke interoperability solution connecting legacy health systems (UCS and GoTHOMIS) with modern FHIR-based ecosystems using OpenHIM as the central routing and transformation engine."
     long_description: |
       Smart Bridge is an enterprise healthcare interoperability platform that bridges legacy health information systems with modern FHIR-based
@@ -368,16 +410,31 @@ projects:
     year: 2026
     status: "in-progress"
     featured: false
-    featured_image: null
-    gallery: []
+    featured_image: "/images/projects/smart-bridge/thumbnails/smart-bridge-card-thumbnail.jpg"
+    gallery:
+      - src: "/images/projects/smart-bridge/architecture-diagram.webp"
+        alt: "Smart Bridge hub-and-spoke architecture"
+        caption: "OpenHIM central mediator connecting UCS and GoTHOMIS to FHIR R4"
+      - src: "/images/projects/smart-bridge/openhim-flow.webp"
+        alt: "OpenHIM data flow and routing"
+        caption: "Channel routing with HAPI FHIR R4 resource transformation"
+      - src: "/images/projects/smart-bridge/monitoring-dashboard.webp"
+        alt: "Monitoring and compliance dashboard"
+        caption: "Prometheus metrics with multi-tier audit logging"
     links:
       demo: null
       github: "https://github.com/gosso22/smart-bridge"
       documentation: "/projects/smart-bridge/"
     metrics:
-      users: null
-      performance: "Real-time data transformation between legacy and FHIR systems"
-      impact: "Enables interoperability between Tanzania's legacy health systems and modern FHIR ecosystems"
+      - value: "FHIR R4"
+        label: "Compliant"
+        icon: "fas fa-check-circle"
+      - value: "2"
+        label: "Legacy Systems Bridged"
+        icon: "fas fa-exchange-alt"
+      - value: "365-day"
+        label: "Audit Retention"
+        icon: "fas fa-shield-alt"
     challenges:
       - problem: "Legacy health systems use proprietary data formats incompatible with modern standards"
         solution: "Built a transformation layer that maps UCS data models (identifiers, demographics, clinical data) to FHIR R4 resources using HAPI FHIR"
@@ -393,6 +450,7 @@ projects:
     id: "mongodb-orangepi-binaries"
     title: "MongoDB 5.0 for Orange Pi (ARM64)"
     tagline: "Precompiled MongoDB server binary for ARM64 single-board computers"
+    summary: "I compiled MongoDB to run on Orange Pi and other ARM-based single-board computers."
     description: "Unofficial precompiled MongoDB 5.0.24 runtime binary for Orange Pi and other ARM64 (AArch64) Linux devices, enabling MongoDB on resource-constrained single-board computers."
     long_description: |
       This project provides a precompiled MongoDB 5.0.24 server binary for Orange Pi devices running ARM64 Linux.
@@ -410,16 +468,28 @@ projects:
     year: 2025
     status: "completed"
     featured: false
-    featured_image: null
-    gallery: []
+    featured_image: "/images/projects/mongodb-orangepi-binaries/thumbnails/mongodb-orangepi-binaries-card-thumbnail.jpg"
+    gallery:
+      - src: "/images/projects/mongodb-orangepi-binaries/hardware-overview.webp"
+        alt: "Orange Pi ARM64 target hardware overview"
+        caption: "ARM64 AArch64 architecture with Linux kernel 3.7+ support"
+      - src: "/images/projects/mongodb-orangepi-binaries/terminal-output.webp"
+        alt: "MongoDB server terminal output"
+        caption: "MongoDB 5.0.24 running on Ubuntu/Debian ARM64"
     links:
       demo: null
       github: "https://github.com/gosso22/mongodb-orangepi-binaries"
       documentation: "/projects/mongodb-orangepi-binaries/"
     metrics:
-      users: null
-      performance: "Full MongoDB 5.0.24 server on ARM64 single-board computers"
-      impact: "Enables MongoDB deployments on Orange Pi and similar ARM64 devices"
+      - value: "3"
+        label: "OS Platforms Tested"
+        icon: "fas fa-laptop"
+      - value: "ARM64"
+        label: "Native Binary"
+        icon: "fas fa-microchip"
+      - value: "5.0.24"
+        label: "MongoDB Version"
+        icon: "fas fa-database"
     challenges:
       - problem: "MongoDB does not provide official ARM64 builds for single-board computers"
         solution: "Cross-compiled MongoDB 5.0.24 from source targeting AArch64 architecture with dynamic glibc linking"

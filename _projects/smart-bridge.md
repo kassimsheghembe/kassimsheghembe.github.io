@@ -6,6 +6,11 @@ permalink: /projects/smart-bridge/
 description: "A hub-and-spoke interoperability solution connecting legacy health systems (UCS and GoTHOMIS) with modern FHIR-based ecosystems using OpenHIM as the central routing and transformation engine."
 ---
 
+## Project Gallery
+
+{% assign project_data = site.data.projects.projects[page.project_id] %}
+{% include project-gallery.html gallery=project_data.gallery project_id=page.project_id %}
+
 ## Detailed Project Documentation
 
 ### Background & Context

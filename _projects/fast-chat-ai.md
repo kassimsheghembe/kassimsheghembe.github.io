@@ -6,6 +6,11 @@ permalink: /projects/fast-chat-ai/
 description: "A full-stack Retrieval-Augmented Generation chatbot with multi-LLM support, vector search, and hybrid conversation memory for intelligent document-grounded conversations."
 ---
 
+## Project Gallery
+
+{% assign project_data = site.data.projects.projects[page.project_id] %}
+{% include project-gallery.html gallery=project_data.gallery project_id=page.project_id %}
+
 ## Detailed Project Documentation
 
 ### Background & Context
