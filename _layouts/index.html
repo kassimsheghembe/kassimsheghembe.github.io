@@ -3,30 +3,30 @@ title: Kassim Sheghembe
 layout: home
 ---
 
-<div class="mid-section-home">
-  <div class="container">
-    <div class="row justify-content-center">
-      <p id="greet">HELLO, I AM </p>
-    </div>
-    <div class="row justify-content-center">
-      <h1>
-        {{ page.title }}
-      </h1>
-    </div>
-    <div class="row justify-content-start">
-      <div class="col-md-6">
-        <p style="text-align: right">{{ page.home_text }}</p>
+<section class="hero-with-skills" aria-label="Introduction">
+  <div class="hero-col">
+    <div class="hero-container">
+      <img class="hero-avatar" src="{{ site.baseurl }}/assets/images/profile.jpg" alt="Kassim Sheghembe" />
+      <h1 class="hero-headline">Kassim Sheghembe</h1>
+      <p class="hero-subtitle">Software Engineer | Healthcare Technology &amp; FHIR</p>
+      <p class="hero-tagline">{{ page.home_text }}</p>
+      <div class="hero-cta">
+        <a href="{{ '/projects/' | relative_url }}" class="btn-hero-primary">View My Projects</a>
+        <a href="{{ '/assets/files/Kassim_Sheghembe_CV.pdf' | relative_url }}" class="btn-hero-outline" download="Kassim_Sheghembe_CV.pdf"><i class="fas fa-download"></i> Download CV</a>
       </div>
-      <div class="col-md-6 navig-link">
-        <nav class="navbar" role="navigation">
-          <ul class="nav-menu"> {% include navigation.html %} </ul>
-          <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-        </nav>
+      {% if site.open_to_work %}
+      {% include open-to-work.html %}
+      {% endif %}
+      <div class="hero-social">
+        <a href="https://github.com/gosso22" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sheghembekassim" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </div>
-</div>
+  <div class="skills-col">
+    {% include skills-home.html %}
+  </div>
+</section>
+
+{% include testimonials.html %}
+{% include latest-posts.html %}

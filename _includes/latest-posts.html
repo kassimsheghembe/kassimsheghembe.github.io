@@ -1,0 +1,28 @@
+{% if site.posts.size > 0 %}
+<section class="latest-posts" aria-label="Latest Writing">
+  <div class="latest-posts-inner">
+    <h2 class="latest-posts-heading">Latest Writing</h2>
+
+    {% for post in site.posts limit:3 %}
+    <div class="latest-post-item">
+      <a href="{{ post.url | relative_url }}">
+        <h3 class="latest-post-title">{{ post.title }}</h3>
+      </a>
+      <div class="latest-post-meta">
+        {{ post.date | date: "%B %-d, %Y" }}
+        {% assign words = post.content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        &middot; {{ minutes }} min read
+      </div>
+      <p class="latest-post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      <a href="{{ post.url | relative_url }}" class="latest-post-read-more">Read more &rarr;</a>
+    </div>
+    {% endfor %}
+
+    <div class="latest-posts-cta">
+      <a href="{{ '/blog/' | relative_url }}">View all posts &rarr;</a>
+    </div>
+  </div>
+</section>
+{% endif %}

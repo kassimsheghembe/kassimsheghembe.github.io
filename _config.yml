@@ -2,7 +2,7 @@ title: Kassim Sheghembe | Software Engineer | Dar es Salaam
 name: Kassim Sheghembe
 subtitle: Software Engineer & Data Enthusiast
 author_name: Kassim Sheghembe
-description: Personal website of Kassim Sheghembe, a software engineer in Dar es Salaam specializing in cloud, data engineering, and full-stack development.
+description: "Kassim Sheghembe — Software Engineer specializing in healthcare technology, FHIR interoperability, and full-stack development. Based in Dar es Salaam, Tanzania."
 
 # Site URL (used for canonical URLs, sitemap, and Open Graph)
 url: "https://kassimsheghembe.dev"
@@ -25,7 +25,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/images/og-default.jpg
+      image: /assets/images/og-default.png
 
 # Plugins
 plugins:
@@ -38,6 +38,13 @@ collections:
   projects:
     output: true
     permalink: /:collection/:name/
+
+# Availability banner
+open_to_work: true
+open_to_work_text: "Open to Software Engineering roles in Healthcare Technology"
+
+# Google Analytics (GA4)
+google_analytics: "G-EF5VRY95MQ"
 
 # Live reload
 livereload: true

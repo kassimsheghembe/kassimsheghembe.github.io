@@ -1,0 +1,25 @@
+<section class="skills-home" aria-label="Skills and Technologies">
+  <div class="skills-home-inner">
+    <h2 class="skills-home-heading">Skills & Technologies</h2>
+
+    {% for category in site.data.skills_home.categories %}
+    <div class="skills-category">
+      <h3 class="skills-category-name">{{ category.name }}</h3>
+      <div class="skills-tags">
+        {% for tech in category.skills %}
+          {% assign tech_data = site.data.projects.filter_config.technologies | where: "name", tech | first %}
+          <span class="skill-tag"
+            style="background: {{ tech_data.color }}20; color: {% if tech_data.text_color %}{{ tech_data.text_color }}{% else %}{{ tech_data.color }}{% endif %}; border: 1px solid {{ tech_data.color }}40;">
+            {% if tech_data.icon %}<i class="{{ tech_data.icon }}"></i>{% endif %}
+            {{ tech }}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="skills-home-cta">
+      <a href="{{ '/cv/' | relative_url }}">View full CV &rarr;</a>
+    </div>
+  </div>
+</section>

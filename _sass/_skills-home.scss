@@ -1,0 +1,66 @@
+.skills-home {
+  padding: 3rem 1rem;
+  background: $smoky-white;
+
+  .skills-home-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .skills-home-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $text-color;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .skills-category {
+    margin-bottom: 1.5rem;
+
+    .skills-category-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $text-color-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+
+    i {
+      font-size: 0.8rem;
+    }
+  }
+
+  .skills-home-cta {
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+      color: $theme-color;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

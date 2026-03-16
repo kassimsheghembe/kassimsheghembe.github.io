@@ -1,0 +1,9 @@
+categories:
+  - name: "Languages"
+    skills: ["Java", "Python", "Kotlin", "JavaScript", "TypeScript"]
+  - name: "Frameworks & Libraries"
+    skills: ["Spring Boot", "FastAPI", "React", "Flask", "AndroidFHIR SDK"]
+  - name: "Data & Infrastructure"
+    skills: ["PostgreSQL", "MongoDB", "Redis", "Docker", "AWS"]
+  - name: "Healthcare Standards"
+    skills: ["FHIR", "HAPI FHIR", "OpenHIM"]
